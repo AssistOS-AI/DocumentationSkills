@@ -2,6 +2,8 @@
 
 Use this reference when writing or revising the HTML documentation pages under `docs/*.html`.
 
+Apply `documentation-writing-guidelines.md` first. This file adds rules that are specific to the HTML documentation set.
+
 ## Purpose
 
 Write for human readers. Explain what exists, why it exists, and how it behaves in practice. Keep the prose technical, specific, and operational.
@@ -9,9 +11,9 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 ## Communication Standard
 
 - Keep all persistent output in English.
-- Use a professional, academic, and defensible tone.
-- Prefer affirmative descriptions of methods and working capabilities.
-- Emphasize pragmatic utility and reproducible implementation guidance.
+- Use precise, professional language and make every claim defensible from project evidence.
+- Prefer direct descriptions of verified methods and behavior.
+- Explain the task each method supports and provide the verified commands, inputs, or conditions needed to reproduce it.
 - Optimize the documentation for software engineers and interdisciplinary researchers.
 
 ## Technical Fidelity
@@ -37,6 +39,8 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Keep explanatory text in prose with complete sentences and clear argumentative flow.
 - Use lists only when the content is genuinely list-shaped.
 - Avoid unexplained abbreviations in general explanatory prose.
+- Organize each feature explanation around its practical role and user-visible result before describing components, configuration, or runtime flow.
+- Make each independently accessible HTML page define the project-specific concepts needed to understand that page, even when another page contains a longer explanation.
 
 ## Examples And Callouts
 

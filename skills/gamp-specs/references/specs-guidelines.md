@@ -1,10 +1,12 @@
-# DS Specifications Guidelines
+# Design Specification Guidelines
 
 Use this reference when writing or revising the specification files under `docs/specs/*.md`.
 
+Apply `documentation-writing-guidelines.md` first. This file adds the contract structure and normative wording required for design specification (DS) files.
+
 ## Purpose
 
-Write DS specifications as stable agent-facing contracts. Focus on rules, constraints, invariants, and required outcomes rather than implementation history.
+Write DS files as contracts that coding agents can follow when they change the project. Focus on rules, constraints, invariants, and required outcomes. Include implementation history only when it explains a current requirement.
 
 ## Normative Vocabulary
 
@@ -18,7 +20,7 @@ Write DS specifications as stable agent-facing contracts. Focus on rules, constr
 - Keep the same architectural story as the HTML documentation when the project defines one, but express it as obligations, boundaries, and guarantees.
 - Use architecture as context only; translate it into responsibilities, boundaries, invariants, and observable guarantees.
 - Describe what the system, agent, or interface must do, what it must preserve, and what it must not assume.
-- Keep the project aligned with the HAP framework and document only defensible requirements.
+- Document only requirements that the repository guidance, implementation, or confirmed project behavior supports.
 
 ## Structure Rules
 
@@ -48,8 +50,10 @@ Write DS specifications as stable agent-facing contracts. Focus on rules, constr
 - Use lists only when the content is genuinely list-shaped.
 - Reuse stable project terminology rather than inventing a parallel taxonomy for the specs.
 - Keep identifiers, filenames, module names, and exact technical terms unchanged.
-- Adopt a professional, academic, and defensible tone.
-- Prefer affirmative descriptions of methodology and reproducible utility.
+- Define repository-specific terms before using them in a requirement or invariant. A contract may be concise, but it must not depend on vocabulary introduced in a later section or later DS file.
+- State the role and observable effect of a feature before specifying its internal constraints.
+- Use precise, professional language and make every claim defensible from project evidence.
+- Describe the required method directly and include the information another agent needs to reproduce the result.
 - Optimize the material for software engineers and interdisciplinary researchers.
 
 ## Technical Fidelity
@@ -63,4 +67,4 @@ Write DS specifications as stable agent-facing contracts. Focus on rules, constr
 
 ## Default Outcome
 
-The resulting DS documents should read like durable contracts that guide future work without depending on transient implementation details or decorative explanatory text.
+The resulting DS documents should guide future work across implementation changes without depending on short-lived code details or decorative prose.

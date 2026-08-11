@@ -1,9 +1,10 @@
 # Documentation Structure Requirements
 
-This skill enforces a standard documentation layout rooted in `AGENTS.md` and `docs/`. The goal is to normalize existing documentation into a consistent, navigable structure aligned with the HAP framework and the repository skill catalog.
+This reference defines the files and navigation required for a consistent project documentation set. `README.md` onboards a new user, `AGENTS.md` instructs coding agents, HTML pages explain the system, and design specification (DS) files record project requirements and decisions.
 
 ## Required Layout
 
+- `README.md`
 - `AGENTS.md`
 - `fileSizesCheck.sh`
 - `docs/index.html`
@@ -18,10 +19,22 @@ This skill enforces a standard documentation layout rooted in `AGENTS.md` and `d
 
 `AGENTS.md` is the single root guidance file. Its standard section layout is: `Scope`, `Mandatory Reading Order`, `Current Skill Catalog`, `Repository Rules`, `Runtime Defaults`, and `Key Paths`.
 
+## README Requirements
+
+- Write `README.md` for a reader who has not used the project before.
+- Start with a short introduction that names the project, the problem it addresses, and the people or systems that use it.
+- Follow the introduction with a high-level overview of the project. Explain the main parts and expected result without beginning with internal implementation details.
+- Include each onboarding section supported by the project: prerequisites, installation, configuration, startup, integration, and basic usage.
+- Omit sections that do not apply. A library without a standalone process needs integration instructions, not a startup section.
+- Derive every command, path, environment variable, configuration key, and example from the repository. Do not infer a setting's purpose, accepted format, or runtime effect from its name.
+- When the repository proves that a value is required but does not explain how to obtain or format it, state only the confirmed requirement. Add a numbered DS question with a `Response:` that distinguishes confirmed behavior from information the repository does not provide. Do not turn missing documentation into speculative implementation options.
+- Keep advanced architecture and detailed behavior in the HTML documentation or DS files, and link to those documents when the reader needs more detail.
+- Recheck README instructions after changes to dependencies, manifests, configuration, executable entry points, public interfaces, or user workflows.
+
 ## HTML Pages
 
 - Page names must follow the actual content of the codebase and the current skill set.
-- `docs/index.html` must explain repository structure, runtime defaults, coding-style authority, test organization, the active skill catalog, and the portability model that keeps example code inside skill folders.
+- `docs/index.html` must explain repository structure, runtime defaults, the canonical source for coding-style rules, test organization, the active skill catalog, and the portability model that keeps example code inside skill folders.
 - In a skill-catalog repository, each skill present under `skills/` must have a corresponding HTML page under `docs/`.
 - In a downstream project that only consumes imported skills, `docs/` must describe the host project rather than the imported skill catalog. Do not add `/docs` pages whose subject is the copied skills themselves.
 - Each skill page must review the actual contents of that skill folder, including local artifacts, dependencies, outputs, and conventions.

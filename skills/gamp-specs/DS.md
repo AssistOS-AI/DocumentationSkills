@@ -2,14 +2,14 @@
 
 ## Introduction
 
-This skill is the repository bootstrap authority for documentation layout, agent guidance, DS naming rules, and coding-style anchoring. It preserves the former `gamp-structure` behavior while extending it with stronger synchronization requirements across the skill catalog.
+This skill defines how a project creates and maintains its README, HTML documentation, agent guidance, design specifications (DS files), and coding-style reference. It preserves the former `gamp-structure` behavior and adds synchronization rules for repositories that contain a catalog of skills.
 
 ## Core Content
 
-The skill owns the repository rules that tie `AGENTS.md`, `docs/`, and `docs/specs/` together. It defines the mandatory three-digit DS naming convention, the requirement to keep the DS sequence contiguous with no skipped numbers, the requirement to keep all persistent content in English, the use of SVG diagrams under `docs/assets/`, and the mandatory `Decisions & Questions` section with numbered question subchapters in ordinary DS files. It also defines the repository-level maintenance rule that when new skills are added, the agent guidance, the generated DS matrix, the coding-style pointers, and the HTML documentation must all be updated in the same change set. Repository-wide example code is kept inside skill folders rather than in a shared root `src/` tree, and downstream consumer projects must keep imported-skill documentation inside those skill folders rather than under the host project's `docs/`.
+The skill ties `README.md`, `AGENTS.md`, `docs/`, and `docs/specs/` together. It requires README instructions that let a new user install, configure, start, integrate, or use the project through every path that applies. Across all documents, it requires concrete language, first-use explanations for project-specific terms, a reading order that introduces concepts before relying on them, and feature descriptions that explain purpose before implementation. Comparisons must identify a practical difference between real alternatives; they must not decorate a direct statement with an obviously undesirable alternative. The skill also defines three-digit DS names, gap-free numbering, English persistent content, diagram placement under `docs/assets/`, and numbered `Decisions & Questions` subchapters in ordinary DS files.
 
-When a target project uses WebSkel, GAMP guidance must make `webskel-ui-engineering` mandatory and carry its MVM, declarative action, lifecycle, template, safe projection, and reusable component rules into the target coding-style authority.
+When a target project uses WebSkel, GAMP guidance must require `webskel-ui-engineering` and carry its verified coding rules into `DS001-coding-style.md`. The target documentation must define WebSkel-specific terms from that guidance before using them.
 
 ## Conclusion
 
-Future structural bootstraps must treat this skill as the entry point for repository documentation policy. Any change to project layout, DS policy, coding-style authority, or agent-facing synchronization rules must be reflected here first.
+Future project bootstraps must use this skill as the starting point for repository documentation rules. Changes to project layout, DS policy, coding-style rules, reader onboarding, or documentation synchronization must be reflected here first.

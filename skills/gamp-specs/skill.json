@@ -1,7 +1,7 @@
 {
   "title": "GAMP Specs",
   "family": "anthropic",
-  "summary": "Bootstraps AGENTS guidance, DS specifications, HTML documentation, and repository-wide documentation synchronization rules.",
+  "summary": "Creates a README with verified setup and usage, AGENTS instructions, design specifications, HTML documentation, and rules that keep them aligned with the implementation.",
   "aliases": [
     "gamp-structure",
     "docs-builder",
@@ -9,6 +9,7 @@
   ],
   "dependsOn": [],
   "outputs": [
+    "README.md",
     "AGENTS.md",
     "fileSizesCheck.sh",
     "docs/index.html",
@@ -18,6 +19,7 @@
   "entrypoints": [
     "SKILL.md",
     "examples/skillCatalog.mjs",
+    "references/documentation-writing-guidelines.md",
     "references/docs-structure.md",
     "references/specs-guidelines.md",
     "references/technical-docs-guidelines.md",

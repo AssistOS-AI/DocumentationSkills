@@ -1,15 +1,15 @@
 ---
 name: gamp-specs
-description: Rebuild or initialize a software project into the standard `AGENTS.md` + `docs/` + `docs/specs/` layout with contiguous DS numbering, explicit coding-style authority, detailed HTML documentation, and a synchronized skill catalog.
+description: Rebuild or initialize a software project with a `README.md` that introduces the project and documents verified setup and usage, repository guidance in `AGENTS.md`, HTML documentation under `docs/`, and consecutively numbered design specifications under `docs/specs/`. Use when Codex must create, normalize, or synchronize these documents with the implementation and the repository's current skill catalog.
 ---
 
 # GAMP Specs
 
 ## Overview
 
-Normalize or initialize a project into a consistent repository structure governed by the HAP framework, the DS specification set, and explicit agent guidance. Always ingest existing guidance first and reshape it into the canonical structure instead of discarding it. This skill absorbs and supersedes the previous `gamp-structure` behavior, so the scripts, references, assets, and structural guarantees from that skill must remain available here.
+Normalize or initialize a project into a consistent repository structure. Store human onboarding in `README.md`, agent instructions in `AGENTS.md`, explanatory HTML pages under `docs/`, and design specifications (DS files) under `docs/specs/`. A DS file records requirements, constraints, and resolved or open design questions. Always ingest existing guidance first and reshape it into the standard structure without discarding verified project information. This skill absorbs and supersedes the previous `gamp-structure` behavior, so the scripts, references, assets, and structural guarantees from that skill must remain available here.
 
-Use `references/docs-structure.md` for layout and file placement, `references/technical-docs-guidelines.md` for HTML documentation writing, and `references/specs-guidelines.md` for DS specifications. Do not project the HTML-specific writing rules onto the specs unless a rule is clearly compatible with specification writing.
+Read `references/documentation-writing-guidelines.md` before writing any persistent documentation. Use `references/docs-structure.md` for layout, README content, and file placement; `references/technical-docs-guidelines.md` for HTML pages; and `references/specs-guidelines.md` for DS files. Apply HTML-specific rules only to HTML pages.
 
 ## Workflow
 
@@ -19,21 +19,23 @@ Use `references/docs-structure.md` for layout and file placement, `references/te
 - Read the source code in the same manner you normally do when asked to analyze a project: scan the tree, inspect entry points, follow key dependencies, and review the current skill folders.
 - Verify every substantive technical claim against the implementation before documenting it.
 - Extract required narrative, constraints, and terminology from those sources.
-- Keep all written output in English, including HTML documentation, specs, and `AGENTS.md`.
+- Identify the project's intended users and the verified installation, configuration, startup, integration, and usage paths that apply to its project type.
+- Keep all written output in English, including `README.md`, HTML documentation, specs, and `AGENTS.md`.
 
 ### 2. Apply the Standard Structure
 
 - Use `references/docs-structure.md` as the required layout and naming rules.
+- Use `references/documentation-writing-guidelines.md` for reader assumptions, first-use definitions, concrete language, concept order, and comparison rules across every document.
 - Use `references/technical-docs-guidelines.md` when writing or revising the HTML pages.
 - Use `references/specs-guidelines.md` when writing or revising the DS specifications.
 - Define the DS spec set based on project scope.
 - Always begin with `DS000-vision.md` and `DS001-coding-style.md`.
-- When a project uses WebSkel, make `webskel-ui-engineering` mandatory in its agent guidance and flow its MVM, declarative-action, template, lifecycle, safe-projection, and reusable-component rules into `DS001-coding-style.md`.
+- When a project uses WebSkel, read the `webskel-ui-engineering` guidance, require that skill in `AGENTS.md`, and carry its coding rules into `DS001-coding-style.md`. Define every WebSkel-specific term from that guidance before using it in the target documentation.
 - In a skill-catalog repository, create one DS file for each current skill in the repository, plus any additional DS files needed for shared architectural topics such as model strategy.
 - In a downstream project that only consumes imported skills, keep the DS set focused on the host project itself. Do not create DS files under `docs/specs/` whose subject is the imported skills.
 - Keep the DS sequence contiguous with no missing intermediate numbers. If the repository uses `DS000` through `DS010`, the next new DS must be `DS011`.
 - Ensure the DS files are reachable from `matrix.md`, and link each DS entry through `/specsLoader.html?spec=DS0xx-description.md`.
-- Treat `DS001-coding-style.md` as the coding-style authority and make `AGENTS.md` point to it explicitly.
+- Treat `DS001-coding-style.md` as the canonical source for coding-style rules and make `AGENTS.md` point to it explicitly.
 - Keep the HTML documentation workflow and the DS specification workflow distinct.
 - Treat the DS specifications as the source of truth for documented behavior and structure.
 - Make every ordinary DS file use `Introduction`, `Core Content`, `Decisions & Questions`, and `Conclusion`.
@@ -59,7 +61,17 @@ Use `references/docs-structure.md` for layout and file placement, `references/te
 - Ensure the HTML documentation reflects the current source code and remains aligned with the DS specifications.
 - Provide an index page that explains how the system fits together, where the coding style is defined, and how tests are organized. Add one page per skill only when the repository itself is the skill catalog.
 
-### 4. Create or Update `AGENTS.md`
+### 4. Create or Update `README.md`
+
+- Create `./README.md` if it does not exist; otherwise update it without discarding verified project guidance.
+- Begin with a short introduction that identifies the project, the user problem it addresses, and its main role. Follow with a high-level overview that does not require knowledge of the source code.
+- Document every applicable onboarding path supported by the project: prerequisites, installation, configuration, application startup, library or service integration, and basic usage.
+- Include only the onboarding sections that apply to the project. For example, document integration instead of startup for a library that has no standalone process.
+- Verify commands, filenames, environment variables, configuration values, and examples against the implementation. Do not infer a setting's purpose, accepted format, or effect from its name, and do not invent a missing setup path.
+- When the repository confirms that a setup value is required but does not explain how to obtain or format it, document only the confirmed requirement. Add a numbered DS question with a `Response:` that separates the confirmed behavior from the missing evidence. Do not propose alternative implementations unless the project has a genuine unresolved design choice.
+- After code changes, recheck `README.md` whenever installation, configuration, startup, integration, public interfaces, or usage may have changed.
+
+### 5. Create or Update `AGENTS.md`
 
 - Create `./AGENTS.md` if it does not exist; otherwise update it.
 - Do not create `./AGENT.md` or any other compatibility duplicate.
@@ -75,13 +87,14 @@ Use `references/docs-structure.md` for layout and file placement, `references/te
 - State explicitly that the GAMP skill itself must be updated when new skill families, coding-style rules, or project bootstrap rules are introduced.
 - State explicitly that DS numbering must remain gap-free.
 - State explicitly that `Decisions & Questions` uses numbered question subchapters and that rationale now lives in the affected DS files rather than in a separate repository decision log.
+- Require future documentation changes to follow `references/documentation-writing-guidelines.md` or the equivalent copied project guidance.
 
-### 5. Install the Specs Loader
+### 6. Install the Specs Loader
 
 - Copy `assets/specsLoader.html` to `docs/specsLoader.html` every time docs are rebuilt.
 - Do not edit this file in-place; update the asset if changes are needed.
 
-### 6. Run Post-Generation Verification
+### 7. Run Post-Generation Verification
 
 - After generating or updating the HTML documentation and DS specifications, run verification checks before finishing.
 - Verify that the generated HTML files reference the specifications through valid links.
@@ -94,8 +107,9 @@ Use `references/docs-structure.md` for layout and file placement, `references/te
 - Run the documentation link verifier after documentation work so shared navigation, specs-loader links, and partial includes stay valid.
 - When the HTML documentation uses relative asset paths, `fetch()`-loaded partials, or other browser-resolved resources, run `node scripts/verify_static_site.js <docs-dir>` against the generated `docs/` folder. Add `--path` checks for project-specific resources when needed.
 - Verify that each affected DS file carries the needed numbered `Decisions & Questions` entries for important rationale, tradeoffs, and unresolved issues.
+- Verify each applicable README onboarding procedure against the current source, manifest, configuration, and executable entry points.
 
-### 7. Quality Checks
+### 8. Quality Checks
 
 - Validate that links between `index.html`, other HTML pages, and specs loader work.
 - Validate that the HTML pages expose valid navigation paths to the specs set.
@@ -113,6 +127,10 @@ Use `references/docs-structure.md` for layout and file placement, `references/te
 - Confirm the HTML documentation and specs are synchronized with the implementation, with specs kept authoritative if wording diverges.
 - Confirm downstream-consumer documentation rules are explicit: imported skills stay documented inside `skills/`, not in the host project's `/docs` DS set.
 - Confirm numbered `Decisions & Questions` entries exist wherever rationale or unresolved choices matter, and confirm no guidance still requires a separate decision-log file.
+- Read `README.md`, `AGENTS.md`, the HTML pages, and the DS files in their intended order. Confirm each project-specific term is explained at first use and no list, heading, diagram, or navigation label introduces unexplained concepts.
+- Confirm feature documentation states the role and practical use before internal behavior, configuration, or architecture.
+- Replace unexplained abstract nouns, literary phrases, and decorative comparisons with concrete statements about verified actors, actions, data, or results.
+- Confirm `README.md` contains an introduction, a high-level overview, and every applicable installation, configuration, startup, integration, and basic-usage procedure.
 
 ## Resources
 
@@ -122,6 +140,7 @@ Use `references/docs-structure.md` for layout and file placement, `references/te
 - `verify_static_site.js` - optional runtime verification helper that serves a generated `docs/` folder through a temporary local HTTP server and checks key pages and assets over real HTTP.
 
 ### references/
+- `documentation-writing-guidelines.md` - shared audience, terminology, reading-order, concrete-language, and comparison rules for every persistent document.
 - `docs-structure.md` - required documentation layout, file naming, and document set expectations.
 - `technical-docs-guidelines.md` - writing and presentation rules for `docs/*.html`.
 - `specs-guidelines.md` - writing rules for `docs/specs/*.md`.

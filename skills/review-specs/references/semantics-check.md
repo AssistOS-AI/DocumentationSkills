@@ -2,6 +2,8 @@
 
 This reference defines the content and language review performed after syntax and flow checks. The goal is to determine whether a new reader can understand the product and move through its documentation without relying on source-code knowledge.
 
+All examples in this reference use fictional, project-neutral terminology. Examples must demonstrate documentation principles without importing names, components, or architecture from a project previously reviewed with this skill.
+
 ## 1. Read in user order
 
 Start at the home page, follow the primary navigation, open secondary pages from their parent pages, and then read the specifications reached through the documented matrix or loader. Read each page from its first sentence to its conclusion. Do not judge isolated paragraphs without checking the transitions around them.
@@ -16,13 +18,13 @@ The page does not need literal `Why`, `What`, and `How` headings. The reader mus
 
 Example of a weak home page:
 
-> “ALA is an extensible capability layer for intelligent workflows.”
+> “TaskRunner provides an extensible execution layer.”
 
-This names no user, task, input, output, or reason. Report that the home page should say who invokes ALA, what kind of instruction it accepts, what result it returns, and why task repositories exist.
+This names no user, task, input, output, or reason. Report that the home page should say who uses TaskRunner, which problem it solves, what input it accepts, and what result it returns.
 
 Example of a stronger version:
 
-> “ALA gives people and other agents one command-line entry point for research, documentation, and language transformations. It accepts an instruction plus optional input, selects a task-specific A-Skill, and returns the result while keeping routing diagnostics separate.”
+> “TaskRunner is a command-line application that lets analysts run reusable data-processing tasks. An analyst supplies an input file and selects a task; TaskRunner validates the input, runs the selected operation, and writes the result to an output file.”
 
 ## 2. First-use terminology
 
@@ -30,11 +32,11 @@ At the first occurrence of every project-specific term, acronym, component, or a
 
 Examples:
 
-- Good: “An A-Skill is an Achilles skill that defines the method for one task family.”
-- Weak: “The router invokes the A-Skill.” If neither “router” nor “A-Skill” has been defined, report both terms.
+- Good: “A task module is a reusable package containing the instructions and optional code required to perform one type of operation.”
+- Weak: “The router invokes the task module.” If neither “router” nor “task module” has been defined, report both terms.
 - Weak: “The subsystem uses semantic mediation.” “Semantic mediation” is abstract unless the text explains which component transforms what data and for what result.
 
-When a term reappears after several sections or on an independently reachable page, check that a short reminder prevents ambiguity. Check for inconsistent names such as `Main Agent`, `MainAgent`, and `main agent` when they refer to one identifier.
+When a term reappears after several sections or on an independently reachable page, check that a short reminder prevents ambiguity. Check for inconsistent names such as `Task Router`, `TaskRouter`, and `task router` when they refer to one identifier.
 
 ## 3. New-user comprehension and coherence
 
@@ -62,13 +64,13 @@ Documentation should use complete sentences with a subject and predicate for exp
 Example of excessive bullets:
 
 ```markdown
-- ALA accepts instructions.
-- ALA selects a skill.
-- ALA chooses a model.
-- ALA returns a result.
+- The application accepts a request.
+- The application selects a task handler.
+- The application processes the input.
+- The application returns the result.
 ```
 
-When this is the entire explanation, recommend a paragraph or sequence diagram: “ALA accepts an instruction, selects the task skill, resolves an executor, and returns the result.” Keep the list only if the items are being compared or enumerated for a practical reason.
+When this is the entire explanation, recommend a paragraph or sequence diagram: “The application accepts a request, selects the appropriate task handler, processes the supplied input, and returns the result.” Keep the list only if the items are being compared or enumerated for a practical reason.
 
 Check section density. Several headings with one or two sentences each often indicate that one continuous explanation was fragmented for visual structure.
 
@@ -97,7 +99,7 @@ Examples:
   - Ask: Which component exposes which operation to whom?
 - Too abstract: “Context is propagated through the orchestration layer.”
   - Ask: Which context fields are copied, from which caller, to which executor, and why?
-- Clearer: “ALA passes the selected task name and session identifier from the CLI request to the executor so a retry can use the same task context.”
+- Clearer: “The command-line handler passes the selected task name and session identifier to the task executor so that a retry can use the same request context.”
 
 Flag “fancy” vocabulary when a simpler word carries the behavior more accurately:
 
@@ -122,6 +124,6 @@ Use this form:
 
 Example:
 
-`[warning] docs/architecture.html — “Boundary of responsibility” — “generic capability” is used before the page says whether it is a service, interface, or model category — a new reader cannot tell who performs the operation — define it as an ALA execution requirement and name one concrete example before listing the categories.`
+`[warning] docs/architecture.html — “Processing components” — “execution capability” is used before the page explains whether it refers to a service, interface, or operation — a new reader cannot identify which component performs the work — define the term through one concrete actor, input, action, and result before listing capability categories.`
 
 Separate confirmed comprehension failures from stylistic preferences. If a page is clear and concrete, record that it passed rather than adding cosmetic rewrites.

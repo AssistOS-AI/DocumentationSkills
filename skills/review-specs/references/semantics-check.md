@@ -4,6 +4,18 @@ This reference defines the content and language review performed after syntax an
 
 All examples in this reference use fictional, project-neutral terminology. Examples must demonstrate documentation principles without importing names, components, or architecture from a project previously reviewed with this skill.
 
+## Preservation baseline
+
+Treat correct, understandable, and compliant documentation as protected content. Do
+not propose alternate wording, formatting, section organization, diagrams, or prose
+style when the existing material already communicates its contract clearly. A
+different formulation is not evidence of a defect.
+
+Create a finding only when evidence identifies a negative effect on accuracy,
+new-user comprehension, coherence, navigation, consistency, accessibility, or an
+applicable repository rule. Make the remediation as narrow as possible and preserve
+the surrounding content that already works.
+
 ## 1. Read in user order
 
 Start at the home page, follow the primary navigation, open secondary pages from their parent pages, and then read the specifications reached through the documented matrix or loader. Read each page from its first sentence to its conclusion. Do not judge isolated paragraphs without checking the transitions around them.
@@ -126,4 +138,7 @@ Example:
 
 `[warning] docs/architecture.html — “Processing components” — “execution capability” is used before the page explains whether it refers to a service, interface, or operation — a new reader cannot identify which component performs the work — define the term through one concrete actor, input, action, and result before listing capability categories.`
 
-Separate confirmed comprehension failures from stylistic preferences. If a page is clear and concrete, record that it passed rather than adding cosmetic rewrites.
+Separate confirmed comprehension failures from stylistic preferences. Omit
+stylistic preferences from findings and remediation guidance. If a page is clear and
+concrete, record that it passed rather than adding cosmetic rewrites or replacement
+wording.

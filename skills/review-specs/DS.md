@@ -10,6 +10,12 @@ The review must inspect syntax, cross-file references, document structure, navig
 
 Semantic review starts with the home page, primary pages, and DS pages. It checks that readers can understand why a subject exists, what it contains, and how it behaves; that new concepts are defined at first use; and that the narrative remains coherent from beginning to end. It also detects excessive bullets, fragmented headings, abstract actors and actions, decorative vocabulary, contradictions, and unclear transitions.
 
+The review must preserve documentation that is already correct, clear, coherent,
+and compliant. It must not propose alternative phrasing, formatting, structure, or
+diagrams solely as a stylistic preference. Findings and remediation guidance are
+limited to confirmed negative aspects, and each proposed repair must be scoped so
+that unaffected content remains unchanged.
+
 The skill returns an English analysis report with evidence, severity, limitations, and ordered remediation guidance for `gamp-specs`. It must not edit any file, regenerate a matrix, update a specification, or produce replacement documentation. `gamp-specs` is solely responsible for applying the recommendations.
 
 ## Conclusion

@@ -11,6 +11,15 @@ Use this skill before `gamp-specs` edits documentation. It produces one English 
 
 The review is read-only and evidence-based. Inspect the actual files, read pages in user-facing order, cite paths and headings or line numbers, separate confirmed defects from recommendations, and report tool limitations honestly.
 
+## Preservation rule
+
+Preserve documentation that is already correct, clear, coherent, and compliant. Do
+not recommend replacing, restructuring, reformatting, or rephrasing sound content
+merely because another wording or presentation is possible. Focus findings and
+remediation guidance only on confirmed negative aspects that affect correctness,
+comprehension, navigation, consistency, accessibility, or documented repository
+rules. Leave unaffected text and structure unchanged.
+
 ## Required references
 
 Read both references before performing the review:
@@ -45,4 +54,6 @@ If a category passes, state what was checked and that no issue was found. Every 
 - Never run a formatter, generator, repair command, or test that writes into the repository.
 - Never claim a checker passed unless it actually ran; distinguish static inspection from tool-backed validation.
 - Do not turn an intentionally open product contract into a defect; report it as an ambiguity and suggest a DS question only when useful.
+- Never propose cosmetic rewrites, stylistic substitutions, or broad document
+  regeneration for content that already meets the applicable requirements.
 - Keep the report in English unless the user explicitly requests another language.

@@ -1,7 +1,7 @@
 {
   "title": "GAMP Specs",
   "family": "anthropic",
-  "summary": "Creates a README with verified setup and usage, AGENTS instructions, design specifications, HTML documentation, and rules that keep them aligned with the implementation.",
+  "summary": "Creates final-product README, AGENTS guidance, design specifications, HTML documentation, and rules that keep them aligned with the implementation without exposing repository-progress status.",
   "aliases": [
     "gamp-structure",
     "docs-builder",

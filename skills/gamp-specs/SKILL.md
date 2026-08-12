@@ -11,6 +11,17 @@ Normalize or initialize a project into a consistent repository structure. Store 
 
 Read `references/documentation-writing-guidelines.md` before writing any persistent documentation. Use `references/docs-structure.md` for layout, README content, and file placement; `references/technical-docs-guidelines.md` for HTML pages; and `references/specs-guidelines.md` for DS files. Apply HTML-specific rules only to HTML pages.
 
+## Final-Product Documentation Policy
+
+The generated documentation must describe the product as it is intended to exist when delivered to its users: its stable purpose, supported interfaces, responsibilities, workflows, constraints, and operational behavior. Documentation is a product contract, not a progress report.
+
+- Do not describe the target repository as an intermediate development step.
+- Do not include phrases such as “currently contains,” “not implemented yet,” “planned interface,” “future implementation,” “design only,” or equivalent status commentary in `README.md`, HTML pages, or ordinary explanatory prose.
+- Do not weaken final behavior into progress language merely because the source repository is incomplete while the product design is being developed. Describe the required or delivered product behavior directly.
+- Keep genuinely unresolved choices, missing contract details, and implementation alternatives in the affected DS file under numbered `Decisions & Questions`; do not surface repository-progress commentary in user-facing documentation.
+- When a capability is part of the product contract but its concrete command, setting, or provider mapping is unresolved, document the stable behavior and record the unresolved detail in a DS question without narrating the development phase.
+- Review every generated document for temporal qualifiers about repository state and remove them unless the qualifier is part of the product's user-visible lifecycle or versioning contract.
+
 ## Workflow
 
 ### 1. Discover Source Material
@@ -108,6 +119,7 @@ Read `references/documentation-writing-guidelines.md` before writing any persist
 - When the HTML documentation uses relative asset paths, `fetch()`-loaded partials, or other browser-resolved resources, run `node scripts/verify_static_site.js <docs-dir>` against the generated `docs/` folder. Add `--path` checks for project-specific resources when needed.
 - Verify that each affected DS file carries the needed numbered `Decisions & Questions` entries for important rationale, tradeoffs, and unresolved issues.
 - Verify each applicable README onboarding procedure against the current source, manifest, configuration, and executable entry points.
+- Verify that README, HTML pages, and ordinary explanatory sections of DS files describe the final product contract and contain no repository-progress commentary. Retain implementation alternatives and unresolved contract details only in numbered DS `Decisions & Questions` entries.
 
 ### 8. Quality Checks
 
@@ -131,6 +143,7 @@ Read `references/documentation-writing-guidelines.md` before writing any persist
 - Confirm feature documentation states the role and practical use before internal behavior, configuration, or architecture.
 - Replace unexplained abstract nouns, literary phrases, and decorative comparisons with concrete statements about verified actors, actions, data, or results.
 - Confirm `README.md` contains an introduction, a high-level overview, and every applicable installation, configuration, startup, integration, and basic-usage procedure.
+- Confirm no user-facing documentation treats the product as a temporary step, reports that code is absent or unfinished, or labels its interfaces as merely planned. The documentation must read as the final product contract even while development continues.
 
 ## Resources
 

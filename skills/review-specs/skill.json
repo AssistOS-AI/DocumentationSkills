@@ -1,21 +1,21 @@
 {
   "title": "Review Specs",
   "family": "anthropic",
-  "summary": "Defines a step-by-step review workflow for reconciling affected DS files with new context, instructions, and observed issues.",
+  "summary": "Performs a read-only syntax, navigation, structure, and semantic audit of README, AGENTS, and docs, returning actionable findings for gamp-specs.",
   "aliases": [
     "review-specs",
     "spec-review"
   ],
-  "dependsOn": [
-    "gamp-specs"
-  ],
+  "dependsOn": [],
   "outputs": [
-    "updated docs/specs/*.md",
-    "updated synchronized documentation surfaces when affected"
+    "English analysis report in the assistant response",
+    "actionable remediation guidance for gamp-specs"
   ],
   "entrypoints": [
     "SKILL.md",
-    "DS.md"
+    "DS.md",
+    "references/syntax-and-flow-check.md",
+    "references/semantics-check.md"
   ],
   "selfContained": true
 }

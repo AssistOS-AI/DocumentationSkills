@@ -16,6 +16,14 @@ new-user comprehension, coherence, navigation, consistency, accessibility, or an
 applicable repository rule. Make the remediation as narrow as possible and preserve
 the surrounding content that already works.
 
+## Internal authoring tools
+
+Documentation-generation and documentation-review skills are internal authoring tools, not product concepts, dependencies, architecture components, or user-facing capabilities. Project documentation must not name them, credit them, link to them, define them, diagram them, or describe their role in producing or reviewing the documentation.
+
+Create an error finding for any statement that exposes documentation-skill provenance, including “generated with,” “reviewed by,” “validated using,” or equivalent wording. Create the same finding when an authoring-only documentation skill appears in a product skill catalog, dependency list, specification, definitions section, architecture diagram, navigation item, badge, credit, comment, caption, or footer.
+
+Do not flag a skill that the target repository itself implements, distributes, or exposes as product functionality merely because it is documentation-related. Review it as a product subject, but still flag any claim that it generated or reviewed the documentation. Recommend removing only the internal-tool reference while preserving valid product content.
+
 ## 1. Read in user order
 
 Start at the home page, follow the primary navigation, open secondary pages from their parent pages, and then read the specifications reached through the documented matrix or loader. Read each page from its first sentence to its conclusion. Do not judge isolated paragraphs without checking the transitions around them.

@@ -23,6 +23,10 @@ The generated documentation must describe the product as it is intended to exist
 - Record confirmed behavior, missing contract details, and implementation boundaries in the affected DS file as declarative statements; do not surface repository-progress commentary in user-facing documentation.
 - When a capability is part of the product contract but its concrete command, setting, or provider mapping is not specified, document the stable behavior and state that boundary declaratively without narrating the development phase.
 - Review every generated document for temporal qualifiers about repository state and remove them unless the qualifier is part of the product's user-visible lifecycle or versioning contract.
+- Treat documentation-generation and documentation-review skills as internal authoring tools. Their use is implementation detail of the documentation workflow, not part of the product contract.
+- Never mention the documentation skills used to create, rebuild, normalize, or review the project documentation in `README.md`, `AGENTS.md`, HTML pages, DS files, the specification matrix, comments, captions, footers, provenance notes, or generated content. Do not state that documentation was generated, reviewed, validated, or remediated by `gamp-specs`, `review-specs`, or any equivalent documentation skill.
+- Do not create pages, sections, DS files, glossary entries, badges, credits, navigation links, or dependency lists for those internal documentation skills merely because they were available or used during authoring.
+- Mention a skill only when the target repository implements, distributes, or exposes that skill as part of the product itself. This product-scope exception does not permit authoring-process commentary about using the skill to produce the documentation.
 
 ## Workflow
 
@@ -32,6 +36,7 @@ The generated documentation must describe the product as it is intended to exist
 - Read the source code in the same manner you normally do when asked to analyze a project: scan the tree, inspect entry points, follow key dependencies, and review the current skill folders.
 - Verify every substantive technical claim against the implementation before documenting it.
 - Extract required narrative, constraints, and terminology from those sources.
+- Remove existing authoring-process references to documentation-generation or documentation-review skills unless the referenced skill is itself an implemented product subject. Preserve product behavior while removing tool provenance.
 - Identify the project's intended users and the verified installation, configuration, startup, integration, and usage paths that apply to its project type.
 - Keep all written output in English, including `README.md`, HTML documentation, specs, and `AGENTS.md`.
 - Run `detect-main-behaviors` against the discovered source, documentation, tests, public interfaces, architecture, and relevant development evidence. Preserve its accepted and rejected candidate boundary for specification generation.
@@ -49,7 +54,7 @@ The generated documentation must describe the product as it is intended to exist
 - Build the Main Behavior DS only from candidates accepted by `detect-main-behaviors`. Include the project purpose and only the principal paths, broad project-spanning behaviors, essential APIs or commands, active consequences of direction-changing decisions, and architectural skeleton identified by that analysis.
 - Keep feature catalogs, helpers, optional integrations, narrow configuration, and implementation detail out of the Main Behavior DS. Link to specialized DS files when a main behavior needs deeper contracts without duplicating them.
 - When a project uses WebSkel, read the `webskel-ui-engineering` guidance, require that skill in `AGENTS.md`, and carry its coding rules into `DS001-coding-style.md`. Give every WebSkel-specific term a verified inline definition or an exact link to its local or canonical definition entry.
-- In a skill-catalog repository, create one DS file for each current skill in the repository, plus any additional DS files needed for shared architectural topics such as model strategy.
+- In a skill-catalog repository, create one DS file for each skill that the repository implements or distributes as part of its product, plus any additional DS files needed for shared architectural topics such as model strategy. Exclude documentation skills that were merely used as internal authoring tools.
 - In a downstream project that only consumes imported skills, keep the DS set focused on the host project itself. Do not create DS files under `docs/specs/` whose subject is the imported skills.
 - Keep the DS sequence contiguous with no missing intermediate numbers. The foundational sequence is `DS000`, `DS001`, `DS002`, then `DS003-main-behavior.md`; subsequent files continue from `DS004`.
 - Ensure the DS files are reachable from `matrix.md`, and link each DS entry through `/specsLoader.html?spec=DS0xx-description.md`.
@@ -73,7 +78,7 @@ The generated documentation must describe the product as it is intended to exist
 - Keep the narrative consistent with the project’s role and interfaces, especially any agent or system responsibilities described in `AGENTS.md`.
 - Review the actual contents of each skill folder and document the local artifacts, dependencies, conventions, and responsibilities instead of relying on shallow summaries.
 - Follow `references/technical-docs-guidelines.md`.
-- In a skill-catalog repository, provide one HTML page per skill.
+- In a skill-catalog repository, provide one HTML page per skill that the repository implements or distributes as part of the product. Do not create pages for documentation skills merely because they were used as internal authoring tools.
 - In a downstream project that only consumes imported skills, keep `/docs` focused on the host project. Do not create standalone skill pages there for the imported skills; keep any skill-local notes inside the local skill folders.
 - Use one primary navigation system containing direct top-level links and submenus only for cohesive groups of multiple secondary pages. Do not require every header item to have a submenu, and do not create empty submenus or a submenu for a single destination. Do not add a second parallel primary navigation system.
 - Put pages that belong at the primary navigation level directly in the header instead of hiding them inside a submenu. Make `Specifications` a direct top-level link to `specsLoader.html?spec=matrix.md`, with no parent submenu and no submenu of its own.
@@ -103,9 +108,8 @@ The generated documentation must describe the product as it is intended to exist
 - State explicitly that the DS specifications are the source of truth.
 - State explicitly that when source code changes, the HTML documentation and the specifications must both be updated to reflect the change.
 - State explicitly that all documentation, specifications, and comments must be written in English.
-- State explicitly that `AGENTS.md` must mention the currently available skills and must be updated whenever new skill folders are added.
+- State explicitly that `AGENTS.md` must mention the skills implemented or distributed by the repository as product artifacts and must be updated when that product skill catalog changes. Exclude documentation skills used only as internal authoring tools.
 - State explicitly that downstream consumer projects must not put imported-skill DS files or skill pages inside the host project's `docs/` tree.
-- State explicitly that the GAMP skill itself must be updated when new skill families, coding-style rules, or project bootstrap rules are introduced.
 - State explicitly that DS numbering must remain gap-free.
 - Instruct future agents to run `detect-main-behaviors` before creating the Main Behavior DS and whenever source or product changes may alter the project's purpose, essential paths, public interfaces, broad subsystems, architectural skeleton, or active direction.
 - State explicitly that DS rationale, limitations, assumptions, and contract boundaries use declarative prose in `Core Content` and do not depend on a separate repository decision log.
@@ -133,6 +137,7 @@ The generated documentation must describe the product as it is intended to exist
 - Verify that each affected DS file states important rationale, tradeoffs, limitations, and contract boundaries declaratively in `Core Content`.
 - Verify each applicable README onboarding procedure against the current source, manifest, configuration, and executable entry points.
 - Verify that README, HTML pages, and DS files describe the final product contract and contain no repository-progress commentary. Express implementation alternatives and unspecified contract details as bounded declarative statements in the affected DS file.
+- Verify that no persistent project documentation reveals which documentation-generation or documentation-review skills were used. Treat any such mention as prohibited internal-tool leakage and remove it.
 
 ### 8. Quality Checks
 
@@ -151,7 +156,7 @@ The generated documentation must describe the product as it is intended to exist
 - Confirm the specs matrix links correctly via `specsLoader.html?spec=matrix.md`.
 - Confirm each DS entry in `matrix.md` uses the specs-loader path format `/specsLoader.html?spec=DS0xx-description.md`.
 - Confirm `AGENTS.md` points to the correct HTML documentation paths, the correct specs path, and `DS001-coding-style.md`.
-- Confirm `AGENTS.md`, `docs/index.html`, and `docs/specs/matrix.md` all mention the current skill set consistently.
+- Confirm `AGENTS.md`, `docs/index.html`, and `docs/specs/matrix.md` mention the implemented or distributed product skill set consistently and exclude authoring-only documentation skills.
 - Confirm the HTML documentation and specs are synchronized with the implementation, with specs kept authoritative if wording diverges.
 - Confirm downstream-consumer documentation rules are explicit: imported skills stay documented inside `skills/`, not in the host project's `/docs` DS set.
 - Confirm rationale, alternatives, limitations, and contract boundaries are written as declarative statements in `Core Content` and that no DS depends on a separate decision-log file.
@@ -160,6 +165,7 @@ The generated documentation must describe the product as it is intended to exist
 - Replace unexplained abstract nouns, literary phrases, and decorative comparisons with concrete statements about verified actors, actions, data, or results.
 - Confirm `README.md` contains an introduction, a high-level overview, and every applicable installation, configuration, startup, integration, and basic-usage procedure.
 - Confirm no user-facing documentation treats the product as a temporary step, reports that code is absent or unfinished, or labels its interfaces as merely planned. The documentation must read as the final product contract even while development continues.
+- Confirm `README.md`, `AGENTS.md`, HTML pages, DS files, the specification matrix, comments, captions, footers, and navigation contain no mention of internal documentation skills or their use, except where a skill is itself an implemented and distributed subject of the product. Even under that exception, do not describe the documentation as generated or reviewed by that skill.
 
 ## Resources
 

@@ -8,6 +8,8 @@ Locate `README.md`, `AGENTS.md`, `docs/`, all files under `docs/`, and every tar
 
 Build a simple reachability map from the home page and primary navigation. Record links that are valid, broken, external, conditional, or unreachable. A page can be secondary and intentionally absent from the home menu, but it must be reachable from the primary page that introduces its subject.
 
+Inventory mentions of documentation-generation and documentation-review skills across all reviewed files, including metadata, comments, captions, footers, credits, badges, navigation, matrices, and dependency lists. Treat those skills as internal authoring tools unless the repository itself implements, distributes, or exposes them as product functionality. A statement that documentation was generated, reviewed, validated, or repaired by such a skill is always prohibited authoring provenance, including when the skill is also a product subject.
+
 Example of a coherent flow:
 
 ```text
@@ -119,3 +121,5 @@ For each finding, record:
 Example:
 
 `[error] docs/specsLoader.html — specification loader: target DS007-runtime.md is missing — readers cannot open the linked contract — regenerate the matrix after restoring or removing the target through gamp-specs.`
+
+Report an internal documentation-skill mention as an `error` when it exposes authoring provenance or presents an authoring-only tool as part of the product. The remediation must remove the mention and preserve the surrounding product information; it must not replace one tool name with another.

@@ -11,6 +11,8 @@ Use this skill before `gamp-specs` edits documentation. It produces one English 
 
 The review is read-only and evidence-based. Inspect the actual files, read pages in user-facing order, cite paths and headings or line numbers, separate confirmed defects from recommendations, and report tool limitations honestly.
 
+Treat documentation-generation and documentation-review skills as internal authoring tools. Their use has no place in the project's persistent documentation. Flag any mention that says or implies that `README.md`, `AGENTS.md`, HTML pages, DS files, matrices, comments, captions, footers, navigation, or other project documentation was generated, structured, reviewed, validated, or repaired by `gamp-specs`, `review-specs`, or an equivalent documentation skill. Also flag pages, sections, dependencies, glossary entries, badges, credits, or navigation items added for such a skill solely because it was used during authoring. A skill is a legitimate documentation subject only when the target repository implements, distributes, or exposes it as part of the product; even then, authoring provenance remains prohibited.
+
 ## Preservation rule
 
 Preserve documentation that is already correct, clear, coherent, and compliant. Do
@@ -32,7 +34,8 @@ Read both references before performing the review:
 1. Establish the review surface: `README.md`, `AGENTS.md`, every relevant file under `docs/`, all linked DS files, loaders, partials, assets, and documentation-support code.
 2. Follow `syntax-and-flow-check.md` completely. Syntax and cross-file flow checks precede semantic interpretation.
 3. Follow `semantics-check.md` completely. Read the home page, primary pages, and specifications from beginning to end as a new user.
-4. Produce the report in the required order below. Do not apply any remediation during the review.
+4. Search the entire review surface for internal documentation-skill names and authoring-provenance language. Distinguish product functionality from tools used only to author the documentation.
+5. Produce the report in the required order below. Do not apply any remediation during the review.
 
 ## Report format
 
@@ -56,4 +59,5 @@ If a category passes, state what was checked and that no issue was found. Every 
 - Do not turn an intentionally open product contract into a defect. Report it as an ambiguity and recommend a declarative DS statement that separates confirmed behavior from the boundary that remains unspecified.
 - Never propose cosmetic rewrites, stylistic substitutions, or broad document
   regeneration for content that already meets the applicable requirements.
+- Never approve or recommend retaining a reference to a documentation skill solely because it was used to create or review the documentation. Report that reference as prohibited internal-tool leakage and direct the remediation to remove it without replacing it with another provenance statement.
 - Keep the report in English unless the user explicitly requests another language.

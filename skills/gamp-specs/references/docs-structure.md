@@ -35,7 +35,7 @@ This reference defines the files and navigation required for a consistent projec
 
 - Page names must follow the actual content of the codebase and the current skill set.
 - `docs/index.html` must explain repository structure, runtime defaults, the canonical source for coding-style rules, test organization, the active skill catalog, and the portability model that keeps example code inside skill folders.
-- In a skill-catalog repository, each skill present under `skills/` must have a corresponding HTML page under `docs/`.
+- In a skill-catalog repository, each skill implemented or distributed by the repository as a product artifact must have a corresponding HTML page under `docs/`. A documentation skill used only as an internal authoring tool must not receive a page.
 - In a downstream project that only consumes imported skills, `docs/` must describe the host project rather than the imported skill catalog. Do not add `/docs` pages whose subject is the copied skills themselves.
 - Each skill page must review the actual contents of that skill folder, including local artifacts, dependencies, outputs, and conventions.
 - Each page must be written in English, use a technical writing style, and keep code samples minimal.
@@ -57,7 +57,7 @@ Follow `diagrams-guidelines.md` for diagram selection, centered italic captions 
 - `DS002` must contain the next substantive foundational contract required by the project.
 - Exactly one `DS003-main-behavior.md` titled `Main Behavior` is mandatory. Reserve `DS003` for this specification.
 - A model-strategy DS is mandatory when the repository defines LLM routing or model tiers. It may use `DS002` when that is the project's next foundational contract; otherwise assign it an available identifier other than `DS003`.
-- In a skill-catalog repository, add one DS file for each skill currently present in the repository.
+- In a skill-catalog repository, add one DS file for each skill implemented or distributed by the repository as a product artifact. Exclude documentation skills used only as internal authoring tools.
 - In a downstream project that only consumes imported skills, keep `docs/specs/` focused on the host project. Do not add DS files whose subject is the imported skills themselves.
 - DS files must carry frontmatter metadata including `id`, `title`, `status`, `owner`, and `summary`.
 - Each DS file must include `Introduction`, `Core Content`, and `Conclusion`.
@@ -76,8 +76,10 @@ Follow `diagrams-guidelines.md` for diagram selection, centered italic captions 
 
 ## Content Expectations
 
+- Keep documentation-generation and documentation-review skills out of the project documentation when they serve only as internal authoring tools. Do not list them in `AGENTS.md`, the HTML skill catalog, DS files, the matrix, dependency sections, navigation, or any other persistent project content.
+- The skill-catalog rules apply only to skills implemented or distributed by the target repository as product artifacts. Availability or use during documentation work does not make an internal documentation skill part of that catalog.
 - The HTML docs must describe the system in operational terms: components, responsibilities, interfaces, runtime behaviors, current skills, and current conventions.
 - The HTML docs must make clear when repository code is example code carried by a skill folder rather than a shared production runtime.
 - When the repository is a downstream consumer rather than a skill catalog, the HTML docs must make clear that imported skills are agent tooling and are not part of the host project's direct documentation surface.
 - Preserve any system narrative or agent-role requirements found in `AGENTS.md` or existing docs.
-- Whenever new skills are added to the repository, the agent guidance, the HTML documentation, and the DS matrix must be updated in the same change set.
+- Whenever the repository's implemented or distributed product skill catalog changes, update the agent guidance, HTML documentation, and DS matrix in the same change set. Do not expand the catalog for internal documentation skills used only during authoring.

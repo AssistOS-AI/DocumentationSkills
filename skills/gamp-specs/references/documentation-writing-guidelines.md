@@ -10,6 +10,14 @@ Use this reference for every persistent document produced or updated by this ski
 - Do not address the documentation to the developer who currently maintains the code.
 - Keep introductory material at overview level. Move implementation detail to the later section where the reader needs it.
 
+## Internal Authoring Tools
+
+- Treat every skill used only to generate, structure, review, validate, or repair documentation as an internal authoring tool that is outside the documented product.
+- Never name or reference those documentation skills in persistent project documentation, including `README.md`, `AGENTS.md`, HTML pages, DS files, matrices, comments, captions, footers, credits, badges, navigation, or provenance statements.
+- Do not say that a document was generated, reviewed, validated, or remediated by `gamp-specs`, `review-specs`, or an equivalent skill. Describe only the project, its supported behavior, and its actual product dependencies.
+- Do not add internal documentation skills to product dependency lists, skill catalogs, architecture diagrams, definitions, or specifications solely because they participated in the authoring workflow.
+- Document a skill when the repository itself implements, distributes, or exposes that skill as product functionality. Keep authoring provenance prohibited even when the skill is a legitimate product subject.
+
 ## Terms And Reading Order
 
 - Preserve exact code identifiers and use verified plain-language definitions for project-specific terms, acronyms, component names, and architectural concepts.
@@ -51,4 +59,5 @@ Use this reference for every persistent document produced or updated by this ski
 - Check headings, lists, diagrams, captions, navigation labels, and callouts as well as body prose. Represent unfamiliar heading and title terms in the page's definitions section, and place their definition links in relevant body prose rather than inside the heading or title.
 - Check cross-page definition links and confirm that both the target page and definition anchor exist.
 - Confirm text uses the full available width of its container and contains no manual or artificially early wrapping.
+- Search all persistent documentation for documentation-skill names and authoring-provenance language. Remove each occurrence that describes an internal authoring tool rather than implemented product functionality.
 - Rewrite sentences that remain understandable only to a current maintainer or only after reading source code.

@@ -63,7 +63,7 @@ The repository build code should remain deterministic. Structural review, plan r
 
 - Keep the reusable skill contract inside this skill folder and in the catalog repository.
 - If a downstream project uses this skill, do not add standalone `/docs` pages or DS files there whose topic is the imported `article-build` skill itself.
-- When DS text about this workflow is revised, keep general pipeline limits, invariants, and special cases in `Core Content`, and place detailed rationale or unresolved alternatives in numbered `Decisions & Questions` subchapters.
+- When DS text about this workflow is revised, express pipeline limits, invariants, special cases, rationale, and alternatives as declarative statements in `Core Content`.
 
 ## Content and citation rules
 

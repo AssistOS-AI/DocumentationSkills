@@ -18,7 +18,7 @@ Use this skill when a project must adopt AchillesAgentLib conventions, runtime w
 5. Apply task metadata tags for routing-sensitive work such as documentation, specification work, orchestration, bootstrap, and testing.
 6. Record the model tier strategy in a dedicated DS file.
 7. When this skill is applied to a downstream project, ensure that project has a clear runtime structure such as `src/`, `tests/`, and `data/`, while keeping the example implementation in this repository inside the skill folder.
-8. When updating DS material about Achilles integration, keep the general runtime contract, boundaries, invariants, and special cases in `Core Content`, and move detailed rationale or unresolved tradeoffs into numbered `Decisions & Questions` subchapters.
+8. When updating DS material about Achilles integration, express the runtime contract, boundaries, invariants, special cases, rationale, and tradeoffs as declarative statements in `Core Content`.
 
 ## Documentation Obligations
 

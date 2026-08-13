@@ -17,7 +17,7 @@
     "docs/index.html",
     "docs/specs/",
     "docs/specs/matrix.md",
-    "docs/specs/DS0xx-main-behavior.md"
+    "docs/specs/DS003-main-behavior.md"
   ],
   "entrypoints": [
     "SKILL.md",

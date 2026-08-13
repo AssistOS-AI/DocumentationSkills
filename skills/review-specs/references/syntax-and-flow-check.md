@@ -83,7 +83,7 @@ Report a warning for the unexplained jump from `#` to `###`; suggest `## Install
 
 The syntax is valid, but the second list likely replaces explanatory prose. Report that under language/information design, not as a Markdown syntax error.
 
-Validate DS naming, contiguous numbering, required front matter, required `Introduction`, `Core Content`, and `Conclusion` sections, and matrix links when the repository uses the GAMP specification structure. Report a structural defect when a DS retains a generated design-question section or `Response:` and `Options:` blocks; remediation must convert that material into declarative statements in the appropriate contract section. Verify that `specsLoader.html?spec=...` targets resolve to the intended DS files.
+Validate DS naming, required numbering, front matter, `Introduction`, `Core Content`, `Conclusion`, and matrix links when the repository uses the GAMP specification structure. Confirm that substantive requirements, rationale, limitations, alternatives, and contract boundaries are declarative content under `Core Content`; remediation must normalize any additional DS content structure into these standard sections. Verify that `DS003-main-behavior.md` exists exactly once and that `specsLoader.html?spec=...` targets resolve to the intended DS files.
 
 ## 4. Other documentation-support files
 

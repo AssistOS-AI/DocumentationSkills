@@ -26,7 +26,7 @@ For every principal page, ask:
 - **What:** What are the actors, components, inputs, outputs, responsibilities, and boundaries?
 - **How:** How does the described workflow operate, and what observable result does it produce?
 
-The page does not need literal `Why`, `What`, and `How` headings. The reader must be able to answer those questions from the order and content of the prose.
+The page does not need literal `Why`, `What`, and `How` headings. The order and content of the prose must make all three aspects clear.
 
 Example of a weak home page:
 
@@ -135,7 +135,7 @@ Professional documentation can use technical terms, but technical style is not a
 
 ## 6. Main pages and DS pages
 
-Give the highest attention to the home page, principal feature pages, and DS pages. Check that DS `Core Content` states requirements, boundaries, rationale, confirmed limitations, and unresolved contract details as declarative statements. Report any retained question-and-answer design section and direct `gamp-specs` to convert resolved answers into requirements or rationale and unresolved material into statements that distinguish confirmed behavior from unspecified boundaries. Check that the matrix title, summary, and status do not misrepresent the subject of the DS.
+Give the highest attention to the home page, principal feature pages, and DS pages. Check that each DS uses `Introduction`, `Core Content`, and `Conclusion`, and that `Core Content` states requirements, boundaries, rationale, confirmed limitations, alternatives, and unspecified contract details declaratively. Direct `gamp-specs` to normalize any other DS content structure into those sections without losing supported information. Check that the matrix title, summary, and status do not misrepresent the subject of the DS.
 
 Report a DS issue when the prose is explanatory but never states what must, should, or may happen; report a user-documentation issue when a contract is technically precise but never explains why the reader should care or how the behavior appears in use.
 

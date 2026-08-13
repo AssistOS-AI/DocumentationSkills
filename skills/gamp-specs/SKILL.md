@@ -66,14 +66,17 @@ The generated documentation must describe the product as it is intended to exist
 
 - Update or create the required HTML pages and shared assets.
 - Follow `references/diagrams-guidelines.md` for diagram selection, captions, actor grouping, visual categories, Mermaid markup, and static asset placement.
-- When an HTML documentation page introduces new project-specific terms or concepts, add a `Definitions` section. Link every occurrence of each defined term outside that section to its stable local definition anchor, or to the exact canonical definition anchor on another page when that page owns the definition; retain inline definitions when they support the narrative. Do not require the section on pages that introduce no new terminology.
+- Put each diagram's single centered, italic caption below the diagram. Do not place a separate diagram title above it, and do not frame the whole diagram in a border, background box, card, panel, or shadow.
+- When an HTML documentation page introduces new project-specific terms or concepts, add a `Definitions` section. Link every eligible occurrence of each defined term outside that section to its stable local definition anchor, or to the exact canonical definition anchor on another page when that page owns the definition; retain inline definitions when they support the narrative. Never add definition links to page titles or section headings. Do not require the section on pages that introduce no new terminology.
+- Do not force early text wrapping with manual line breaks, narrow fixed widths, or newline-preserving styles. Let text use the full width of its box and wrap naturally only at the box boundary.
 - Make the main documentation panel use the full available page width. Do not constrain it with a centered `max-width`; use compact page and panel padding equivalent to `1rem` on desktop, reduced further on narrow screens.
 - Keep the narrative consistent with the project’s role and interfaces, especially any agent or system responsibilities described in `AGENTS.md`.
 - Review the actual contents of each skill folder and document the local artifacts, dependencies, conventions, and responsibilities instead of relying on shallow summaries.
 - Follow `references/technical-docs-guidelines.md`.
 - In a skill-catalog repository, provide one HTML page per skill.
 - In a downstream project that only consumes imported skills, keep `/docs` focused on the host project. Do not create standalone skill pages there for the imported skills; keep any skill-local notes inside the local skill folders.
-- Use one primary navigation system organized into named menus with submenus. Keep useful category menus present even when they contain no links or only a few links, but do not invent destination pages to fill them. Do not add a second parallel primary navigation system.
+- Use one primary navigation system containing direct top-level links and submenus only for cohesive groups of multiple secondary pages. Do not require every header item to have a submenu, and do not create empty submenus or a submenu for a single destination. Do not add a second parallel primary navigation system.
+- Put pages that belong at the primary navigation level directly in the header instead of hiding them inside a submenu. Make `Specifications` a direct top-level link to `specsLoader.html?spec=matrix.md`, with no parent submenu and no submenu of its own.
 - Make every open submenu close when the user clicks or taps outside its menu. Keep the submenu structure and interaction behavior uniform across all HTML pages.
 - Treat the project as a standalone system in the HTML documentation. Do not expose machine-specific absolute paths, home directories, usernames, or other workstation-local filesystem details unless the repository itself requires them as part of the documented contract.
 - Ensure the HTML documentation reflects the current source code and remains aligned with the DS specifications.
@@ -120,10 +123,11 @@ The generated documentation must describe the product as it is intended to exist
 - Verify in particular that users can reach the specs set from the HTML documentation through working links to `docs/specsLoader.html`, `docs/specs/matrix.md`, or equivalent spec entry points actually used by the project.
 - Verify that HTML references to individual specs or the specs matrix resolve to existing files.
 - Verify that `matrix.md` links each DS file through `/specsLoader.html?spec=DS0xx-description.md`.
+- Verify that the specification matrix has exactly two columns: `Name`, containing the linked `DS0xx-description` filename stem, and `Description`, containing a short explanation. Do not generate `Title`, `Status`, `Owner`, or other columns.
 - Verify that the generated spec files exist at the paths referenced by the HTML documentation.
 - Verify that DS numbering is contiguous by checking the current spec directory contents rather than trusting a template.
 - Verify that exactly one `DS003-main-behavior.md` exists, that the matrix reaches it, and that every behavior it contains appears in the accepted handoff from `detect-main-behaviors`.
-- Regenerate `docs/specs/matrix.md` from DS metadata instead of editing it manually.
+- Regenerate `docs/specs/matrix.md` from the DS files instead of editing it manually.
 - Run the documentation link verifier after documentation work so shared navigation, specs-loader links, and partial includes stay valid.
 - When the HTML documentation uses relative asset paths, `fetch()`-loaded partials, or other browser-resolved resources, run `node scripts/verify_static_site.js <docs-dir>` against the generated `docs/` folder. Add `--path` checks for project-specific resources when needed.
 - Verify that each affected DS file states important rationale, tradeoffs, limitations, and contract boundaries declaratively in `Core Content`.
@@ -134,13 +138,14 @@ The generated documentation must describe the product as it is intended to exist
 
 - Validate that links between `index.html`, other HTML pages, and specs loader work.
 - Validate that the HTML pages expose valid navigation paths to the specs set.
-- Confirm the HTML documentation uses one primary navigation system with stable menu groups and submenus across the set, including intentionally sparse or empty categories where they preserve the navigation structure.
-- Confirm an open submenu closes when the user clicks or taps outside it and that sparse menus contain no fabricated links.
+- Confirm the HTML documentation uses one primary navigation system with stable direct links and only necessary submenu groups across the set. Confirm `Specifications` is a direct top-level link with no submenu.
+- Confirm an open submenu closes when the user clicks or taps outside it, every submenu groups multiple related secondary pages, and no empty, single-item, or fabricated submenu exists.
 - Confirm the HTML documentation does not mention workstation-specific absolute filesystem paths or other local-machine details that are not part of the project's real interface.
 - Validate that any HTML link pointing to specs, the specs matrix, or the specs loader resolves to an existing target.
 - Confirm referenced static assets are stored under `docs/assets/` rather than embedded into the HTML files.
 - Confirm the main documentation panel spans the available page width, has no fixed or centered maximum width, and uses compact responsive outer and inner padding.
 - Confirm every diagram complies with `references/diagrams-guidelines.md`.
+- Confirm every diagram caption is centered below the diagram, the diagram has no enclosing visual frame, and text is not manually wrapped before reaching its container boundary.
 - Ensure every ordinary spec file follows the `DS0xx-description.md` convention, includes only the standard `Introduction`, `Core Content`, and `Conclusion` content structure, and fits into the required numbering sequence.
 - Confirm the Main Behavior DS contains only defining project behaviors, stays aligned with the detector's evidence, and refers readers to specialized DS files for lower-level detail.
 - Confirm the specs matrix links correctly via `specsLoader.html?spec=matrix.md`.
@@ -150,7 +155,7 @@ The generated documentation must describe the product as it is intended to exist
 - Confirm the HTML documentation and specs are synchronized with the implementation, with specs kept authoritative if wording diverges.
 - Confirm downstream-consumer documentation rules are explicit: imported skills stay documented inside `skills/`, not in the host project's `/docs` DS set.
 - Confirm rationale, alternatives, limitations, and contract boundaries are written as declarative statements in `Core Content` and that no DS depends on a separate decision-log file.
-- Read `README.md`, `AGENTS.md`, the HTML pages, and the DS files in their intended order. Confirm each HTML page that introduces new project-specific terminology has a complete `Definitions` section and that every occurrence of each defined term outside that section links to a valid local or canonical definition anchor. Do not flag the section as missing when the page introduces no new terminology.
+- Read `README.md`, `AGENTS.md`, the HTML pages, and the DS files in their intended order. Confirm each HTML page that introduces new project-specific terminology has a complete `Definitions` section and that every eligible occurrence of each defined term outside that section links to a valid local or canonical definition anchor. Confirm page titles and section headings contain no definition links. Do not flag the section as missing when the page introduces no new terminology.
 - Confirm feature documentation states the role and practical use before internal behavior, configuration, or architecture.
 - Replace unexplained abstract nouns, literary phrases, and decorative comparisons with concrete statements about verified actors, actions, data, or results.
 - Confirm `README.md` contains an introduction, a high-level overview, and every applicable installation, configuration, startup, integration, and basic-usage procedure.
@@ -159,7 +164,7 @@ The generated documentation must describe the product as it is intended to exist
 ## Resources
 
 ### scripts/
-- `generate_specs_matrix.mjs` - generates `docs/specs/matrix.md` from DS frontmatter metadata and fails if DS numbering has gaps.
+- `generate_specs_matrix.mjs` - generates the two-column `docs/specs/matrix.md` from DS filenames and descriptions and fails if DS numbering has gaps.
 - `verify_docs_links.mjs` - verifies that local links, local assets, specs-loader targets, and partial includes resolve across the HTML documentation.
 - `verify_static_site.js` - optional runtime verification helper that serves a generated `docs/` folder through a temporary local HTTP server and checks key pages and assets over real HTTP.
 

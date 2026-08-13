@@ -32,7 +32,7 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Avoid prose that reads like prompt scaffolding, product marketing, or generated filler.
 - Avoid meta text about how to read the page.
 - Avoid slogan-like headings or generic heading formulas repeated across pages.
-- Do not add sections, labels, or other page content only to preserve a preferred visual style when the implementation does not need them. Stable navigation categories are the exception: preserve their menu and submenu structure even while a category has no destination links or only a few links.
+- Do not add sections, labels, navigation groups, or other page content only to preserve a preferred visual style when the implementation does not need them.
 - Adapt chapter titles to the subject of the page while preserving a logical order of ideas.
 - Prefer a small number of substantial chapters over many short fragments.
 - Avoid shallow one-paragraph skill pages when the skill folder contains meaningful structure that can be reviewed and documented.
@@ -47,8 +47,8 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Add a visible `Definitions` section when an HTML documentation page introduces one or more new project-specific terms or concepts. The section is optional when the page introduces no new terminology. Use a stable section anchor such as `id="definitions"` when the section exists.
 - Include every project-specific concept, acronym, named component, or specialized term introduced by that page. Common language and standard platform terms do not need glossary entries unless the project assigns them a specialized meaning.
 - Give every locally defined term its own stable anchor, such as `id="definition-task-module"`, and write a concise definition supported by the implementation or authoritative project material.
-- Link every occurrence of a defined project-specific term outside the `Definitions` section to its local definition anchor, even when the prose also explains the term inline.
-- If another page contains the canonical definition, link every occurrence of the term and the corresponding local entry to that page and its exact definition anchor. The local entry may use a short `See` reference instead of repeating the definition.
+- Link every eligible occurrence of a defined project-specific term outside the `Definitions` section to its local definition anchor, even when the prose also explains the term inline. Page titles and section headings are never eligible: keep their text unlinked and put the definition link in the first relevant body-text occurrence.
+- If another page contains the canonical definition, link every eligible occurrence of the term and the corresponding local entry to that page and its exact definition anchor. The local entry may use a short `See` reference instead of repeating the definition.
 - Keep definitions useful for lookup. Do not turn the section into a second architecture chapter or repeat long explanations from the body.
 - Inline definitions remain appropriate when they help the reader understand the immediate sentence. The `Definitions` section supplements the prose and does not require removing those explanations.
 
@@ -66,13 +66,16 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Do not apply a fixed or centered `max-width` to the main page or article panel. Use `width: 100%`, no outer auto margins, and compact outer and inner padding. Use `1rem` as the default desktop padding for both the page wrapper and its text panel unless the existing project shell requires an equivalent compact value.
 - Reduce that padding further on narrow screens; `0.5rem` for the page wrapper and `0.75rem` for the text panel are the default mobile values.
 - Set the HTML page title and the visible site/page title to `[project name] Documentation`.
-- Use one primary navigation system composed of named menus with submenus. Do not present a sidebar and header navigation as parallel primary systems.
-- Keep stable category menus visible even when the current documentation set provides no links or only a few links for that category. An empty submenu may contain an empty list or a non-link status label, but it must not contain fabricated, broken, placeholder, or speculative destination links.
-- Keep menu order, submenu categories, interaction behavior, and available links uniform across the HTML pages so moving between files does not change the navigation model unexpectedly.
+- Use one primary navigation system composed of direct top-level links and, only where useful, named menus with submenus. Do not present a sidebar and header navigation as parallel primary systems.
+- Do not require every header item to own a submenu. Render a page that belongs at the primary navigation level as a direct link with no submenu trigger or child panel.
+- Use a submenu only for a cohesive group of multiple secondary destinations. Do not hide a primary page inside a submenu, create a submenu for a single destination, or create empty and placeholder submenus.
+- Make `Specifications` a direct top-level link to `specsLoader.html?spec=matrix.md`. Do not place this link inside another menu and do not attach a submenu to it.
+- Keep menu order, submenu groups, interaction behavior, and available links uniform across the HTML pages so moving between files does not change the navigation model unexpectedly.
 - Opening a submenu must expose only that menu's child navigation panel. When the user clicks or taps anywhere outside the open menu and its child panel, close that submenu.
 - Implement outside-click behavior in the shared navigation script so every HTML page receives the same behavior. The handler must check whether the event target is outside each open menu before removing its open state; clicking inside the submenu must not close it before its control or link can respond.
 - Support keyboard navigation: submenu triggers must be focusable, communicate their expanded state, close on `Escape`, and return focus to the trigger when closed with `Escape`.
 - Do not repeat navigation links redundantly inside the page body or page header when the same destination is already clearly available in the sidebar or primary navigation shell.
+- Do not insert `<br>` elements, newline-preserving styles, fixed label widths, or other forced wrapping merely to break text early. Let headings, paragraphs, lists, captions, callouts, and labels use the full width of their containing box and wrap naturally at its boundary.
 - Prefer full-page documents with substantial sections that read like chapters in a book.
 - Do not break the documentation into fragmented card grids or small disconnected components when a continuous reading flow is more appropriate.
 - Make pages readable as long-form technical documents, with well-defined sections.
@@ -82,7 +85,7 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Avoid dashboard-like UI patterns unless they solve a real documentation problem.
 - Collapse layouts on tablet and mobile before text becomes cramped.
 - Do not surface workstation-local absolute paths in page chrome, footers, breadcrumbs, captions, or explanatory prose.
-- Ensure the HTML navigation exposes a stable path to the specs entry point.
+- Ensure the HTML navigation exposes the specs entry point as the direct top-level `Specifications` link.
 - Ensure the HTML navigation exposes a stable path to the skill catalog.
 - If a page links to the specs area, route that navigation to `matrix.md` through `docs/specsLoader.html?spec=matrix.md` or an equivalent valid specs entry flow.
 - Ensure readers can reach each DS file from `matrix.md`.

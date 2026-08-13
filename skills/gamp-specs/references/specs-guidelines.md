@@ -33,7 +33,9 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Use `Introduction`, `Core Content`, and `Conclusion` as the standard content structure in every DS file.
 - Normalize existing DS material into declarative requirements, constraints, invariants, rationale, limitations, and explicitly unspecified boundaries in `Core Content`.
 - Do not implement behavior whose required contract remains unspecified. State that implementation boundary declaratively until authoritative evidence updates the specification.
-- Treat `matrix.md` as a generated exception: it is derived from DS metadata and does not need the ordinary three-section structure.
+- Treat `matrix.md` as a generated exception: it does not need the ordinary three-section structure. Give its table exactly two columns: `Name` and `Description`.
+- In `Name`, link the exact DS filename stem, such as `DS003-main-behavior`, to that specification through the specs loader. In `Description`, use the DS `summary` value or a concise description derived from its opening prose.
+- Do not add `Title`, `Status`, `Owner`, or any other matrix columns.
 - Add one DS file for each active skill in the repository.
 - Create additional DS files only when a distinct boundary, contract surface, or invariant set cannot be expressed cleanly inside an existing DS file.
 - Keep the set of specifications proportionate to the real scope of the repository.

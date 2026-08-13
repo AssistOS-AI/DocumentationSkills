@@ -16,7 +16,8 @@ Use this reference for every persistent document produced or updated by this ski
 - Define a term inline when the explanation is part of the narrative or needed immediately to understand the surrounding behavior.
 - When an inline definition would interrupt the narrative, use the page's `Definitions` section instead of inserting a parenthetical or detour into the prose.
 - When an HTML documentation page introduces one or more new project-specific concepts or terms, add a `Definitions` section covering them. A page that introduces no new terminology does not need this section. Give every local definition a stable anchor.
-- Link every occurrence of a defined project-specific term outside the `Definitions` section to its local definition anchor. If another page owns the canonical definition, link every occurrence and the corresponding local `Definitions` entry directly to that page's exact definition anchor. Do not duplicate wording that may diverge from the canonical definition.
+- Link every occurrence of a defined project-specific term outside the `Definitions` section to its local definition anchor, except occurrences in page titles and section headings. If another page owns the canonical definition, link eligible occurrences and the corresponding local `Definitions` entry directly to that page's exact definition anchor. Do not duplicate wording that may diverge from the canonical definition.
+- Keep page titles and section headings as plain, unlinked text. Never wrap a title, heading, or a word within one in a definition link; provide the definition link in the first relevant body-text occurrence instead.
 - A linked definition is an alternative to interrupting the narrative, not a prohibition on useful inline definitions. A page may both define a central term inline and record it in `Definitions` for scanning and direct linking.
 - Do not invent definitions that the implementation or authoritative project material cannot support. Remove or narrow unsupported terminology.
 - Repeat a short explanation when an important concept returns after several sections or takes on a new role. Do not repeat definitions mechanically when the meaning remains clear from nearby text.
@@ -30,6 +31,11 @@ Use this reference for every persistent document produced or updated by this ski
 - Use the project's established terminology only when it is defined in the source material. If the source does not define a term, remove it or narrow the statement instead of inventing a definition.
 - Use examples when they make an abstract rule concrete, but keep each example tied to verified project behavior.
 
+## Text Flow
+
+- Do not insert manual line breaks or hard-coded early wrapping in headings, paragraphs, lists, captions, callouts, diagram labels, or other text containers.
+- Let text flow across the full available width of its box and wrap naturally only when it reaches that box's boundary. Do not narrow a text container merely to force shorter lines.
+
 ## Comparisons
 
 - Use a comparison when it explains a meaningful difference from a real alternative, previous version, or common implementation.
@@ -41,7 +47,8 @@ Use this reference for every persistent document produced or updated by this ski
 
 - Read each document from start to finish in the order available to its intended reader.
 - For every HTML page, inventory the project-specific concepts it introduces. If the page introduces any, confirm that it has a `Definitions` section and that each new concept appears there; do not require the section on a page with no new terminology.
-- Confirm that every occurrence of each defined project-specific term outside the `Definitions` section links to its verified local or cross-page definition anchor, including occurrences in headings, lists, captions, and callouts.
-- Check headings, lists, diagrams, captions, navigation labels, and callouts as well as body prose. Their unfamiliar terms must be represented by the page's definition links or definitions section.
+- Confirm that every eligible occurrence of each defined project-specific term outside the `Definitions` section links to its verified local or cross-page definition anchor. Titles and section headings are required exceptions and must remain unlinked.
+- Check headings, lists, diagrams, captions, navigation labels, and callouts as well as body prose. Represent unfamiliar heading and title terms in the page's definitions section, and place their definition links in relevant body prose rather than inside the heading or title.
 - Check cross-page definition links and confirm that both the target page and definition anchor exist.
+- Confirm text uses the full available width of its container and contains no manual or artificially early wrapping.
 - Rewrite sentences that remain understandable only to a current maintainer or only after reading source code.

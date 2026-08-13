@@ -9,22 +9,23 @@ Use this reference when creating or revising diagrams in HTML documentation. App
 - If a diagram becomes crowded, reduce the number of actors. Split secondary detail into prose or a separate focused diagram instead of shrinking labels, adding more crossings, or compressing actors until the result is difficult to scan.
 - Do not use ASCII box-drawing characters (`─`, `│`, `┌`, `└`, and similar characters) for diagrams. Browser monospace fonts do not render them at consistent widths.
 
-## Titles And Subtitles
+## Captions
 
 - Place each diagram inside a `<figure>` with a `<figcaption>`.
-- Give every diagram a concise title and an explanatory subtitle that states what relationship, boundary, or flow the reader should notice.
-- Render the subtitle in italic text, for example:
+- Put the `<figcaption>` after the diagram markup so the visible caption is always below the diagram. Never place the caption above or beside the diagram.
+- Use one concise, centered, italic caption that names the diagram or briefly explains the relationship, boundary, or flow the reader should notice. Do not add a separate diagram title above the visual.
+- Keep the `<figure>` and the diagram rendering surface visually open. Do not draw a border, card, panel, background box, shadow, or decorative container around the whole diagram. Meaningful actor nodes and real subsystem boundaries inside the diagram may retain their own borders.
+- Use markup in this order:
 
 ```html
 <figure class="diagram">
-  <figcaption>
-    <strong>Request execution</strong>
-    <em>How a validated request moves from the public API to the runtime worker.</em>
-  </figcaption>
   <pre class="mermaid">flowchart LR
     API[Public API] --> Worker[Runtime worker]</pre>
+  <figcaption><em>How a validated request moves from the public API to the runtime worker.</em></figcaption>
 </figure>
 ```
+
+Center the caption with CSS, for example `.diagram figcaption { text-align: center; font-style: italic; }`, while leaving the figure and rendered diagram without an enclosing frame.
 
 ## Actor Hierarchy And Density
 
@@ -33,6 +34,7 @@ Use this reference when creating or revising diagrams in HTML documentation. App
 - Nest only where the containment relationship is real and useful to the reader. Do not create visual containers merely to decorate the diagram.
 - Prefer fewer, larger conceptual groups with a small number of child actors. If grouping still leaves the diagram crowded, remove less important actors or create multiple diagrams, each with one clear purpose.
 - Use short node and container labels. Let the layout engine position actors unless its default result is unreadable.
+- Do not insert manual line breaks to wrap node, container, caption, heading, callout, or prose text early. Let text use the full available width of its container and wrap naturally only when it reaches the container boundary.
 
 ## Visual Differentiation
 
@@ -63,14 +65,16 @@ Every generated HTML page must include the Mermaid ESM module in `<head>` so inl
 
 - Reserve static SVG files under `docs/assets/` for diagrams that need precise custom layout, branding elements, or visual detail that Mermaid cannot express.
 - Keep all static SVG and other diagram assets outside the HTML files under `docs/assets/`.
-- In static SVG diagrams, shorten, wrap, or fit labels so text stays inside its visual container.
+- In static SVG diagrams, shorten labels or size their containers so text can use the full available width. Do not force early wrapping; allow a natural line break only when the label reaches its container boundary.
 - When showing a representative directory layout, prefer a visual tree component over a raw ASCII directory dump when the tree is easier to scan. Preserve the real file and folder names.
 
 ## Review Checklist
 
-- Confirm the diagram has a concise title and an italic subtitle.
+- Confirm the diagram has exactly one concise, centered, italic caption below it and no separate title above it.
+- Confirm no border, background box, card, panel, or shadow frames the whole diagram.
 - Confirm its actors, relationships, and containment boundaries match the implementation.
 - Confirm related actors are grouped inside meaningful larger entities rather than spread across a flat canvas.
 - Confirm the diagram contains only the actors required for its stated purpose and remains readable at desktop and mobile widths.
 - Confirm distinct actor categories use consistent, accessible colors and typography, while actors in the same category share the same visual treatment.
+- Confirm text uses the full width of its container and has no manual or artificially early line wrapping.
 - Confirm Mermaid and static assets follow the placement and markup rules in this reference.

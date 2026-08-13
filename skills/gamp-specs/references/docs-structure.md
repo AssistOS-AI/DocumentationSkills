@@ -56,11 +56,12 @@ Follow `diagrams-guidelines.md` for diagram selection, centered italic captions 
 - The DS sequence must remain contiguous with no missing intermediate numbers.
 - `DS000-vision.md` and `DS001-coding-style.md` are mandatory.
 - `DS002` must contain the next substantive foundational contract required by the project.
-- Exactly one `DS003-main-behavior.md` titled `Main Behavior` is mandatory. Reserve `DS003` for this specification.
+- Exactly one `DS003-main-behavior.md` with `title: DS003-main-behavior` is mandatory. Reserve `DS003` for this specification.
 - A model-strategy DS is mandatory when the repository defines LLM routing or model tiers. It may use `DS002` when that is the project's next foundational contract; otherwise assign it an available identifier other than `DS003`.
 - In a skill-catalog repository, add one DS file for each skill implemented or distributed by the repository as a product artifact. Exclude documentation skills used only as internal authoring tools.
 - In a downstream project that only consumes imported skills, keep `docs/specs/` focused on the host project. Do not add DS files whose subject is the imported skills themselves.
-- DS files must carry frontmatter metadata including `id`, `title`, `status`, `owner`, and `summary`.
+- DS files must carry exactly the `title` and `summary` frontmatter fields. `title` must equal the exact filename stem, such as `DS003-main-behavior` for `DS003-main-behavior.md`.
+- Derive the DS identifier from the filename. Remove separate `id`, `status`, `owner`, and all other unsupported frontmatter fields, plus all `Status` or `Owner` sections, labels, badges, metadata blocks, and standalone values from every existing `DSxxx-*.md` file. Do not add replacements elsewhere in the specification set.
 - Each DS file must include `Introduction`, `Core Content`, and `Conclusion`.
 - DS files must express requirements, rationale, limitations, alternatives, and contract boundaries as declarative statements in `Core Content`.
 - When normalizing an existing DS, move all substantive material into declarative statements under `Core Content`. Keep behavior that depends on an unspecified contract unimplemented until the specification states one supported path.

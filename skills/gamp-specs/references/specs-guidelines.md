@@ -28,8 +28,10 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Keep the numbering contiguous with no missing intermediate files.
 - Always include `DS000-vision.md` and `DS001-coding-style.md`.
 - Use `DS002` for a substantive foundational contract selected from the project's real scope.
-- Always include exactly one `DS003-main-behavior.md` titled `Main Behavior`. Reserve `DS003` for this specification.
-- Use frontmatter metadata with `id`, `title`, `status`, `owner`, and `summary` in every ordinary DS file.
+- Always include exactly one `DS003-main-behavior.md` with `title: DS003-main-behavior`. Reserve `DS003` for this specification.
+- Use exactly two frontmatter fields in every ordinary DS file: `title` and `summary`.
+- Set `title` to the exact filename stem, including the DS number and name. For `DS003-main-behavior.md`, use `title: DS003-main-behavior`. Derive the identifier from the filename and never add a separate `id` field.
+- Remove `id`, `status`, `owner`, and every other unsupported DS frontmatter field. When normalizing an existing `DSxxx-*.md` file, also remove any `Status` or `Owner` heading, section, label, badge, metadata block, or standalone value from the body. Do not relocate or restate that metadata elsewhere.
 - Use `Introduction`, `Core Content`, and `Conclusion` as the standard content structure in every DS file.
 - Normalize existing DS material into declarative requirements, constraints, invariants, rationale, limitations, and explicitly unspecified boundaries in `Core Content`.
 - Do not implement behavior whose required contract remains unspecified. State that implementation boundary declaratively until authoritative evidence updates the specification.

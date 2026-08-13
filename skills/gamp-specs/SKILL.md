@@ -50,7 +50,7 @@ The generated documentation must describe the product as it is intended to exist
 - Define the DS spec set based on project scope.
 - Always begin with `DS000-vision.md` and `DS001-coding-style.md`.
 - Create `DS002` for the next foundational project contract required by the repository, consolidating related material when necessary so the file has a substantive scope.
-- Always create exactly one Main Behavior specification named `DS003-main-behavior.md` with the title `Main Behavior`. Reserve this identifier for Main Behavior and place it after the preceding foundational specifications.
+- Always create exactly one Main Behavior specification named `DS003-main-behavior.md` with the frontmatter title `DS003-main-behavior`. Reserve this filename identifier for Main Behavior and place it after the preceding foundational specifications.
 - Build the Main Behavior DS only from candidates accepted by `detect-main-behaviors`. Include the project purpose and only the principal paths, broad project-spanning behaviors, essential APIs or commands, active consequences of direction-changing decisions, and architectural skeleton identified by that analysis.
 - Keep feature catalogs, helpers, optional integrations, narrow configuration, and implementation detail out of the Main Behavior DS. Link to specialized DS files when a main behavior needs deeper contracts without duplicating them.
 - When a project uses WebSkel, read the `webskel-ui-engineering` guidance, require that skill in `AGENTS.md`, and carry its coding rules into `DS001-coding-style.md`. Give every WebSkel-specific term a verified inline definition or an exact link to its local or canonical definition entry.
@@ -62,6 +62,8 @@ The generated documentation must describe the product as it is intended to exist
 - Keep the HTML documentation workflow and the DS specification workflow distinct.
 - Treat the DS specifications as the source of truth for documented behavior and structure.
 - Make every ordinary DS file use only `Introduction`, `Core Content`, and `Conclusion` as its standard top-level content sections.
+- Give every `DSxxx-*.md` file exactly two frontmatter fields: `title` and `summary`. Set `title` to the exact filename stem, including its DS number and name, such as `DS003-main-behavior`. Derive the identifier from the filename; never add a separate `id` field.
+- Remove `id`, `status`, and `owner` fields and every other unsupported field from existing DS frontmatter. Also remove `Status` and `Owner` headings, sections, labels, metadata blocks, badges, and standalone values from DS content. Do not generate replacements for them elsewhere.
 - Normalize all existing DS material into declarative requirements, rationale, constraints, invariants, limitations, or explicitly unspecified boundaries inside `Core Content`.
 - When code changes alter behavior, interfaces, architecture, workflows, or constraints, update both the HTML documentation and the DS specifications to match the implementation.
 - Record architectural interpretations, high-risk assumptions, conflict resolutions, and implementation alternatives directly inside the affected DS files as declarative contract statements.
@@ -137,6 +139,7 @@ The generated documentation must describe the product as it is intended to exist
 - Run the documentation link verifier after documentation work so shared navigation, specs-loader links, and partial includes stay valid.
 - When the HTML documentation uses relative asset paths, `fetch()`-loaded partials, or other browser-resolved resources, run `node scripts/verify_static_site.js <docs-dir>` against the generated `docs/` folder. Add `--path` checks for project-specific resources when needed.
 - Verify that each affected DS file states important rationale, tradeoffs, limitations, and contract boundaries declaratively in `Core Content`.
+- Verify that every `DSxxx-*.md` frontmatter contains exactly `title` and `summary`, that `title` equals the filename stem, and that no separate `id`, `status`, `owner`, or other field exists. Also verify that no `Status` or `Owner` section, label, badge, or equivalent standalone metadata remains.
 - Verify each applicable README onboarding procedure against the current source, manifest, configuration, and executable entry points.
 - Verify that README, HTML pages, and DS files describe the final product contract and contain no repository-progress commentary. Express implementation alternatives and unspecified contract details as bounded declarative statements in the affected DS file.
 - Verify that no persistent project documentation reveals which documentation-generation or documentation-review skills were used. Treat any such mention as prohibited internal-tool leakage and remove it.
@@ -154,6 +157,7 @@ The generated documentation must describe the product as it is intended to exist
 - Confirm every diagram complies with `references/diagrams-guidelines.md`.
 - Confirm every diagram caption is centered below the diagram, the diagram has no enclosing visual frame, and text is not manually wrapped before reaching its container boundary.
 - Ensure every ordinary spec file follows the `DS0xx-description.md` convention, includes only the standard `Introduction`, `Core Content`, and `Conclusion` content structure, and fits into the required numbering sequence.
+- Confirm every DS file uses only `title: DSxxx-name` and `summary` frontmatter and omits separate `ID`, `Status`, and `Owner` metadata completely, including frontmatter, headings, metadata panels, badges, and body labels.
 - Confirm the Main Behavior DS contains only defining project behaviors, stays aligned with the detector's evidence, and refers readers to specialized DS files for lower-level detail.
 - Confirm the specs matrix links correctly via `specsLoader.html?spec=matrix.md`.
 - Confirm each DS entry in `matrix.md` uses the relative specs-loader path format `specsLoader.html?spec=DS0xx-description.md` without a leading slash, so links work under both domain-root and repository-prefixed deployments.

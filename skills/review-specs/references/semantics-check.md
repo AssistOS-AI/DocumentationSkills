@@ -143,7 +143,7 @@ Professional documentation can use technical terms, but technical style is not a
 
 ## 6. Main pages and DS pages
 
-Give the highest attention to the home page, principal feature pages, and DS pages. Check that each DS uses `Introduction`, `Core Content`, and `Conclusion`, and that `Core Content` states requirements, boundaries, rationale, confirmed limitations, alternatives, and unspecified contract details declaratively. Direct `gamp-specs` to normalize any other DS content structure into those sections without losing supported information. Check that the matrix title, summary, and status do not misrepresent the subject of the DS.
+Give the highest attention to the home page, principal feature pages, and DS pages. Check that each DS uses `Introduction`, `Core Content`, and `Conclusion`, and that `Core Content` states requirements, boundaries, rationale, confirmed limitations, alternatives, and unspecified contract details declaratively. Direct `gamp-specs` to normalize any other DS content structure into those sections without losing supported information. Require frontmatter to contain exactly `title` and `summary`, with `title` equal to the filename stem. Treat separate `ID`, `Status`, or `Owner` metadata and every `Status` or `Owner` section, label, badge, metadata block, or standalone value as prohibited and direct its deletion without relocation. Check that the two-column matrix name and description accurately represent each DS.
 
 Report a DS issue when the prose is explanatory but never states what must, should, or may happen; report a user-documentation issue when a contract is technically precise but never explains why the reader should care or how the behavior appears in use.
 

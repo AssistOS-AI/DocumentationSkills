@@ -34,8 +34,9 @@ Read both references before performing the review:
 1. Establish the review surface: `README.md`, `AGENTS.md`, every relevant file under `docs/`, all linked DS files, loaders, partials, assets, and documentation-support code.
 2. Follow `syntax-and-flow-check.md` completely. Syntax and cross-file flow checks precede semantic interpretation.
 3. Follow `semantics-check.md` completely. Read the home page, primary pages, and specifications from beginning to end as a new user.
-4. Search the entire review surface for internal documentation-skill names and authoring-provenance language. Distinguish product functionality from tools used only to author the documentation.
-5. Produce the report in the required order below. Do not apply any remediation during the review.
+4. Inspect every `DSxxx-*.md` file for its frontmatter contract. It must contain exactly `title` and `summary`, and `title` must equal the exact filename stem. Report a separate `id`, `status`, `owner`, or any other field, plus any `Status` or `Owner` heading, section, label, badge, metadata block, or standalone value. Direct `gamp-specs` to remove unsupported metadata without relocation.
+5. Search the entire review surface for internal documentation-skill names and authoring-provenance language. Distinguish product functionality from tools used only to author the documentation.
+6. Produce the report in the required order below. Do not apply any remediation during the review.
 
 ## Report format
 
@@ -60,4 +61,5 @@ If a category passes, state what was checked and that no issue was found. Every 
 - Never propose cosmetic rewrites, stylistic substitutions, or broad document
   regeneration for content that already meets the applicable requirements.
 - Never approve or recommend retaining a reference to a documentation skill solely because it was used to create or review the documentation. Report that reference as prohibited internal-tool leakage and direct the remediation to remove it without replacing it with another provenance statement.
+- Treat a missing or mismatched `title`, a missing `summary`, every separate `id`, `status`, or `owner` field, every other unsupported frontmatter field, and every `Status` or `Owner` section, label, badge, metadata block, or standalone value in a `DSxxx-*.md` file as an error. Require `title` to equal the filename stem and direct remediation to delete unsupported metadata, not rename, relocate, or reproduce it elsewhere.
 - Keep the report in English unless the user explicitly requests another language.

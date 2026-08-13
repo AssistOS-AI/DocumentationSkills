@@ -15,6 +15,7 @@ This reference defines the files and navigation required for a consistent projec
 - `docs/partials-loader.js`
 - `docs/specs/` with `DS0xx-description.md` specifications
 - `docs/specs/matrix.md` generated from DS filenames and descriptions
+- `docs/.nojekyll` copied from the skill asset so GitHub Pages serves specification Markdown files unchanged
 - `docs/specsLoader.html` copied from the skill asset
 
 `AGENTS.md` is the single root guidance file. Its standard section layout is: `Scope`, `Mandatory Reading Order`, `Current Skill Catalog`, `Repository Rules`, `Runtime Defaults`, and `Key Paths`.
@@ -72,6 +73,7 @@ Follow `diagrams-guidelines.md` for diagram selection, centered italic captions 
 ## Specs Loader
 
 - Always copy the skill asset `assets/specsLoader.html` to `docs/specsLoader.html`.
+- Always copy the skill asset `assets/.nojekyll` to `docs/.nojekyll`. The marker must remain at the published documentation root so GitHub Pages does not convert the Markdown specifications to `.html`.
 - The specs loader must be able to open `specs/matrix.md` via `specsLoader.html?spec=matrix.md`.
 
 ## Content Expectations

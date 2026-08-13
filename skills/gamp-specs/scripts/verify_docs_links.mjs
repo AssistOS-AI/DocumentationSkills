@@ -1,9 +1,28 @@
-import { readdir, readFile } from 'node:fs/promises';
+import { access, readdir, readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
-const repoRoot = resolve(scriptDir, '../../..');
+async function findRepoRoot() {
+  const candidates = [
+    process.cwd(),
+    resolve(scriptDir, '..'),
+    resolve(scriptDir, '../../../..')
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      await access(resolve(candidate, 'docs'));
+      return candidate;
+    } catch {
+      // Continue through supported installed and skill-local locations.
+    }
+  }
+
+  throw new Error('Could not locate a repository containing docs.');
+}
+
+const repoRoot = await findRepoRoot();
 const docsDir = resolve(repoRoot, 'docs');
 
 function isExternal(target) {

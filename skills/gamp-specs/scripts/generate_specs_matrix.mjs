@@ -1,9 +1,28 @@
-import { readdir, readFile, writeFile } from 'node:fs/promises';
+import { access, readdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
-const repoRoot = resolve(scriptDir, '../../..');
+async function findRepoRoot() {
+  const candidates = [
+    process.cwd(),
+    resolve(scriptDir, '..'),
+    resolve(scriptDir, '../../../..')
+  ];
+
+  for (const candidate of candidates) {
+    try {
+      await access(resolve(candidate, 'docs/specs'));
+      return candidate;
+    } catch {
+      // Continue through supported installed and skill-local locations.
+    }
+  }
+
+  throw new Error('Could not locate a repository containing docs/specs.');
+}
+
+const repoRoot = await findRepoRoot();
 const specsDir = resolve(repoRoot, 'docs/specs');
 const matrixPath = resolve(specsDir, 'matrix.md');
 
@@ -104,13 +123,13 @@ function renderMatrix(specs) {
   const rows = specs
     .map(
       (spec) =>
-        `| [${spec.id}](specsLoader.html?spec=${spec.fileName}) | ${spec.title} | [[status:${spec.status}]] | ${spec.owner} | ${spec.summary.replace(/\|/g, '\\|')} |`
+        `| [${spec.id}](/specsLoader.html?spec=${spec.fileName}) | ${spec.title} | [[status:${spec.status}]] | ${spec.owner} | ${spec.summary.replace(/\|/g, '\\|')} |`
     )
     .join('\n');
 
   return `# Specification Matrix
 
-Generated from DS frontmatter by \`skills/gamp-specs/scripts/generate_specs_matrix.mjs\`. Edit the DS files and rerun the generator instead of editing this file manually.
+Generated from DS frontmatter by \`scripts/generate_specs_matrix.mjs\`. Edit the DS files and rerun the generator instead of editing this file manually.
 
 | Specification | Title | Status | Owner | Summary |
 | --- | --- | --- | --- | --- |

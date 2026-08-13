@@ -156,12 +156,12 @@ for dir in docs docs/specs src config; do
 done
 echo
 
-# Collect files — use git ls-files if inside a repo (respects .gitignore), else fall back to find
+# Collect tracked and untracked files while respecting .gitignore, then fall back to find outside Git.
 files_to_process=()
 if git rev-parse --is-inside-work-tree &>/dev/null; then
   while IFS= read -r file; do
     [[ -f "$file" ]] && files_to_process+=("$file")
-  done < <(for ext in $EXTENSIONS; do git ls-files "*.${ext}"; done | sort -u)
+  done < <(for ext in $EXTENSIONS; do git ls-files --cached --others --exclude-standard "*.${ext}"; done | sort -u)
 else
   find_expr=()
   first=true
@@ -227,7 +227,7 @@ echo ""
 # Line length analysis for text files
 text_exts="md html css"
 total_long=0
-declare -A file_long_info
+declare -A file_long_info=()
 
 for ext in $text_exts; do
   arr="files_${ext}"

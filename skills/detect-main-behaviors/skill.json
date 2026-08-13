@@ -1,0 +1,18 @@
+{
+  "title": "Detect Main Behaviors",
+  "family": "anthropic",
+  "summary": "Analyzes project purpose, implementation paths, essential interfaces, broad subsystems, architectural skeleton, and active direction-changing decisions to identify defining behaviors for gamp-specs.",
+  "aliases": [
+    "detect-main-behaviors",
+    "main-behavior-detection"
+  ],
+  "dependsOn": [],
+  "outputs": [
+    "Evidence-backed main-behavior analysis for gamp-specs"
+  ],
+  "entrypoints": [
+    "SKILL.md",
+    "DS.md"
+  ],
+  "selfContained": true
+}

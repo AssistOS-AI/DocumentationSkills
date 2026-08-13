@@ -32,15 +32,25 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Avoid prose that reads like prompt scaffolding, product marketing, or generated filler.
 - Avoid meta text about how to read the page.
 - Avoid slogan-like headings or generic heading formulas repeated across pages.
-- Do not add sections, labels, navigation elements, or other content only to preserve a preferred visual style when the implementation does not need them.
+- Do not add sections, labels, or other page content only to preserve a preferred visual style when the implementation does not need them. Stable navigation categories are the exception: preserve their menu and submenu structure even while a category has no destination links or only a few links.
 - Adapt chapter titles to the subject of the page while preserving a logical order of ideas.
 - Prefer a small number of substantial chapters over many short fragments.
 - Avoid shallow one-paragraph skill pages when the skill folder contains meaningful structure that can be reviewed and documented.
 - Keep explanatory text in prose with complete sentences and clear argumentative flow.
 - Use lists only when the content is genuinely list-shaped.
-- Avoid unexplained abbreviations in general explanatory prose.
+- Avoid unexplained abbreviations in general explanatory prose; define them inline or link them to the page's `Definitions` section.
 - Organize each feature explanation around its practical role and user-visible result before describing components, configuration, or runtime flow.
-- Make each independently accessible HTML page define the project-specific concepts needed to understand that page, even when another page contains a longer explanation.
+- Make each independently accessible HTML page provide access to the project-specific concepts needed to understand it through inline definitions or direct links to definition anchors.
+
+## Definitions Sections
+
+- Add a visible `Definitions` section when an HTML documentation page introduces one or more new project-specific terms or concepts. The section is optional when the page introduces no new terminology. Use a stable section anchor such as `id="definitions"` when the section exists.
+- Include every project-specific concept, acronym, named component, or specialized term introduced by that page. Common language and standard platform terms do not need glossary entries unless the project assigns them a specialized meaning.
+- Give every locally defined term its own stable anchor, such as `id="definition-task-module"`, and write a concise definition supported by the implementation or authoritative project material.
+- Link every occurrence of a defined project-specific term outside the `Definitions` section to its local definition anchor, even when the prose also explains the term inline.
+- If another page contains the canonical definition, link every occurrence of the term and the corresponding local entry to that page and its exact definition anchor. The local entry may use a short `See` reference instead of repeating the definition.
+- Keep definitions useful for lookup. Do not turn the section into a second architecture chapter or repeat long explanations from the body.
+- Inline definitions remain appropriate when they help the reader understand the immediate sentence. The `Definitions` section supplements the prose and does not require removing those explanations.
 
 ## Examples And Callouts
 
@@ -52,11 +62,16 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 
 ## Visual And Responsive Rules
 
-- Keep the reading column comfortable on desktop.
+- Let the main documentation panel occupy the full available desktop width so the surrounding frame does not consume excessive horizontal space.
+- Do not apply a fixed or centered `max-width` to the main page or article panel. Use `width: 100%`, no outer auto margins, and compact outer and inner padding. Use `1rem` as the default desktop padding for both the page wrapper and its text panel unless the existing project shell requires an equivalent compact value.
+- Reduce that padding further on narrow screens; `0.5rem` for the page wrapper and `0.75rem` for the text panel are the default mobile values.
 - Set the HTML page title and the visible site/page title to `[project name] Documentation`.
-- Prefer a consistent documentation shell with a sidebar or a header-based navigation system.
-- Use one primary navigation system per documentation set. Choose either a sidebar or a header-based navigation system based on the project's needs, but do not present both as parallel primary navigation.
-- Keep navigation uniform across the HTML pages so moving between files does not change the navigation model unexpectedly.
+- Use one primary navigation system composed of named menus with submenus. Do not present a sidebar and header navigation as parallel primary systems.
+- Keep stable category menus visible even when the current documentation set provides no links or only a few links for that category. An empty submenu may contain an empty list or a non-link status label, but it must not contain fabricated, broken, placeholder, or speculative destination links.
+- Keep menu order, submenu categories, interaction behavior, and available links uniform across the HTML pages so moving between files does not change the navigation model unexpectedly.
+- Opening a submenu must expose only that menu's child navigation panel. When the user clicks or taps anywhere outside the open menu and its child panel, close that submenu.
+- Implement outside-click behavior in the shared navigation script so every HTML page receives the same behavior. The handler must check whether the event target is outside each open menu before removing its open state; clicking inside the submenu must not close it before its control or link can respond.
+- Support keyboard navigation: submenu triggers must be focusable, communicate their expanded state, close on `Escape`, and return focus to the trigger when closed with `Escape`.
 - Do not repeat navigation links redundantly inside the page body or page header when the same destination is already clearly available in the sidebar or primary navigation shell.
 - Prefer full-page documents with substantial sections that read like chapters in a book.
 - Do not break the documentation into fragmented card grids or small disconnected components when a continuous reading flow is more appropriate.
@@ -73,15 +88,7 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Ensure readers can reach each DS file from `matrix.md`.
 - When documentation discusses coding style or test organization, point readers explicitly to `DS001-coding-style.md`.
 - When documenting a downstream project that merely consumes imported skills, keep `docs/` focused on the host project and avoid standalone pages about those imported skills. Keep skill-specific agent guidance inside the copied skill folders instead.
-- When explaining a runtime flow or generation pipeline, prefer a compact visual diagram over an ASCII block in `<pre><code>` when the diagram improves clarity.
-- Keep diagrams technically exact, visually restrained, and readable on mobile.
-- Prefer inline Mermaid definitions (`<pre class="mermaid">`) over static SVG or ASCII art for architecture diagrams, data-flow diagrams, component relationships, sequence diagrams, and state machines. Mermaid definitions are text, so they stay maintainable alongside the code they describe.
-- Do not use ASCII box-drawing characters (`─`, `│`, `┌`, `└`, etc.) for diagrams. Browser monospace fonts do not render them at consistent widths, producing broken alignment. Use Mermaid instead.
-- Keep Mermaid diagram definitions concise. Use short node labels and let the layout engine handle positioning. Do not force coordinates or override the automatic layout unless the default result is unreadable.
-- Reserve static SVG files under `docs/assets/` for diagrams that need precise custom layout, branding elements, or visual detail that Mermaid cannot express.
-- If static SVG diagrams are used, shorten, wrap, or fit labels so text stays inside its visual container.
-- When showing a representative directory layout, prefer a visual tree component over a raw ASCII directory dump in `<pre><code>` when the tree is easier to scan.
-- Preserve the real file and folder names in any directory tree component.
+- Follow `diagrams-guidelines.md` whenever a page uses a diagram or visual directory tree.
 
 ## Default Outcome
 

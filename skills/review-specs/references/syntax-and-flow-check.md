@@ -30,13 +30,15 @@ Do not require every site to use exactly this shape. Report a problem when a new
 
 Inspect each HTML document for a valid document skeleton, balanced tags, valid nesting, meaningful `lang`, charset and viewport metadata, and consistent title/navigation structure. Check local `href`, `src`, stylesheet, script, image, partial, and loader targets. Confirm that shared fragments are loaded using the mechanism the page actually includes.
 
+When an HTML documentation page contains a `Definitions` section, confirm that it has a stable section anchor, that each local definition has a unique anchor, and that local and cross-page definition links resolve to the intended page and exact anchor. Do not treat the absence of the section as a syntax defect; the semantic review determines whether the page introduces new terminology and therefore requires it. Treat duplicate definition anchors and broken definition links as structural defects.
+
 Examples:
 
 - Report an `error` when `<main>` is opened but never closed, or when a link points to `docs/specsLoader.html?spec=DS009.md` and `DS009.md` does not exist.
 - Report a `warning` when one primary page has a different navigation model from all others and no reason is given.
 - Report a `recommendation` when a long secondary page has no breadcrumb or link back to its parent, even though the reader can technically reach it.
 
-Check Mermaid blocks separately. A Mermaid diagram must use the expected `<pre class="mermaid">` form (or the repository's documented equivalent), begin with a supported diagram declaration such as `flowchart`, `sequenceDiagram`, or `stateDiagram-v2`, and contain syntactically valid statements. Verify that labels do not introduce unexplained concepts and that the diagram agrees with the surrounding prose.
+Check Mermaid blocks separately. A Mermaid diagram must use the expected `<pre class="mermaid">` form (or the repository's documented equivalent), begin with a supported diagram declaration such as `flowchart`, `sequenceDiagram`, or `stateDiagram-v2`, and contain syntactically valid statements. Verify that unfamiliar labels are covered by the page's `Definitions` section or a valid canonical definition link and that the diagram agrees with the surrounding prose.
 
 Example diagram defect:
 
@@ -81,7 +83,7 @@ Report a warning for the unexplained jump from `#` to `###`; suggest `## Install
 
 The syntax is valid, but the second list likely replaces explanatory prose. Report that under language/information design, not as a Markdown syntax error.
 
-Validate DS naming, contiguous numbering, required front matter, required sections, and matrix links when the repository uses the GAMP specification structure. Verify that `specsLoader.html?spec=...` targets resolve to the intended DS files.
+Validate DS naming, contiguous numbering, required front matter, required `Introduction`, `Core Content`, and `Conclusion` sections, and matrix links when the repository uses the GAMP specification structure. Report a structural defect when a DS retains a generated design-question section or `Response:` and `Options:` blocks; remediation must convert that material into declarative statements in the appropriate contract section. Verify that `specsLoader.html?spec=...` targets resolve to the intended DS files.
 
 ## 4. Other documentation-support files
 

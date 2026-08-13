@@ -49,62 +49,89 @@
                 <a href="#code">Code execution</a>
             </div>
             <a href="#specifications">Specifications</a>
+            <a href="#definitions">Definitions</a>
         </nav>
     </aside>
 
     <main>
         <section id="overview">
-            <h1>AchillesAgentLib Documentation</h1>
-            <p>AchillesAgentLib is a JavaScript library for running language-model agents through declarative skills. It gives an application one runtime for discovering skills, selecting a model, executing a task, and preserving session context.</p>
-            <p>Applications use the shared runtime to discover skills, choose an executor, run tasks, and keep the context needed for multi-step work. The <a href="#skill-families">skill families</a> section explains how reusable task instructions and execution code are packaged for different kinds of work.</p>
-            <p class="note">A skill packages the instructions and task-specific code needed for a reusable operation. The library can register that skill once and run it through the appropriate subsystem whenever an application requests the operation.</p>
+            <h1><a href="#definition-achilles-agent-lib">AchillesAgentLib</a> Documentation</h1>
+            <p><a href="#definition-achilles-agent-lib">AchillesAgentLib</a> is a JavaScript library for running language-model agents through declarative <a href="#definition-skill">skills</a>. It gives an application one runtime for discovering <a href="#definition-skill">skills</a>, selecting a model, executing a task, and preserving session context.</p>
+            <p>Applications use the shared runtime to discover <a href="#definition-skill">skills</a>, choose an executor, run tasks, and keep the context needed for multi-step work. The <a href="#definition-skill-family">skill families</a> section explains how reusable task instructions and execution code are packaged for different kinds of work.</p>
+            <p class="note">A <a href="#definition-skill">skill</a> packages the instructions and task-specific code needed for a reusable operation. The library can register that <a href="#definition-skill">skill</a> once and run it through the appropriate <a href="#definition-subsystem">subsystem</a> whenever an application requests the operation.</p>
         </section>
 
         <section id="runtime">
-            <h2>How MainAgent runs a task</h2>
-            <p><code>MainAgent</code> is the main point of interaction with AchillesAgentLib. An application sends a task instruction to MainAgent, which discovers the registered skills, selects an enabled skill, and forwards the request to the subsystem responsible for that skill's descriptor type.</p>
+            <h2>How <a href="#definition-main-agent">MainAgent</a> runs a task</h2>
+            <p><a href="#definition-main-agent"><code>MainAgent</code></a> is the main point of interaction with <a href="#definition-achilles-agent-lib">AchillesAgentLib</a>. An application sends a task instruction to <a href="#definition-main-agent">MainAgent</a>, which discovers the registered <a href="#definition-skill">skills</a>, selects an enabled <a href="#definition-skill">skill</a>, and forwards the request to the <a href="#definition-subsystem">subsystem</a> responsible for that <a href="#definition-skill">skill's</a> descriptor type.</p>
             <pre class="mermaid">flowchart LR
                 Caller --> MainAgent
                 MainAgent --> Skill[Enabled skill]
                 Skill --> Subsystem[Specialized subsystem]
                 Subsystem --> LLMAgent
-                LLMAgent --> Result[Task result]</pre>
-            <p>The selected subsystem prepares the task, uses <code>LLMAgent</code> or another configured executor when needed, and returns the result to MainAgent. MainAgent then returns that result to the application. Disabled skills remain in the catalog for inspection but are excluded from execution and tool surfaces.</p>
+                LLMAgent --> Result[Task result]
+                click MainAgent "#definition-main-agent"
+                click Skill "#definition-skill"
+                click Subsystem "#definition-subsystem"
+                click LLMAgent "#definition-llm-agent"</pre>
+            <p>The selected <a href="#definition-subsystem">subsystem</a> prepares the task, uses <a href="#definition-llm-agent"><code>LLMAgent</code></a> or another configured executor when needed, and returns the result to <a href="#definition-main-agent">MainAgent</a>. <a href="#definition-main-agent">MainAgent</a> then returns that result to the application. Disabled <a href="#definition-skill">skills</a> remain in the catalog for inspection but are excluded from execution and tool surfaces.</p>
         </section>
 
         <section id="llm-agent">
-            <h3>LLMAgent</h3>
-            <p><code>LLMAgent</code> is the shared interface used by subsystems to call configured language models. It handles provider invocation, response shaping, intent interpretation, and the memory associated with a task, user, or session.</p>
+            <h3><a href="#definition-llm-agent">LLMAgent</a></h3>
+            <p><a href="#definition-llm-agent"><code>LLMAgent</code></a> is the shared interface used by <a href="#definition-subsystem">subsystems</a> to call configured language models. It handles provider invocation, response shaping, intent interpretation, and the memory associated with a task, user, or session.</p>
         </section>
 
         <section id="sessions">
-            <h3>Agentic sessions</h3>
-            <p>MainAgent uses an agentic session when a task requires more than one model or tool action. An agentic session is a bounded sequence of those actions for one task. Its session state lets a later action use the earlier task context, while cancellation and retry controls keep the sequence recoverable and limited.</p>
+            <h3><a href="#definition-agentic-session">Agentic sessions</a></h3>
+            <p><a href="#definition-main-agent">MainAgent</a> uses an <a href="#definition-agentic-session">agentic session</a> when a task requires more than one model or tool action. An <a href="#definition-agentic-session">agentic session</a> is a bounded sequence of those actions for one task. Its session state lets a later action use the earlier task context, while cancellation and retry controls keep the sequence recoverable and limited.</p>
         </section>
 
         <section id="skills">
-            <h3>Skills and subsystems</h3>
-            <p>A skill defines a reusable operation through task instructions and, when required, task-specific code. A subsystem is the runtime component that loads and executes one family of skill descriptors. This division lets the library support different inputs, preparation steps, and outputs for different task families.</p>
+            <h3><a href="#definition-skill">Skills</a> and <a href="#definition-subsystem">subsystems</a></h3>
+            <p>A <a href="#definition-skill">skill</a> defines a reusable operation through task instructions and, when required, task-specific code. A <a href="#definition-subsystem">subsystem</a> is the runtime component that loads and executes one <a href="#definition-skill-family">family</a> of <a href="#definition-skill">skill</a> descriptors. This division lets the library support different inputs, preparation steps, and outputs for different <a href="#definition-skill-family">task families</a>.</p>
         </section>
 
         <section id="skill-families">
-            <h2>Skill families</h2>
-            <p>Skill families group reusable operations that need the same kind of task data and execution code. The family determines which subsystem prepares the request and what inputs and outputs the skill exposes.</p>
+            <h2><a href="#definition-skill-family">Skill families</a></h2>
+            <p><a href="#definition-skill-family">Skill families</a> group reusable operations that need the same kind of task data and execution code. The <a href="#definition-skill-family">family</a> determines which <a href="#definition-subsystem">subsystem</a> prepares the request and what inputs and outputs the <a href="#definition-skill">skill</a> exposes.</p>
 
-            <h3 id="orchestration">Orchestration skills</h3>
-            <p>Orchestration skills coordinate several bounded actions or other agents. They use loop or SOP sessions when a task needs multiple steps and can declare which remote Ploinky agents may participate.</p>
+            <h3 id="orchestration">Orchestration <a href="#definition-skill">skills</a></h3>
+            <p>Orchestration <a href="#definition-skill">skills</a> coordinate several bounded actions or other agents. They use loop or SOP sessions when a task needs multiple steps and can declare which remote Ploinky agents may participate.</p>
 
-            <h3 id="dbtable">DBTable skills</h3>
-            <p>DBTable skills describe table fields and database operations in <code>tskill.md</code>. The DBTable subsystem reads that description, prepares field presenters and validators, and uses the resulting functions for create, update, select, or delete workflows.</p>
+            <h3 id="dbtable">DBTable <a href="#definition-skill">skills</a></h3>
+            <p>DBTable <a href="#definition-skill">skills</a> describe table fields and database operations in <code>tskill.md</code>. The DBTable <a href="#definition-subsystem">subsystem</a> reads that description, prepares field presenters and validators, and uses the resulting functions for create, update, select, or delete workflows.</p>
 
-            <h3 id="code">Code skills</h3>
-            <p>Code skills define executable modules and the arguments passed to them. The code-skill subsystem loads the declared entry module, invokes it through the agent runtime, and returns its result to the caller.</p>
+            <h3 id="code">Code <a href="#definition-skill">skills</a></h3>
+            <p>Code <a href="#definition-skill">skills</a> define executable modules and the arguments passed to them. The code-<a href="#definition-skill">skill</a> <a href="#definition-subsystem">subsystem</a> loads the declared entry module, invokes it through the agent runtime, and returns its result to the caller.</p>
         </section>
 
         <section id="specifications">
-            <h2>Specifications</h2>
-            <p>Specifications record the rules that MainAgent, the runtime subsystems, and the skill families must preserve. Open the specification matrix to find the contract for the runtime or skill family you want to understand or change.</p>
-            <p><a href="#specifications">Open the specification matrix</a> to browse the available design specifications.</p>
+            <h2><a href="#definition-specification">Specifications</a></h2>
+            <p><a href="#definition-specification">Specifications</a> record the rules that <a href="#definition-main-agent">MainAgent</a>, the runtime <a href="#definition-subsystem">subsystems</a>, and the <a href="#definition-skill-family">skill families</a> must preserve. Open the <a href="#definition-specification">specification</a> matrix to find the contract for the runtime or <a href="#definition-skill-family">skill family</a> you want to understand or change.</p>
+            <p><a href="#specifications">Open the specification matrix</a> to browse the available design <a href="#definition-specification">specifications</a>.</p>
+        </section>
+
+        <section id="definitions">
+            <h2>Definitions</h2>
+            <dl>
+                <dt id="definition-achilles-agent-lib">AchillesAgentLib</dt>
+                <dd>The JavaScript library documented by this page; it discovers reusable skills, selects execution components, runs tasks, and preserves task context.</dd>
+                <dt id="definition-main-agent">MainAgent</dt>
+                <dd>The application's primary entry point for submitting a task to AchillesAgentLib.</dd>
+                <dt id="definition-llm-agent">LLMAgent</dt>
+                <dd>The shared interface through which runtime subsystems call configured language models.</dd>
+                <dt id="definition-agentic-session">Agentic session</dt>
+                <dd>A bounded sequence of model or tool actions performed for one task while preserving its session state.</dd>
+                <dt id="definition-skill">Skill</dt>
+                <dd>A reusable package of task instructions and optional task-specific code.</dd>
+                <dt id="definition-subsystem">Subsystem</dt>
+                <dd>The runtime component that loads and executes one family of skill descriptors.</dd>
+                <dt id="definition-skill-family">Skill family</dt>
+                <dd>A group of reusable operations that share the same kind of task data and execution code.</dd>
+                <dt id="definition-specification">Specification</dt>
+                <dd>A design contract that records behavior and constraints the runtime or a skill family must preserve.</dd>
+            </dl>
         </section>
     </main>
 </div>

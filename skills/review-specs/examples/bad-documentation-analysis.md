@@ -72,7 +72,7 @@ This is still technical, but it identifies the caller (`subsystems`), the extern
 
 > “`Subsystems and Skills` explains why the library does not collapse all descriptor types into one misleading abstraction and how execution is divided across specialized subsystems.”
 
-This is an architectural defense, not a first-use explanation. It introduces “descriptor types”, “abstraction”, and “specialized subsystems” without saying what a skill is or what a subsystem does. The phrase “misleading abstraction” also asks the reader to agree with a design decision before the underlying objects have been explained.
+This is an architectural defense, not a usable introduction or definition path. It introduces “descriptor types”, “abstraction”, and “specialized subsystems” without saying what a skill is or what a subsystem does, and the page provides no `Definitions` entry to consult. The phrase “misleading abstraction” also asks the reader to agree with a design decision before the underlying objects have been explained.
 
 The good example introduces the concepts in operational terms:
 
@@ -103,21 +103,27 @@ The page therefore treats documentation as a justification of an architecture th
 6. why separate skill families exist;
 7. where the detailed contracts are specified.
 
+### 7. The page has no `Definitions` section
+
+The page introduces project-specific terms including `MainAgent`, `LLMAgent`, skill, subsystem, descriptor type, and agentic session, but it provides no page-level definitions index. The reader must interrupt the workflow and infer those meanings from dense paragraphs or follow broad page links that do not target an exact definition.
+
+The good example keeps central explanations in the prose and also provides a `Definitions` section with stable anchors. Every occurrence of a defined term in the content links directly to the same local or canonical definition entry.
+
 ## Navigation and flow findings
 
-### 7. The sidebar is dense before the reader knows the hierarchy
+### 8. The sidebar is dense before the reader knows the hierarchy
 
 The sidebar exposes runtime pages, skill-family pages, and supporting components immediately. The groups are visually organized, but their labels still depend on terms that the page has not defined. A new user cannot tell which links are foundational and which are specialized.
 
 The good example keeps the same hierarchy but makes the parent-child relationship explicit: Runtime contains `LLMAgent`, agentic sessions, and skills/subsystems; Skill families contains orchestration, DBTable, and code execution. The page prose explains what each group means before asking the reader to use the detail links.
 
-### 8. The opening paragraphs are documentation meta-information
+### 9. The opening paragraphs are documentation meta-information
 
 The first paragraph about how the documentation is organized and the sentence “The most natural starting point...” describe the author's presentation choices. They do not help the reader perform a task with AchillesAgentLib. Documentation may include a short reading guide when it is necessary, but it must not replace the product introduction or introduce undefined architecture terms.
 
 ## Language and information-design findings
 
-### 9. Abstract nouns hide the actor and action
+### 10. Abstract nouns hide the actor and action
 
 Examples include “runtime surfaces”, “execution layer”, “mediation layer”, “interpretation helpers”, “output coercion”, “descriptor types”, “misleading abstraction”, and “specialized subsystems”. These phrases could be retained only after concrete definitions, and several should be replaced entirely with direct descriptions.
 
@@ -129,7 +135,7 @@ For each abstract sentence, the review should ask:
 - What result does it return or make available?
 - Why does the next component need that result?
 
-### 10. The text sounds precise without being explanatory
+### 11. The text sounds precise without being explanatory
 
 The bad example uses dense technical vocabulary and long sentences to signal architectural sophistication. That style is not automatically professional. When terms such as “coercion” or “mediation” are not defined, the reader has to infer their meaning from source code or from prior experience with the library.
 
@@ -140,12 +146,13 @@ The repair is not to remove all technical terms. The repair is to introduce each
 1. Rewrite the opening so it states what AchillesAgentLib is, who uses it, what input it accepts, and what result it provides.
 2. Remove or postpone the sentence describing the documentation's reading order. If a reading guide is useful, place it after the product overview and use already-defined terms.
 3. Replace “common execution layer” with a heading that names the main actor and operation, such as “How MainAgent runs a task”.
-4. Define `MainAgent` before describing skill discovery, subsystem routing, or model execution.
+4. Define `MainAgent` inline before describing skill discovery, subsystem routing, or model execution because it is central to the immediate narrative; also add it to the page's `Definitions` section.
 5. Define “skill” as a reusable package of task instructions and task-specific code where needed.
 6. Define “subsystem” as the runtime component that loads and executes one family of skill descriptors.
-7. Rewrite the `LLMAgent` paragraph using concrete callers, inputs, actions, and outputs. Remove unexplained enumerations such as “completions” and “output coercion”, or define them before use.
+7. Rewrite the `LLMAgent` paragraph using concrete callers, inputs, actions, and outputs. Remove unsupported enumerations such as “completions” and “output coercion”, or link them to evidence-backed definition entries when an inline explanation would interrupt the sentence.
 8. Introduce agentic sessions through their relationship with `MainAgent`: explain that MainAgent uses them for tasks requiring multiple model or tool actions.
 9. Explain skill families after the reader understands skills and subsystems; describe them as groups of reusable operations that share task data and execution needs.
 10. Replace architectural justifications such as “does not collapse all descriptor types into one misleading abstraction” with direct explanations of what each component does and why the distinction affects the user.
-11. Keep the navigation hierarchy, but make the page prose explain the meaning of each navigation group before relying on it.
-12. Read the complete page again as a new user and remove any phrase whose meaning depends on undocumented source-code knowledge.
+11. Add a `Definitions` section containing every project-specific term introduced by the page, give local entries stable anchors, and link every occurrence of each defined term in the page content to its local or canonical definition anchor.
+12. Keep the navigation hierarchy, but make the page prose or exact definition links explain the meaning of each navigation group before relying on it.
+13. Read the complete page again as a new user and remove any phrase whose meaning depends on undocumented source-code knowledge.

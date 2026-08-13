@@ -27,7 +27,7 @@ This reference defines the files and navigation required for a consistent projec
 - Include each onboarding section supported by the project: prerequisites, installation, configuration, startup, integration, and basic usage.
 - Omit sections that do not apply. A library without a standalone process needs integration instructions, not a startup section.
 - Derive every command, path, environment variable, configuration key, and example from the repository. Do not infer a setting's purpose, accepted format, or runtime effect from its name.
-- When the repository proves that a value is required but does not explain how to obtain or format it, state only the confirmed requirement. Add a numbered DS question with a `Response:` that distinguishes confirmed behavior from information the repository does not provide. Do not turn missing documentation into speculative implementation options.
+- When the repository proves that a value is required but does not explain how to obtain or format it, state only the confirmed requirement. Record the missing acquisition or format detail as a declarative limitation in the affected DS file. Do not turn missing documentation into speculative implementation options.
 - Keep advanced architecture and detailed behavior in the HTML documentation or DS files, and link to those documents when the reader needs more detail.
 - Recheck README instructions after changes to dependencies, manifests, configuration, executable entry points, public interfaces, or user workflows.
 
@@ -39,40 +39,32 @@ This reference defines the files and navigation required for a consistent projec
 - In a downstream project that only consumes imported skills, `docs/` must describe the host project rather than the imported skill catalog. Do not add `/docs` pages whose subject is the copied skills themselves.
 - Each skill page must review the actual contents of that skill folder, including local artifacts, dependencies, outputs, and conventions.
 - Each page must be written in English, use a technical writing style, and keep code samples minimal.
-- Keep SVG files and any other assets outside the HTML files and store them under `docs/assets/`.
+- An HTML documentation page that introduces new project-specific terms or concepts must contain a `Definitions` section with stable anchors for locally defined terms and direct links to canonical definition anchors on other pages. Pages without new terminology do not require the section. Follow `documentation-writing-guidelines.md` and `technical-docs-guidelines.md`.
+- The shared stylesheet must let the main page and text panel span the available width without a fixed `max-width`, using compact responsive padding as defined in `technical-docs-guidelines.md`.
+- The shared navigation partial and script must provide stable menu groups with submenus, preserve intentionally sparse or empty categories, and close open submenus when users interact outside them, as defined in `technical-docs-guidelines.md`.
 - Follow `technical-docs-guidelines.md` for HTML writing, editorial, and presentation rules.
 
-## Mermaid Diagrams
+## Diagram Requirements
 
-Every generated HTML page must include the Mermaid ESM module in `<head>` so that inline `<pre class="mermaid">` blocks render as diagrams:
-
-```html
-<script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
-    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
-</script>
-```
-
-- Use `<pre class="mermaid">` for diagram definitions. Do not wrap them in `<code>` tags.
-- Prefer Mermaid over static SVG for architecture diagrams, data flows, component relationships, sequence diagrams, and state machines. These diagram types change with the codebase and are easier to maintain as text.
-- Keep static SVGs under `docs/assets/` only for diagrams that require precise custom layout, branding elements, or visual detail that Mermaid cannot express.
-- The Mermaid `theme` may be adjusted per project to match the documentation stylesheet. Use `'neutral'` as the default.
+Follow `diagrams-guidelines.md` for diagram selection, titles and italic subtitles, actor hierarchy, density, visual differentiation, Mermaid setup and markup, and static asset placement.
 
 ## Specs Folder Rules
 
 - Files must follow `DS0xx-description.md`, for example `DS000-vision.md`.
 - The DS sequence must remain contiguous with no missing intermediate numbers.
 - `DS000-vision.md` and `DS001-coding-style.md` are mandatory.
-- `DS002-llm-model-strategy.md` is mandatory when the repository defines LLM routing or model tiers.
+- Exactly one `DS0xx-main-behavior.md` titled `Main Behavior` is mandatory. Use the next gap-free DS number without renumbering established specifications solely to give this file a fixed number.
+- A model-strategy DS is mandatory when the repository defines LLM routing or model tiers. Assign it the next appropriate gap-free number rather than reserving `DS002`.
 - In a skill-catalog repository, add one DS file for each skill currently present in the repository.
 - In a downstream project that only consumes imported skills, keep `docs/specs/` focused on the host project. Do not add DS files whose subject is the imported skills themselves.
 - DS files must carry frontmatter metadata including `id`, `title`, `status`, `owner`, and `summary`.
-- Each DS file must include `Introduction`, `Core Content`, `Decisions & Questions`, and `Conclusion`.
-- In `Decisions & Questions`, use numbered Markdown subchapters such as `### Question #1: ...`.
-- Put `Response` or `Options` inside the numbered question subchapter, and keep multi-option questions unimplemented until one option is selected.
+- Each DS file must include `Introduction`, `Core Content`, and `Conclusion`.
+- DS files must express decisions, rationale, limitations, and unresolved boundaries as declarative statements. They must not contain a generated question-and-answer design section, numbered design questions, `Response:` blocks, or `Options:` blocks.
+- When normalizing an existing DS, convert any question-and-answer material into statements in `Core Content` or an appropriate subject-specific section. Keep behavior that depends on an unspecified choice unimplemented until the contract states one selected path.
 - `DS001-coding-style.md` must describe coding style, source layout, and modular test organization.
 - `matrix.md` is generated by `scripts/generate_specs_matrix.mjs` and must render DS status from the DS metadata rather than from handwritten matrix prose.
 - Keep specs focused on rules, constraints, and invariants. Prefer narrative requirement-style sections over long bullet lists.
+- Generate the Main Behavior DS from the accepted output of `detect-main-behaviors`. Keep it restricted to the project purpose, primary paths, project-spanning behaviors, essential interfaces, active direction-changing consequences, and architectural skeleton; move secondary detail to specialized DS files.
 - Follow `specs-guidelines.md` for DS writing and contract rules.
 
 ## Specs Loader

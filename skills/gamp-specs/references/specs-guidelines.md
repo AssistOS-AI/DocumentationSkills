@@ -27,12 +27,13 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Follow the `DS0xx-description.md` naming convention.
 - Keep the numbering contiguous with no missing intermediate files.
 - Always include `DS000-vision.md` and `DS001-coding-style.md`.
+- Always include exactly one `DS0xx-main-behavior.md` titled `Main Behavior`. Assign the next number required by the contiguous sequence and preserve existing DS identifiers when adding it to an established project.
 - Use frontmatter metadata with `id`, `title`, `status`, `owner`, and `summary` in every ordinary DS file.
-- Use `Introduction`, `Core Content`, `Decisions & Questions`, and `Conclusion` in every DS file.
-- In `Decisions & Questions`, use numbered Markdown subchapters such as `### Question #1: Why did we choose X?`.
-- Inside each numbered question subchapter, use `Response:` for resolved design choices and `Options:` for unresolved paths that still need selection.
-- When a numbered question is documented with multiple options, keep that area unimplemented in code until a human or agent selects one definitive option and updates the specification accordingly.
-- Treat `matrix.md` as a generated exception: it is derived from DS metadata and does not need the ordinary four-section structure.
+- Use `Introduction`, `Core Content`, and `Conclusion` in every DS file. Add subject-specific sections only when needed to express a distinct contract topic clearly.
+- Do not generate design-question sections, numbered questions, `Response:` blocks, or `Options:` blocks.
+- Convert existing question-and-answer material into declarative statements. Put resolved decisions into requirements, constraints, invariants, or rationale; state unresolved alternatives by separating confirmed behavior from the boundary that remains unspecified.
+- Do not implement behavior whose required choice remains unspecified. State that implementation boundary declaratively until an authoritative choice updates the specification.
+- Treat `matrix.md` as a generated exception: it is derived from DS metadata and does not need the ordinary three-section structure.
 - Add one DS file for each active skill in the repository.
 - Create additional DS files only when a distinct boundary, contract surface, or invariant set cannot be expressed cleanly inside an existing DS file.
 - Keep the set of specifications proportionate to the real scope of the repository.
@@ -40,6 +41,10 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Do not restate the same contract in multiple DS files unless one file is explicitly the source of truth and the other references it.
 - Make `DS001-coding-style.md` the canonical location for coding style, source layout, and modular test-organization rules.
 - Make `DS001-coding-style.md` the canonical location for file-size limits, line-length guidance, and `fileSizesCheck.sh` usage.
+- Derive the Main Behavior DS from the accepted handoff produced by `detect-main-behaviors` after it analyzes the project's purpose, source, documentation, tests, essential interfaces, architecture, and relevant development evidence.
+- Limit the Main Behavior DS to the project's central outcome and the accepted behaviors that realize it: primary end-to-end paths, broad project-spanning behaviors or components, essential APIs or commands, active contractual consequences of direction-changing decisions, and the architectural skeleton.
+- Exclude secondary features, utilities, optional integrations, narrow configuration, and implementation detail. Reference specialized DS files for deeper contracts instead of copying their content.
+- Express each main behavior as a declarative contract that identifies its role in the project purpose, initiating actor or trigger, principal path, observable result, and system-wide boundary or invariant.
 - In downstream projects that only consume imported skills, keep DS files focused on the host project. Do not add DS files whose subject is the imported skill catalog; those instructions stay inside the local skill folders.
 
 ## Writing Standard
@@ -50,7 +55,7 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Use lists only when the content is genuinely list-shaped.
 - Reuse stable project terminology rather than inventing a parallel taxonomy for the specs.
 - Keep identifiers, filenames, module names, and exact technical terms unchanged.
-- Define repository-specific terms before using them in a requirement or invariant. A contract may be concise, but it must not depend on vocabulary introduced in a later section or later DS file.
+- Give repository-specific terms a concise inline definition or an exact link to a canonical definition entry. A contract may be concise, but it must not require readers to infer specialized vocabulary from source code.
 - State the role and observable effect of a feature before specifying its internal constraints.
 - Use precise, professional language and make every claim defensible from project evidence.
 - Describe the required method directly and include the information another agent needs to reproduce the result.
@@ -62,8 +67,9 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Ensure each substantial requirement is defensible from code, repository guidance, or confirmed behavior.
 - If code behavior, repository guidance, and documentation disagree, prefer the most authoritative and currently defensible source.
 - Do not introduce speculative guarantees or contracts that the repository does not support.
-- When a conflict cannot be resolved confidently, state the narrower contract and add a numbered question in the affected DS file that captures the uncertainty or alternative paths.
+- When a conflict cannot be resolved confidently, state the narrower confirmed contract and describe the uncertainty or alternative paths as declarative limitations in the affected DS file.
 - The agent must not infer cross-module guarantees that are not explicitly established.
+- Do not add a behavior to the Main Behavior DS when `detect-main-behaviors` rejected it or could not support it with repository evidence.
 
 ## Default Outcome
 

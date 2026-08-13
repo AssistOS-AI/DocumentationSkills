@@ -7,18 +7,22 @@
     "docs-builder",
     "gamp-specs"
   ],
-  "dependsOn": [],
+  "dependsOn": [
+    "detect-main-behaviors"
+  ],
   "outputs": [
     "README.md",
     "AGENTS.md",
     "fileSizesCheck.sh",
     "docs/index.html",
     "docs/specs/",
-    "docs/specs/matrix.md"
+    "docs/specs/matrix.md",
+    "docs/specs/DS0xx-main-behavior.md"
   ],
   "entrypoints": [
     "SKILL.md",
     "examples/skillCatalog.mjs",
+    "references/diagrams-guidelines.md",
     "references/documentation-writing-guidelines.md",
     "references/docs-structure.md",
     "references/specs-guidelines.md",

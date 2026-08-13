@@ -38,9 +38,10 @@ function collectTargets(html) {
   ].map((match) => match[1]);
 }
 
-function stripHashAndQuery(target) {
-  const [withoutHash] = target.split('#');
-  return withoutHash;
+function splitTarget(target) {
+  const [pathAndQuery, anchor = ''] = target.split('#', 2);
+  const [rawPath, rawQuery = ''] = pathAndQuery.split('?');
+  return { rawPath, rawQuery, anchor };
 }
 
 async function fileExists(targetPath) {
@@ -75,7 +76,7 @@ async function verifyHtmlFile(filePath) {
       continue;
     }
 
-    const [rawPath, rawQuery = ''] = stripHashAndQuery(target).split('?');
+    const { rawPath, rawQuery, anchor } = splitTarget(target);
     const query = new URLSearchParams(rawQuery);
     const resolvedPath = rawPath
       ? resolve(resolutionBase, rawPath.startsWith('/') ? rawPath.slice(1) : rawPath)
@@ -84,6 +85,13 @@ async function verifyHtmlFile(filePath) {
     if (rawPath && !(await fileExists(resolvedPath))) {
       issues.push(`${filePath}: target ${target} resolves to missing file ${resolvedPath}.`);
       continue;
+    }
+
+    if (anchor && resolvedPath.endsWith('.html')) {
+      const targetHtml = rawPath ? await readFile(resolvedPath, 'utf8') : html;
+      if (!extractIds(targetHtml).has(anchor)) {
+        issues.push(`${filePath}: target ${target} references missing anchor #${anchor} in ${resolvedPath}.`);
+      }
     }
 
     if ((rawPath === 'specsLoader.html' || rawPath === '/specsLoader.html' || target.startsWith('specsLoader.html?')) && query.has('spec')) {

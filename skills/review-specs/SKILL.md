@@ -42,7 +42,7 @@ Return only the analysis report in the response, using these sections:
 2. **Executive assessment** — strongest qualities and highest-impact risks.
 3. **Syntax findings** — grouped by file; each finding has `error`, `warning`, or `recommendation` severity and concrete evidence.
 4. **Structure and navigation findings** — home page, primary/secondary hierarchy, reading guide, reachability, diagrams, and links.
-5. **Semantic findings** — why/what/how, terminology, new-user readability, coherence, contradictions, and diagram meaning.
+5. **Semantic findings** — why/what/how, `Definitions` coverage and links, terminology, new-user readability, coherence, contradictions, and diagram meaning.
 6. **Language and information-design findings** — bullets, section density, abstraction, vocabulary, and clarity.
 7. **Remediation guidance for gamp-specs** — ordered changes another run of `gamp-specs` should make.
 
@@ -53,7 +53,7 @@ If a category passes, state what was checked and that no issue was found. Every 
 - Never edit documentation, specifications, source code, navigation, or generated assets.
 - Never run a formatter, generator, repair command, or test that writes into the repository.
 - Never claim a checker passed unless it actually ran; distinguish static inspection from tool-backed validation.
-- Do not turn an intentionally open product contract into a defect; report it as an ambiguity and suggest a DS question only when useful.
+- Do not turn an intentionally open product contract into a defect. Report it as an ambiguity and recommend a declarative DS statement that separates confirmed behavior from the boundary that remains unspecified.
 - Never propose cosmetic rewrites, stylistic substitutions, or broad document
   regeneration for content that already meets the applicable requirements.
 - Keep the report in English unless the user explicitly requests another language.

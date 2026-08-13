@@ -38,17 +38,28 @@ Example of a stronger version:
 
 > “TaskRunner is a command-line application that lets analysts run reusable data-processing tasks. An analyst supplies an input file and selects a task; TaskRunner validates the input, runs the selected operation, and writes the result to an output file.”
 
-## 2. First-use terminology
+## 2. Definitions and terminology
 
-At the first occurrence of every project-specific term, acronym, component, or architectural concept, verify that the surrounding sentence gives a plain-language definition. A link to another page may provide depth, but it cannot replace a first-use explanation.
+First determine whether an HTML documentation page introduces any new project-specific terms, acronyms, named components, or architectural concepts. If it does, require a visible `Definitions` section covering those terms. If it introduces no new terminology, the section is optional and its absence is not a finding. Common language and standard platform terms do not need entries unless the project gives them a specialized meaning.
+
+For every term introduced by a page, verify all of the following:
+
+- the page's `Definitions` section contains a corresponding entry;
+- a locally defined term has a stable anchor and a concise, evidence-backed definition;
+- when another page owns the canonical definition, the local entry links to that exact page and definition anchor instead of duplicating potentially divergent wording;
+- every occurrence of the defined term outside the `Definitions` section links to the local or canonical definition anchor, including occurrences in headings, lists, captions, and callouts;
+- headings, lists, diagrams, captions, navigation labels, and callouts do not leave the reader without a usable path to the definition.
+
+Do not report an inline explanation as a defect merely because the page also has a `Definitions` section. Inline definitions remain useful when they preserve comprehension. The section is especially important when inserting the explanation into a sentence would interrupt the narrative.
 
 Examples:
 
-- Good: “A task module is a reusable package containing the instructions and optional code required to perform one type of operation.”
-- Weak: “The router invokes the task module.” If neither “router” nor “task module” has been defined, report both terms.
-- Weak: “The subsystem uses semantic mediation.” “Semantic mediation” is abstract unless the text explains which component transforms what data and for what result.
+- Good inline definition: “A <a href="#definition-task-module">task module</a> is a reusable package containing the instructions and optional code required to perform one type of operation.” The page also records `Task module` under `Definitions` with a stable anchor, and later occurrences use the same link.
+- Good linked definition: “The router invokes the <a href="#definition-task-module">task module</a>.” Every later occurrence of `task module` links to the same definition without interrupting the workflow.
+- Good canonical reference: the local `Definitions` entry says `Task module — See the definition on the Runtime page` and links to `runtime.html#definition-task-module`.
+- Weak: “The subsystem uses semantic mediation.” The page neither explains the term inline nor provides a linked, evidence-backed definition.
 
-When a term reappears after several sections or on an independently reachable page, check that a short reminder prevents ambiguity. Check for inconsistent names such as `Task Router`, `TaskRouter`, and `task router` when they refer to one identifier.
+When a term reappears after several sections, check that a short reminder or another definition link prevents ambiguity. Check for inconsistent names such as `Task Router`, `TaskRouter`, and `task router` when they refer to one identifier.
 
 ## 3. New-user comprehension and coherence
 
@@ -65,7 +76,7 @@ Example:
 
 > “The capability resolver escalates to deep execution after the review loop.”
 
-If the document has not defined “capability resolver”, “deep execution”, or “review loop”, report a coherence and terminology problem. Recommend introducing the actors and sequence before describing escalation.
+If the document has not defined or linked “capability resolver”, “deep execution”, or “review loop”, report a coherence and terminology problem. Recommend defining the actors inline where necessary and adding or linking their entries in the page's `Definitions` section.
 
 Check diagrams semantically as well as syntactically. A valid diagram that omits a required actor, reverses the data flow, or uses labels absent from the prose is a semantic defect.
 
@@ -124,7 +135,7 @@ Professional documentation can use technical terms, but technical style is not a
 
 ## 6. Main pages and DS pages
 
-Give the highest attention to the home page, principal feature pages, and DS pages. Check that DS `Core Content` states requirements and boundaries clearly, while `Decisions & Questions` records rationale or unresolved options without contradicting the contract. Check that the matrix title, summary, and status do not misrepresent the subject of the DS.
+Give the highest attention to the home page, principal feature pages, and DS pages. Check that DS `Core Content` states requirements, boundaries, rationale, confirmed limitations, and unresolved contract details as declarative statements. Report any retained question-and-answer design section and direct `gamp-specs` to convert resolved answers into requirements or rationale and unresolved material into statements that distinguish confirmed behavior from unspecified boundaries. Check that the matrix title, summary, and status do not misrepresent the subject of the DS.
 
 Report a DS issue when the prose is explanatory but never states what must, should, or may happen; report a user-documentation issue when a contract is technically precise but never explains why the reader should care or how the behavior appears in use.
 
@@ -136,7 +147,7 @@ Use this form:
 
 Example:
 
-`[warning] docs/architecture.html — “Processing components” — “execution capability” is used before the page explains whether it refers to a service, interface, or operation — a new reader cannot identify which component performs the work — define the term through one concrete actor, input, action, and result before listing capability categories.`
+`[warning] docs/architecture.html — “Processing components” — “execution capability” has no inline explanation, local definition entry, or canonical definition link — a new reader cannot identify whether it refers to a service, interface, or operation — add an evidence-backed entry under Definitions and link the term to it; retain an inline explanation if the distinction is needed immediately.`
 
 Separate confirmed comprehension failures from stylistic preferences. Omit
 stylistic preferences from findings and remediation guidance. If a page is clear and

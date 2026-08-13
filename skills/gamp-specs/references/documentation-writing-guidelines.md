@@ -12,11 +12,13 @@ Use this reference for every persistent document produced or updated by this ski
 
 ## Terms And Reading Order
 
-- Introduce a project-specific term, acronym, component name, or architectural concept with a plain-language definition at or before its first use.
-- Preserve exact code identifiers, but explain what each identifier represents when a new reader first encounters it.
-- Do not rely on a definition that appears later in the page or in a later document in the stated reading order.
-- Make every independently accessible page explain the concepts required to understand that page. A link may provide more detail, but it does not replace the first-use explanation.
-- Do not present a list of unfamiliar terms and explain them only afterward. Define each new item inline, or introduce the concepts in prose before listing them.
+- Preserve exact code identifiers and use verified plain-language definitions for project-specific terms, acronyms, component names, and architectural concepts.
+- Define a term inline when the explanation is part of the narrative or needed immediately to understand the surrounding behavior.
+- When an inline definition would interrupt the narrative, use the page's `Definitions` section instead of inserting a parenthetical or detour into the prose.
+- When an HTML documentation page introduces one or more new project-specific concepts or terms, add a `Definitions` section covering them. A page that introduces no new terminology does not need this section. Give every local definition a stable anchor.
+- Link every occurrence of a defined project-specific term outside the `Definitions` section to its local definition anchor. If another page owns the canonical definition, link every occurrence and the corresponding local `Definitions` entry directly to that page's exact definition anchor. Do not duplicate wording that may diverge from the canonical definition.
+- A linked definition is an alternative to interrupting the narrative, not a prohibition on useful inline definitions. A page may both define a central term inline and record it in `Definitions` for scanning and direct linking.
+- Do not invent definitions that the implementation or authoritative project material cannot support. Remove or narrow unsupported terminology.
 - Repeat a short explanation when an important concept returns after several sections or takes on a new role. Do not repeat definitions mechanically when the meaning remains clear from nearby text.
 
 ## Concrete Language
@@ -38,7 +40,8 @@ Use this reference for every persistent document produced or updated by this ski
 ## Review Method
 
 - Read each document from start to finish in the order available to its intended reader.
-- At every first occurrence of a project-specific term, confirm that the surrounding sentence gives enough information to understand it.
-- Check headings, lists, diagrams, captions, navigation labels, and callouts as well as body prose; they must not introduce unexplained concepts.
-- Check transitions between documents in any mandatory reading order. A later document may rely only on concepts that an earlier document has already introduced.
+- For every HTML page, inventory the project-specific concepts it introduces. If the page introduces any, confirm that it has a `Definitions` section and that each new concept appears there; do not require the section on a page with no new terminology.
+- Confirm that every occurrence of each defined project-specific term outside the `Definitions` section links to its verified local or cross-page definition anchor, including occurrences in headings, lists, captions, and callouts.
+- Check headings, lists, diagrams, captions, navigation labels, and callouts as well as body prose. Their unfamiliar terms must be represented by the page's definition links or definitions section.
+- Check cross-page definition links and confirm that both the target page and definition anchor exist.
 - Rewrite sentences that remain understandable only to a current maintainer or only after reading source code.

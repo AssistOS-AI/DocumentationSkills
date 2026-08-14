@@ -12,7 +12,8 @@
   ],
   "entrypoints": [
     "SKILL.md",
-    "DS.md"
+    "DS.md",
+    "examples/main-behavior-example.md"
   ],
   "selfContained": true
 }

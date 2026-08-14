@@ -58,6 +58,16 @@ A candidate does not become a main behavior merely because it is complex, has ma
 - Do not infer a system-wide behavior from a component name or directory name.
 - Mark confidence as `high`, `medium`, or `low`. Do not present a low-confidence candidate as accepted without explaining the missing evidence.
 
+### 6. Use concrete, plain language
+
+- Name the real user, command, route, environment variable, file, folder, process, service, or product component that acts. State what it receives, what it does, and what result or restriction follows.
+- Do not replace a concrete behavior with abstract phrases such as “capability surface,” “execution layer,” “orchestration mechanism,” “runtime mediation,” or “context propagation.” Use such a term only when it is an exact project concept, and immediately explain the concrete action it names.
+- Write each accepted behavior so a product user, operator, or integrator can understand it without reading the source code. Prefer short declarative sentences and direct verbs.
+- Treat important commands, routes, environment variables, mounted paths, lifecycle actions, profiles, and public files as functional interface surfaces when users, operators, agents, or integrations depend on their behavior. Do not discard them merely because they have technical names.
+- Distinguish interface-level facts from low-level implementation details. Include the named interface, input, outcome, access rule, persistence rule, or user-visible consequence; omit private helper calls, incidental data structures, and step-by-step code mechanics unless they create a major functional effect.
+- State current behavior directly. Do not narrate how an older document was wrong, answer editorial notes, or describe implementation progress inside the proposed DS003 content.
+- Read `examples/main-behavior-example.md` before preparing the DS003 component handoff. Use it as the concrete-language and information-structure model, not as a source of facts for another project.
+
 ## Handoff To GAMP Specs
 
 Return the analysis in this order:
@@ -90,8 +100,14 @@ Keep the handoff factual and compact. Do not write the final DS, assign a DS num
 - Confirm the accepted set covers the business behaviors that materially affect the user, the hidden mechanisms that materially affect essential functionality, and the special behaviors that distinguish the project whenever repository evidence supports them.
 - Confirm each hidden behavior states its major functional consequence instead of exposing ordinary implementation detail.
 - Confirm each proposed DS003 component has a distinct chapter scope and, when multiple components exist, a concise two-column table row.
+- Confirm every component name and explanation identifies concrete actors, interfaces, actions, results, or restrictions and passes the plain-language test.
+- Confirm important routes, commands, variables, paths, lifecycle actions, and other interface surfaces were evaluated by their effect on users and integrations rather than dismissed as technical detail.
 - Confirm essential commands and APIs were evaluated even when their implementations are small.
 - Confirm broad components and architectural elements were evaluated by their system-wide effect rather than their size alone.
 - Confirm active direction-changing decisions describe their present contractual consequence.
 - Confirm the accepted set contains only the project's defining behaviors and is not a general feature inventory.
 - Confirm all claims have repository-relative evidence and all uncertainties are explicit.
+
+## Example
+
+- `examples/main-behavior-example.md` demonstrates a complete, component-structured DS003 written with concrete names, simple explanations, and interface-level tables limited to two columns.

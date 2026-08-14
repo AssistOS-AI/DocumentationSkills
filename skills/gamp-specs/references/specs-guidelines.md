@@ -68,6 +68,9 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Do not use a table with more than two columns anywhere in `DS003-main-behavior.md`.
 - In each component chapter, explain the affected user or consuming actor and business outcome before internal execution. Then state the trigger, principal behavior, observable result, major hidden mechanism and consequence when applicable, project-specific special behavior when applicable, and governing boundary or invariant.
 - Include hidden behavior only when evidence shows a major effect on essential functionality. Do not promote routine helpers or low-level implementation detail into component chapters.
+- Name the actual product actor and interface in every component chapter. Commands, routes, environment variables, mounted paths, lifecycle actions, profiles, and public files belong in DS003 when their behavior affects a user, operator, agent, or integration.
+- Use plain language and direct verbs. Do not substitute phrases such as “capability surface,” “execution layer,” “runtime mediation,” or “context propagation” for a concrete statement of who does what and what result follows.
+- Separate interface-level facts from code internals. Preserve names, inputs, outputs, access rules, persistence rules, and functional consequences; omit private helper calls and incidental data structures unless their behavior has a major effect.
 
 ## Writing Standard
 

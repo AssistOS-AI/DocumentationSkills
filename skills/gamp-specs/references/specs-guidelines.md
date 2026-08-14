@@ -46,10 +46,28 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Make `DS001-coding-style.md` the canonical location for coding style, source layout, and modular test-organization rules.
 - Make `DS001-coding-style.md` the canonical location for file-size limits, line-length guidance, and `fileSizesCheck.sh` usage.
 - Derive the Main Behavior DS from the accepted handoff produced by `detect-main-behaviors` after it analyzes the project's purpose, source, documentation, tests, essential interfaces, architecture, and relevant development evidence.
-- Limit the Main Behavior DS to the project's central outcome and the accepted behaviors that realize it: primary end-to-end paths, broad project-spanning behaviors or components, essential APIs or commands, active contractual consequences of direction-changing decisions, and the architectural skeleton.
+- Limit the Main Behavior DS to the project's central outcome and the accepted behaviors that realize or materially determine it: user-impacting business behaviors, major hidden functional behaviors, project-special behaviors, primary end-to-end paths, broad project-spanning behaviors or components, essential APIs or commands, active contractual consequences of direction-changing decisions, and the architectural skeleton.
 - Exclude secondary features, utilities, optional integrations, narrow configuration, and implementation detail. Reference specialized DS files for deeper contracts instead of copying their content.
-- Express each main behavior as a declarative contract that identifies its role in the project purpose, initiating actor or trigger, principal path, observable result, and system-wide boundary or invariant.
+- Express each main behavior as a declarative contract that identifies its affected user or consuming actor, business or functional outcome, role in the project purpose, initiating actor or trigger, principal path, observable result, major hidden functional consequence when applicable, distinctive project behavior when applicable, and system-wide boundary or invariant.
 - In downstream projects that only consume imported skills, keep DS files focused on the host project. Do not add DS files whose subject is the imported skill catalog; those instructions stay inside the local skill folders.
+
+## DS003 Special Structure
+
+- Keep `Introduction`, `Core Content`, and `Conclusion` as the only top-level content sections in `DS003-main-behavior.md`.
+- Inside `Core Content`, create one `###` chapter for each accepted Main Behavior component. Use the detector's ordered component names as the chapter headings and keep each chapter's scope distinct.
+- When two or more components exist, place a `### Main Behavior Components` summary at the beginning of `Core Content` with exactly this table shape:
+
+```markdown
+| Name | Explanation |
+| --- | --- |
+| Component name | Concise explanation of its user, business, or major functional impact. |
+```
+
+- Add exactly one summary-table row per component. Do not add classification, status, owner, evidence, or other columns.
+- Omit the summary table when only one component exists; still give that component its own `###` chapter.
+- Do not use a table with more than two columns anywhere in `DS003-main-behavior.md`.
+- In each component chapter, explain the affected user or consuming actor and business outcome before internal execution. Then state the trigger, principal behavior, observable result, major hidden mechanism and consequence when applicable, project-specific special behavior when applicable, and governing boundary or invariant.
+- Include hidden behavior only when evidence shows a major effect on essential functionality. Do not promote routine helpers or low-level implementation detail into component chapters.
 
 ## Writing Standard
 

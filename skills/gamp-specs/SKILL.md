@@ -65,6 +65,8 @@ The generated documentation must describe the product as it is intended to exist
 - Give every `DSxxx-*.md` file exactly two frontmatter fields: `title` and `summary`. Set `title` to the exact filename stem, including its DS number and name, such as `DS003-main-behavior`. Derive the identifier from the filename; never add a separate `id` field.
 - Remove `id`, `status`, and `owner` fields and every other unsupported field from existing DS frontmatter. Also remove `Status` and `Owner` headings, sections, labels, metadata blocks, badges, and standalone values from DS content. Do not generate replacements for them elsewhere.
 - Normalize all existing DS material into declarative requirements, rationale, constraints, invariants, limitations, or explicitly unspecified boundaries inside `Core Content`.
+- Keep every prose block in each DS file unwrapped in the Markdown source: do not insert hard line breaks at an arbitrary column inside paragraphs, list items, captions, or other text blocks. Let the specs viewer wrap text naturally only when it reaches the boundary of its full-width containing box.
+- Ensure the rendered DS content uses the full available width of its own box. Do not narrow the specification text container with a fixed or centered `max-width`, oversized padding, fixed label widths, or another artificial width constraint.
 - When code changes alter behavior, interfaces, architecture, workflows, or constraints, update both the HTML documentation and the DS specifications to match the implementation.
 - Record architectural interpretations, high-risk assumptions, conflict resolutions, and implementation alternatives directly inside the affected DS files as declarative contract statements.
 - Keep repository example code inside the relevant skill folders rather than introducing a shared root `src/` tree that copied skills would not carry with them.
@@ -75,7 +77,7 @@ The generated documentation must describe the product as it is intended to exist
 - Follow `references/diagrams-guidelines.md` for diagram selection, captions, actor grouping, visual categories, Mermaid markup, and static asset placement.
 - Put each diagram's single centered, italic caption below the diagram. Do not place a separate diagram title above it, and do not frame the whole diagram in a border, background box, card, panel, or shadow.
 - When an HTML documentation page introduces new project-specific terms or concepts, add a `Definitions` section. Link every eligible occurrence of each defined term outside that section to its stable local definition anchor, or to the exact canonical definition anchor on another page when that page owns the definition; retain inline definitions when they support the narrative. Never add definition links to page titles or section headings. Do not require the section on pages that introduce no new terminology.
-- Do not force early text wrapping with manual line breaks, narrow fixed widths, or newline-preserving styles. Let text use the full width of its box and wrap naturally only at the box boundary.
+- Keep every prose block unwrapped in the HTML source and do not force early text wrapping with manual line breaks, narrow fixed widths, or newline-preserving styles. Let text use the full width of its box and wrap naturally only at the box boundary.
 - Make the main documentation panel use the full available page width. Do not constrain it with a centered `max-width`; use compact page and panel padding equivalent to `1rem` on desktop, reduced further on narrow screens.
 - Keep the narrative consistent with the project’s role and interfaces, especially any agent or system responsibilities described in `AGENTS.md`.
 - Review the actual contents of each skill folder and document the local artifacts, dependencies, conventions, and responsibilities instead of relying on shallow summaries.
@@ -139,6 +141,7 @@ The generated documentation must describe the product as it is intended to exist
 - Run the documentation link verifier after documentation work so shared navigation, specs-loader links, and partial includes stay valid.
 - When the HTML documentation uses relative asset paths, `fetch()`-loaded partials, or other browser-resolved resources, run `node scripts/verify_static_site.js <docs-dir>` against the generated `docs/` folder. Add `--path` checks for project-specific resources when needed.
 - Verify that each affected DS file states important rationale, tradeoffs, limitations, and contract boundaries declaratively in `Core Content`.
+- Verify that documentation and DS prose are not hard-wrapped in source files, that no presentation rule forces an early wrap, and that both HTML and rendered DS text use the full available width of their own containing boxes.
 - Verify that every `DSxxx-*.md` frontmatter contains exactly `title` and `summary`, that `title` equals the filename stem, and that no separate `id`, `status`, `owner`, or other field exists. Also verify that no `Status` or `Owner` section, label, badge, or equivalent standalone metadata remains.
 - Verify each applicable README onboarding procedure against the current source, manifest, configuration, and executable entry points.
 - Verify that README, HTML pages, and DS files describe the final product contract and contain no repository-progress commentary. Express implementation alternatives and unspecified contract details as bounded declarative statements in the affected DS file.
@@ -155,7 +158,7 @@ The generated documentation must describe the product as it is intended to exist
 - Confirm referenced static assets are stored under `docs/assets/` rather than embedded into the HTML files.
 - Confirm the main documentation panel spans the available page width, has no fixed or centered maximum width, and uses compact responsive outer and inner padding.
 - Confirm every diagram complies with `references/diagrams-guidelines.md`.
-- Confirm every diagram caption is centered below the diagram, the diagram has no enclosing visual frame, and text is not manually wrapped before reaching its container boundary.
+- Confirm every diagram caption is centered below the diagram, the diagram has no enclosing visual frame, and documentation and DS text is not manually wrapped before reaching its container boundary.
 - Ensure every ordinary spec file follows the `DS0xx-description.md` convention, includes only the standard `Introduction`, `Core Content`, and `Conclusion` content structure, and fits into the required numbering sequence.
 - Confirm every DS file uses only `title: DSxxx-name` and `summary` frontmatter and omits separate `ID`, `Status`, and `Owner` metadata completely, including frontmatter, headings, metadata panels, badges, and body labels.
 - Confirm the Main Behavior DS contains only defining project behaviors, stays aligned with the detector's evidence, and refers readers to specialized DS files for lower-level detail.

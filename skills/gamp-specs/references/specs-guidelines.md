@@ -54,6 +54,8 @@ Write DS files as contracts that coding agents can follow when they change the p
 ## Writing Standard
 
 - Keep the prose in English.
+- Keep each paragraph, list item, caption, and other prose block on one logical source line. Do not hard-wrap DS Markdown at an arbitrary column or insert manual line breaks to shorten a rendered line.
+- Make rendered DS text use the full available width of its own containing box. Do not impose a fixed or centered `max-width`, oversized padding, fixed label width, newline-preserving style, or another constraint that causes early wrapping. Allow natural wrapping only at the containing box boundary.
 - Prefer narrative requirement-style sections over long bullet-heavy formatting.
 - Use complete sentences that express constraints and invariants clearly.
 - Use lists only when the content is genuinely list-shaped.

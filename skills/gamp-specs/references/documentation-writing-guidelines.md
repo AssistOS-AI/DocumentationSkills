@@ -41,8 +41,8 @@ Use this reference for every persistent document produced or updated by this ski
 
 ## Text Flow
 
-- Do not insert manual line breaks or hard-coded early wrapping in headings, paragraphs, lists, captions, callouts, diagram labels, or other text containers.
-- Let text flow across the full available width of its box and wrap naturally only when it reaches that box's boundary. Do not narrow a text container merely to force shorter lines.
+- Keep each prose block unwrapped in its HTML or Markdown source. Do not insert manual line breaks, hard-wrap at a chosen column, or use hard-coded early wrapping in headings, paragraphs, lists, captions, callouts, diagram labels, DS content, or other text containers.
+- Let documentation and DS text flow across the full available width of its own box and wrap naturally only when it reaches that box's boundary. Do not narrow a text container merely to force shorter lines.
 
 ## Comparisons
 
@@ -58,6 +58,6 @@ Use this reference for every persistent document produced or updated by this ski
 - Confirm that every eligible occurrence of each defined project-specific term outside the `Definitions` section links to its verified local or cross-page definition anchor. Titles and section headings are required exceptions and must remain unlinked.
 - Check headings, lists, diagrams, captions, navigation labels, and callouts as well as body prose. Represent unfamiliar heading and title terms in the page's definitions section, and place their definition links in relevant body prose rather than inside the heading or title.
 - Check cross-page definition links and confirm that both the target page and definition anchor exist.
-- Confirm text uses the full available width of its container and contains no manual or artificially early wrapping.
+- Confirm documentation and DS text uses the full available width of its own container, remains unwrapped in source prose blocks, and contains no manual or artificially early wrapping.
 - Search all persistent documentation for documentation-skill names and authoring-provenance language. Remove each occurrence that describes an internal authoring tool rather than implemented product functionality.
 - Rewrite sentences that remain understandable only to a current maintainer or only after reading source code.

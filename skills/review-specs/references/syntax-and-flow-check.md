@@ -32,6 +32,8 @@ Do not require every site to use exactly this shape. Report a problem when a new
 
 Inspect each HTML document for a valid document skeleton, balanced tags, valid nesting, meaningful `lang`, charset and viewport metadata, and consistent title/navigation structure. Check local `href`, `src`, stylesheet, script, image, partial, and loader targets. Confirm that shared fragments are loaded using the mechanism the page actually includes.
 
+Inspect source and rendered text flow for both HTML documentation and specifications. Prose blocks must not be hard-wrapped at an arbitrary source column or split with manual `<br>` elements. Text must use the full available width of its own containing box and wrap naturally only at that boundary. Report newline-preserving styles, narrow fixed widths, centered `max-width` constraints, oversized padding, fixed label widths, or equivalent rules that force documentation or rendered DS text to wrap early. Inspect the specs loader and shared stylesheet as part of the DS check because they determine the rendered width of `docs/specs/*.md`.
+
 When an HTML documentation page contains a `Definitions` section, confirm that it has a stable section anchor, that each local definition has a unique anchor, and that local and cross-page definition links resolve to the intended page and exact anchor. Do not treat the absence of the section as a syntax defect; the semantic review determines whether the page introduces new terminology and therefore requires it. Treat duplicate definition anchors and broken definition links as structural defects.
 
 Examples:
@@ -58,6 +60,8 @@ Check SVG/XML assets for well-formed markup and verify that referenced assets ar
 ## 3. Markdown syntax and heading structure
 
 Inspect `README.md`, `AGENTS.md`, every Markdown file under `docs/`, and every DS file. Check front matter delimiters and fields where used, closed code fences, valid links, table delimiters, list indentation, and heading hierarchy. A heading level may occasionally be skipped for a deliberate structural reason, but unexplained jumps should be reported.
+
+Check every prose paragraph, list item, caption, and other text block for source-level hard wrapping. A logical prose block must remain on one source line unless Markdown syntax requires a boundary. Report arbitrary column wrapping and manual line breaks as errors, and direct remediation to join the affected prose without changing its wording.
 
 Check whether headings make sense for the content that follows. A heading called `Runtime` followed by only repository history is misleading even if the Markdown parses.
 

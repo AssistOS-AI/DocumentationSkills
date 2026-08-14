@@ -92,6 +92,8 @@ Check diagrams semantically as well as syntactically. A valid diagram that omits
 
 Documentation should use complete sentences with a subject and predicate for explanation. Bullet points are appropriate for short enumerations, compact option sets, file lists, or quick checks. They should not replace the argument that explains how the listed items relate.
 
+Preserve each prose block as one unwrapped logical line in HTML and Markdown source. Verify that documentation and rendered DS text can occupy the full available width of their own boxes and wrap only when they reach the box boundary. Treat manual line breaks, hard wrapping at an arbitrary column, or an artificially narrowed text container as a compliance defect rather than a stylistic preference.
+
 Example of excessive bullets:
 
 ```markdown

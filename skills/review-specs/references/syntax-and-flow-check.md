@@ -32,9 +32,11 @@ Do not require every site to use exactly this shape. Report a problem when a new
 
 Inspect each HTML document for a valid document skeleton, balanced tags, valid nesting, meaningful `lang`, charset and viewport metadata, and consistent title/navigation structure. Check local `href`, `src`, stylesheet, script, image, partial, and loader targets. Confirm that shared fragments are loaded using the mechanism the page actually includes.
 
+Inspect the header navigation as a mandatory submenu system. Every top-level control must be a button that owns a non-empty submenu, and every documentation destination must appear inside exactly one subject-based submenu. Report direct top-level header links, buttons without child panels, links outside submenus, empty submenus, duplicate destinations, and submenu labels that do not describe their contents as errors. Permit a one-item submenu only when that subject has one valid destination. Verify the same menu order, groups, controls, and destinations on every HTML page.
+
 Inspect source and rendered text flow for both HTML documentation and specifications. Prose blocks must not be hard-wrapped at an arbitrary source column or split with manual `<br>` elements. Text must use the full available width of its own containing box and wrap naturally only at that boundary. Report newline-preserving styles, narrow fixed widths, centered `max-width` constraints, oversized padding, fixed label widths, or equivalent rules that force documentation or rendered DS text to wrap early. Inspect the specs loader and shared stylesheet as part of the DS check because they determine the rendered width of `docs/specs/*.md`.
 
-When an HTML documentation page contains a `Definitions` section, confirm that it has a stable section anchor, that each local definition has a unique anchor, and that local and cross-page definition links resolve to the intended page and exact anchor. Do not treat the absence of the section as a syntax defect; the semantic review determines whether the page introduces new terminology and therefore requires it. Treat duplicate definition anchors and broken definition links as structural defects.
+Confirm that `docs/wiki.html` exists as the single canonical terminology page and that ordinary documentation pages contain no local `Definitions` section. Verify that every wiki entry has a unique, stable `definition-...` anchor and that all HTML and DS term links resolve to the intended wiki entry. Treat missing or duplicate wiki anchors, broken wiki links, local definition sections, and competing definition pages as structural defects.
 
 Examples:
 
@@ -42,7 +44,7 @@ Examples:
 - Report a `warning` when one primary page has a different navigation model from all others and no reason is given.
 - Report a `recommendation` when a long secondary page has no breadcrumb or link back to its parent, even though the reader can technically reach it.
 
-Check Mermaid blocks separately. A Mermaid diagram must use the expected `<pre class="mermaid">` form (or the repository's documented equivalent), begin with a supported diagram declaration such as `flowchart`, `sequenceDiagram`, or `stateDiagram-v2`, and contain syntactically valid statements. Verify that unfamiliar labels are covered by the page's `Definitions` section or a valid canonical definition link and that the diagram agrees with the surrounding prose.
+Check Mermaid blocks separately. A Mermaid diagram must use the expected `<pre class="mermaid">` form (or the repository's documented equivalent), begin with a supported diagram declaration such as `flowchart`, `sequenceDiagram`, or `stateDiagram-v2`, and contain syntactically valid statements. Verify that unfamiliar labels have detailed entries on `docs/wiki.html` and usable canonical links from the surrounding content or supported diagram interaction, and that the diagram agrees with the surrounding prose.
 
 Example diagram defect:
 
@@ -110,6 +112,8 @@ Check:
 - a coherent specification entry point and matrix;
 - a documentation map or reading guide, when present, that matches actual links;
 - no duplicated primary navigation systems competing with one another;
+- `Wiki` and `Specifications` entries inside header submenus on every HTML page;
+- no direct top-level header links and no top-level header button without a submenu;
 - stable breadcrumbs or equivalent orientation on deep pages.
 
 Example finding:

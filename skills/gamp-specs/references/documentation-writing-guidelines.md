@@ -20,15 +20,14 @@ Use this reference for every persistent document produced or updated by this ski
 
 ## Terms And Reading Order
 
-- Preserve exact code identifiers and use verified plain-language definitions for project-specific terms, acronyms, component names, and architectural concepts.
-- Define a term inline when the explanation is part of the narrative or needed immediately to understand the surrounding behavior.
-- When an inline definition would interrupt the narrative, use the page's `Definitions` section instead of inserting a parenthetical or detour into the prose.
-- When an HTML documentation page introduces one or more new project-specific concepts or terms, add a `Definitions` section covering them. A page that introduces no new terminology does not need this section. Give every local definition a stable anchor.
-- Link every occurrence of a defined project-specific term outside the `Definitions` section to its local definition anchor, except occurrences in page titles and section headings. If another page owns the canonical definition, link eligible occurrences and the corresponding local `Definitions` entry directly to that page's exact definition anchor. Do not duplicate wording that may diverge from the canonical definition.
-- Keep page titles and section headings as plain, unlinked text. Never wrap a title, heading, or a word within one in a definition link; provide the definition link in the first relevant body-text occurrence instead.
-- A linked definition is an alternative to interrupting the narrative, not a prohibition on useful inline definitions. A page may both define a central term inline and record it in `Definitions` for scanning and direct linking.
+- Preserve exact code identifiers and record verified plain-language definitions for project-specific terms, acronyms, component names, and architectural concepts on the single canonical `docs/wiki.html` page.
+- Do not create a `Definitions` section on an ordinary documentation page. Move supported local definitions into the wiki and remove duplicate entries from the original page.
+- Give each wiki term a stable `definition-...` anchor and a detailed explanation supported by the implementation or authoritative project material. Cover the term's meaning, purpose, users or owners, behavior or workflow role, important relationships, and confirmed boundaries or limitations. Do not reduce an entry to a short gloss when more verified context exists.
+- Link every eligible occurrence of a defined project-specific term in documentation prose and DS content to its exact canonical wiki anchor. Do not duplicate separate canonical definitions on feature pages.
+- Keep page titles and section headings as plain, unlinked text. Never wrap a title, heading, or a word within one in a wiki-definition link; provide the link in the first relevant body-text occurrence instead.
+- Retain a useful inline explanation when readers need immediate context, but use it only as narrative support. It never replaces or shortens the detailed canonical wiki entry.
 - Do not invent definitions that the implementation or authoritative project material cannot support. Remove or narrow unsupported terminology.
-- Repeat a short explanation when an important concept returns after several sections or takes on a new role. Do not repeat definitions mechanically when the meaning remains clear from nearby text.
+- Repeat brief contextual guidance when an important concept returns after several sections or takes on a new role. Do not reproduce the canonical wiki definition.
 
 ## Concrete Language
 
@@ -54,10 +53,10 @@ Use this reference for every persistent document produced or updated by this ski
 ## Review Method
 
 - Read each document from start to finish in the order available to its intended reader.
-- For every HTML page, inventory the project-specific concepts it introduces. If the page introduces any, confirm that it has a `Definitions` section and that each new concept appears there; do not require the section on a page with no new terminology.
-- Confirm that every eligible occurrence of each defined project-specific term outside the `Definitions` section links to its verified local or cross-page definition anchor. Titles and section headings are required exceptions and must remain unlinked.
-- Check headings, lists, diagrams, captions, navigation labels, and callouts as well as body prose. Represent unfamiliar heading and title terms in the page's definitions section, and place their definition links in relevant body prose rather than inside the heading or title.
-- Check cross-page definition links and confirm that both the target page and definition anchor exist.
+- Inventory the project-specific concepts used across all HTML and DS files. Confirm that `docs/wiki.html` contains one detailed, evidence-backed entry with a stable anchor for each concept and that ordinary pages contain no local `Definitions` section.
+- Confirm that every eligible occurrence of each defined project-specific term links to its exact wiki anchor. Titles and section headings are required exceptions and must remain unlinked.
+- Check prose, lists, diagrams, captions, and callouts. Represent unfamiliar title or heading terms on the wiki, and place their wiki links in relevant body prose rather than inside the title or heading.
+- Check every wiki link and confirm that both `docs/wiki.html` and the exact definition anchor exist.
 - Confirm documentation and DS text uses the full available width of its own container, remains unwrapped in source prose blocks, and contains no manual or artificially early wrapping.
 - Search all persistent documentation for documentation-skill names and authoring-provenance language. Remove each occurrence that describes an internal authoring tool rather than implemented product functionality.
 - Rewrite sentences that remain understandable only to a current maintainer or only after reading source code.

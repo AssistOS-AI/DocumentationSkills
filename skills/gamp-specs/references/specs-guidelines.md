@@ -61,7 +61,7 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Use lists only when the content is genuinely list-shaped.
 - Reuse stable project terminology rather than inventing a parallel taxonomy for the specs.
 - Keep identifiers, filenames, module names, and exact technical terms unchanged.
-- Give repository-specific terms a concise inline definition or an exact link to a canonical definition entry. A contract may be concise, but it must not require readers to infer specialized vocabulary from source code.
+- Link repository-specific terms to their detailed canonical entries on `docs/wiki.html`. A DS may retain brief inline context for immediate readability, but it must not create a competing definition or require readers to infer specialized vocabulary from source code.
 - State the role and observable effect of a feature before specifying its internal constraints.
 - Use precise, professional language and make every claim defensible from project evidence.
 - Describe the required method directly and include the information another agent needs to reproduce the result.

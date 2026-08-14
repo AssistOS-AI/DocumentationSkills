@@ -36,8 +36,10 @@ Read both references before performing the review:
 3. Follow `semantics-check.md` completely. Read the home page, primary pages, and specifications from beginning to end as a new user.
 4. Inspect every `DSxxx-*.md` file for its frontmatter contract. It must contain exactly `title` and `summary`, and `title` must equal the exact filename stem. Report a separate `id`, `status`, `owner`, or any other field, plus any `Status` or `Owner` heading, section, label, badge, metadata block, or standalone value. Direct `gamp-specs` to remove unsupported metadata without relocation.
 5. Inspect documentation and DS source prose for hard wrapping, manual line breaks, and newline-preserving presentation. Verify that HTML documentation and rendered DS text use the full available width of their own containing boxes and wrap naturally only at the box boundary; report narrow fixed widths, centered `max-width` constraints, oversized padding, fixed label widths, and equivalent early-wrap causes.
-6. Search the entire review surface for internal documentation-skill names and authoring-provenance language. Distinguish product functionality from tools used only to author the documentation.
-7. Produce the report in the required order below. Do not apply any remediation during the review.
+6. Verify that `docs/wiki.html` is the single canonical terminology page, every project-specific term has one detailed entry with a stable anchor, and eligible occurrences in documentation and DS content link to that exact anchor. Report every page-local `Definitions` section for consolidation into the wiki.
+7. Verify that every top-level header control is a submenu button, every button owns a non-empty submenu, and every documentation destination appears inside exactly one subject-based submenu. Report direct top-level header links, destinations outside submenus, missing submenus, and inconsistent submenu structures.
+8. Search the entire review surface for internal documentation-skill names and authoring-provenance language. Distinguish product functionality from tools used only to author the documentation.
+9. Produce the report in the required order below. Do not apply any remediation during the review.
 
 ## Report format
 
@@ -47,7 +49,7 @@ Return only the analysis report in the response, using these sections:
 2. **Executive assessment** — strongest qualities and highest-impact risks.
 3. **Syntax findings** — grouped by file; each finding has `error`, `warning`, or `recommendation` severity and concrete evidence.
 4. **Structure and navigation findings** — home page, primary/secondary hierarchy, reading guide, reachability, diagrams, and links.
-5. **Semantic findings** — why/what/how, `Definitions` coverage and links, terminology, new-user readability, coherence, contradictions, and diagram meaning.
+5. **Semantic findings** — why/what/how, wiki coverage and links, terminology, new-user readability, coherence, contradictions, and diagram meaning.
 6. **Language and information-design findings** — bullets, section density, abstraction, vocabulary, and clarity.
 7. **Remediation guidance for gamp-specs** — ordered changes another run of `gamp-specs` should make.
 
@@ -64,4 +66,6 @@ If a category passes, state what was checked and that no issue was found. Every 
 - Never approve or recommend retaining a reference to a documentation skill solely because it was used to create or review the documentation. Report that reference as prohibited internal-tool leakage and direct the remediation to remove it without replacing it with another provenance statement.
 - Treat a missing or mismatched `title`, a missing `summary`, every separate `id`, `status`, or `owner` field, every other unsupported frontmatter field, and every `Status` or `Owner` section, label, badge, metadata block, or standalone value in a `DSxxx-*.md` file as an error. Require `title` to equal the filename stem and direct remediation to delete unsupported metadata, not rename, relocate, or reproduce it elsewhere.
 - Treat source-level hard wrapping or presentation that prevents documentation or DS text from using the full width of its own box as an error. Require prose blocks to remain unwrapped in source and permit natural wrapping only at the containing box boundary.
+- Treat a missing `docs/wiki.html`, a local `Definitions` section, a missing or shallow wiki entry, or a term link that does not target the exact canonical wiki anchor as an error. Require detailed entries that explain meaning, purpose, users or owners, behavior, relationships, and confirmed boundaries or limitations.
+- Treat any direct top-level header link, header control without a submenu, empty submenu, destination outside a submenu, or inconsistent submenu grouping as an error. Require every top-level header control to be a submenu button and every destination to live inside exactly one subject-based submenu; permit a one-item submenu only when its subject has one valid destination.
 - Keep the report in English unless the user explicitly requests another language.

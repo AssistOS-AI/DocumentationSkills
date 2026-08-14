@@ -46,28 +46,29 @@ Example of a stronger version:
 
 > “TaskRunner is a command-line application that lets analysts run reusable data-processing tasks. An analyst supplies an input file and selects a task; TaskRunner validates the input, runs the selected operation, and writes the result to an output file.”
 
-## 2. Definitions and terminology
+## 2. Wiki and terminology
 
-First determine whether an HTML documentation page introduces any new project-specific terms, acronyms, named components, or architectural concepts. If it does, require a visible `Definitions` section covering those terms. If it introduces no new terminology, the section is optional and its absence is not a finding. Common language and standard platform terms do not need entries unless the project gives them a specialized meaning.
+Require one canonical terminology page at `docs/wiki.html`. Ordinary HTML pages must not contain local `Definitions` sections, and the repository must not split canonical definitions across multiple feature pages. Common language and standard platform terms need wiki entries only when the project assigns them a specialized meaning.
 
-For every term introduced by a page, verify all of the following:
+For every project-specific term, acronym, named component, or architectural concept used in HTML documentation or DS content, verify all of the following:
 
-- the page's `Definitions` section contains a corresponding entry;
-- a locally defined term has a stable anchor and a concise, evidence-backed definition;
-- when another page owns the canonical definition, the local entry links to that exact page and definition anchor instead of duplicating potentially divergent wording;
-- every occurrence of the defined term outside the `Definitions` section links to the local or canonical definition anchor, including occurrences in headings, lists, captions, and callouts;
-- headings, lists, diagrams, captions, navigation labels, and callouts do not leave the reader without a usable path to the definition.
+- `docs/wiki.html` contains exactly one corresponding entry with a unique, stable `definition-...` anchor;
+- the entry is evidence-backed and detailed enough to explain the term's meaning, purpose, users or owners, behavior or workflow role, important relationships, and confirmed constraints, boundaries, or limitations;
+- the entry uses complete explanatory paragraphs rather than a dictionary-style fragment or one short sentence;
+- every eligible occurrence links directly to the exact canonical wiki anchor, including occurrences in body prose, lists, captions, callouts, and supported diagram interactions;
+- page titles, section headings, and navigation labels remain unlinked, while nearby body content provides the canonical wiki link;
+- inline explanations support immediate comprehension without replacing, shortening, or contradicting the wiki entry.
 
-Do not report an inline explanation as a defect merely because the page also has a `Definitions` section. Inline definitions remain useful when they preserve comprehension. The section is especially important when inserting the explanation into a sentence would interrupt the narrative.
+Report a local `Definitions` section as an error even when its content is accurate. Direct remediation to migrate supported content into the canonical wiki entry, update incoming links, and remove the local section without losing verified information.
 
 Examples:
 
-- Good inline definition: “A <a href="#definition-task-module">task module</a> is a reusable package containing the instructions and optional code required to perform one type of operation.” The page also records `Task module` under `Definitions` with a stable anchor, and later occurrences use the same link.
-- Good linked definition: “The router invokes the <a href="#definition-task-module">task module</a>.” Every later occurrence of `task module` links to the same definition without interrupting the workflow.
-- Good canonical reference: the local `Definitions` entry says `Task module — See the definition on the Runtime page` and links to `runtime.html#definition-task-module`.
-- Weak: “The subsystem uses semantic mediation.” The page neither explains the term inline nor provides a linked, evidence-backed definition.
+- Good contextual explanation: “A <a href="wiki.html#definition-task-module">task module</a> packages the instructions and optional code required for one reusable operation.” The wiki entry separately explains its ownership, lifecycle, inputs, relationships, execution role, and boundaries in detail.
+- Good canonical link: “The router invokes the <a href="wiki.html#definition-task-module">task module</a>.” Every eligible occurrence targets the same wiki anchor.
+- Weak wiki entry: “Task module — A reusable task.” This does not explain who uses it, what it contains, how it participates in execution, or where its responsibility ends.
+- Weak page structure: a feature page contains its own `Definitions` section even though `docs/wiki.html` exists. This creates competing canonical sources and must be consolidated.
 
-When a term reappears after several sections, check that a short reminder or another definition link prevents ambiguity. Check for inconsistent names such as `Task Router`, `TaskRouter`, and `task router` when they refer to one identifier.
+When a term reappears after several sections, check that another wiki link or brief contextual reminder prevents ambiguity. Check for inconsistent names such as `Task Router`, `TaskRouter`, and `task router` when they refer to one identifier.
 
 ## 3. New-user comprehension and coherence
 
@@ -84,7 +85,7 @@ Example:
 
 > “The capability resolver escalates to deep execution after the review loop.”
 
-If the document has not defined or linked “capability resolver”, “deep execution”, or “review loop”, report a coherence and terminology problem. Recommend defining the actors inline where necessary and adding or linking their entries in the page's `Definitions` section.
+If the document has not explained or linked “capability resolver”, “deep execution”, or “review loop”, report a coherence and terminology problem. Recommend adding detailed entries to `docs/wiki.html`, linking the terms to their exact anchors, and retaining only the immediate inline context needed by the sentence.
 
 Check diagrams semantically as well as syntactically. A valid diagram that omits a required actor, reverses the data flow, or uses labels absent from the prose is a semantic defect.
 
@@ -157,7 +158,7 @@ Use this form:
 
 Example:
 
-`[warning] docs/architecture.html — “Processing components” — “execution capability” has no inline explanation, local definition entry, or canonical definition link — a new reader cannot identify whether it refers to a service, interface, or operation — add an evidence-backed entry under Definitions and link the term to it; retain an inline explanation if the distinction is needed immediately.`
+`[warning] docs/architecture.html — “Processing components” — “execution capability” has no immediate context or detailed entry on docs/wiki.html — a new reader cannot identify whether it refers to a service, interface, or operation — add an evidence-backed wiki entry with a stable anchor, link the term to it, and retain brief inline context if the distinction is needed immediately.`
 
 Separate confirmed comprehension failures from stylistic preferences. Omit
 stylistic preferences from findings and remediation guidance. If a page is clear and

@@ -38,19 +38,20 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Avoid shallow one-paragraph skill pages when the skill folder contains meaningful structure that can be reviewed and documented.
 - Keep explanatory text in prose with complete sentences and clear argumentative flow.
 - Use lists only when the content is genuinely list-shaped.
-- Avoid unexplained abbreviations in general explanatory prose; define them inline or link them to the page's `Definitions` section.
+- Avoid unexplained abbreviations in general explanatory prose; provide immediate context when necessary and link them to their detailed entry on `docs/wiki.html`.
 - Organize each feature explanation around its practical role and user-visible result before describing components, configuration, or runtime flow.
-- Make each independently accessible HTML page provide access to the project-specific concepts needed to understand it through inline definitions or direct links to definition anchors.
+- Make each independently accessible HTML page provide access to the project-specific concepts needed to understand it through direct links to canonical wiki anchors and optional inline context.
 
-## Definitions Sections
+## Canonical Wiki
 
-- Add a visible `Definitions` section when an HTML documentation page introduces one or more new project-specific terms or concepts. The section is optional when the page introduces no new terminology. Use a stable section anchor such as `id="definitions"` when the section exists.
-- Include every project-specific concept, acronym, named component, or specialized term introduced by that page. Common language and standard platform terms do not need glossary entries unless the project assigns them a specialized meaning.
-- Give every locally defined term its own stable anchor, such as `id="definition-task-module"`, and write a concise definition supported by the implementation or authoritative project material.
-- Link every eligible occurrence of a defined project-specific term outside the `Definitions` section to its local definition anchor, even when the prose also explains the term inline. Page titles and section headings are never eligible: keep their text unlinked and put the definition link in the first relevant body-text occurrence.
-- If another page contains the canonical definition, link every eligible occurrence of the term and the corresponding local entry to that page and its exact definition anchor. The local entry may use a short `See` reference instead of repeating the definition.
-- Keep definitions useful for lookup. Do not turn the section into a second architecture chapter or repeat long explanations from the body.
-- Inline definitions remain appropriate when they help the reader understand the immediate sentence. The `Definitions` section supplements the prose and does not require removing those explanations.
+- Create `docs/wiki.html` as the only canonical terminology page and expose it as a `Wiki` entry inside a required header submenu on every HTML page.
+- Do not add page-local `Definitions` sections. Remove existing sections after migrating every supported entry to the wiki.
+- Include every project-specific concept, acronym, named component, or specialized term used anywhere in the HTML documentation or DS set. Common language and standard platform terms need entries only when the project assigns them a specialized meaning.
+- Give every term its own stable anchor, such as `id="definition-task-module"`, and use the exact same anchor from every referring page.
+- Explain each term in detail using complete paragraphs. State what it means, its purpose, who or what uses or owns it, how it behaves or participates in workflows, its important relationships, and its confirmed constraints, boundaries, or limitations. Base every statement on implementation or authoritative project material; explicitly preserve an evidence boundary when a detail is unspecified.
+- Do not use a dictionary-style fragment or one short sentence as the complete entry. Keep the explanation focused on the term, but include enough verified context for a new reader to understand and apply it without searching the source code.
+- Link every eligible occurrence of a defined term in body prose, lists, captions, callouts, and diagrams to the exact wiki anchor. Keep page titles, section headings, and navigation labels unlinked, and add the first applicable link in nearby body content.
+- Preserve useful inline explanations when they support the immediate narrative, but do not let them replace the detailed wiki entry or become a competing definition.
 
 ## Examples And Callouts
 
@@ -66,10 +67,12 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Do not apply a fixed or centered `max-width` to the main page or article panel. Use `width: 100%`, no outer auto margins, and compact outer and inner padding. Use `1rem` as the default desktop padding for both the page wrapper and its text panel unless the existing project shell requires an equivalent compact value.
 - Reduce that padding further on narrow screens; `0.5rem` for the page wrapper and `0.75rem` for the text panel are the default mobile values.
 - Set the HTML page title and the visible site/page title to `[project name] Documentation`.
-- Use one primary navigation system composed of direct top-level links and, only where useful, named menus with submenus. Do not present a sidebar and header navigation as parallel primary systems.
-- Do not require every header item to own a submenu. Render a page that belongs at the primary navigation level as a direct link with no submenu trigger or child panel.
-- Use a submenu only for a cohesive group of multiple secondary destinations. Do not hide a primary page inside a submenu, create a submenu for a single destination, or create empty and placeholder submenus.
-- Make `Specifications` a direct top-level link to `specsLoader.html?spec=matrix.md`. Do not place this link inside another menu and do not attach a submenu to it.
+- Use one primary navigation system in the header. Do not present a sidebar and header navigation as parallel primary systems.
+- Make every top-level header control a button that owns and opens a submenu. Direct top-level header links are prohibited, including links to home, specifications, the wiki, and other primary pages.
+- Place every navigation destination inside exactly one subject-based submenu. Use clear submenu-button labels that describe their grouped destinations.
+- Require a submenu for every header button. A submenu may contain one real destination when that subject has no other valid page; never leave a submenu empty or invent placeholder destinations.
+- Put `Specifications` inside a header submenu and link its entry to `specsLoader.html?spec=matrix.md`.
+- Put `Wiki` inside a header submenu and link its entry to `wiki.html`.
 - Keep menu order, submenu groups, interaction behavior, and available links uniform across the HTML pages so moving between files does not change the navigation model unexpectedly.
 - Opening a submenu must expose only that menu's child navigation panel. When the user clicks or taps anywhere outside the open menu and its child panel, close that submenu.
 - Implement outside-click behavior in the shared navigation script so every HTML page receives the same behavior. The handler must check whether the event target is outside each open menu before removing its open state; clicking inside the submenu must not close it before its control or link can respond.
@@ -85,7 +88,7 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Avoid dashboard-like UI patterns unless they solve a real documentation problem.
 - Collapse layouts on tablet and mobile before text becomes cramped.
 - Do not surface workstation-local absolute paths in page chrome, footers, breadcrumbs, captions, or explanatory prose.
-- Ensure the HTML navigation exposes the specs entry point as the direct top-level `Specifications` link.
+- Ensure the HTML navigation exposes the specs entry point as a `Specifications` entry inside a header submenu.
 - Ensure the HTML navigation exposes a stable path to the skill catalog.
 - If a page links to the specs area, route that navigation to `matrix.md` through `docs/specsLoader.html?spec=matrix.md` or an equivalent valid specs entry flow.
 - Ensure readers can reach each DS file from `matrix.md`.

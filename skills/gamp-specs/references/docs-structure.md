@@ -40,10 +40,11 @@ This reference defines the files and navigation required for a consistent projec
 - In a downstream project that only consumes imported skills, `docs/` must describe the host project rather than the imported skill catalog. Do not add `/docs` pages whose subject is the copied skills themselves.
 - Each skill page must review the actual contents of that skill folder, including local artifacts, dependencies, outputs, and conventions.
 - Each page must be written in English, use a technical writing style, and keep code samples minimal.
-- An HTML documentation page that introduces new project-specific terms or concepts must contain a `Definitions` section with stable anchors for locally defined terms and direct links to canonical definition anchors on other pages. Pages without new terminology do not require the section. Follow `documentation-writing-guidelines.md` and `technical-docs-guidelines.md`.
+- Always create `docs/wiki.html` as the single canonical terminology page. Ordinary HTML pages must not contain local `Definitions` sections. Give every project-specific term one detailed wiki entry with a stable anchor, and link eligible term occurrences from HTML documentation and DS content to that anchor. Follow `documentation-writing-guidelines.md` and `technical-docs-guidelines.md`.
 - The shared stylesheet must let the main page and text panel span the available width without a fixed `max-width`, using compact responsive padding as defined in `technical-docs-guidelines.md`.
-- The shared navigation partial and script must provide stable direct links and use submenus only for cohesive groups of secondary pages, as defined in `technical-docs-guidelines.md`. A header item does not need a submenu.
-- Expose `Specifications` as a direct top-level link to `specsLoader.html?spec=matrix.md`. Do not place it inside a submenu and do not attach a submenu to it.
+- The shared navigation partial and script must make every top-level header control a submenu button and place every destination inside a subject-based submenu, as defined in `technical-docs-guidelines.md`. Direct top-level header links are prohibited.
+- Expose `Specifications` as an entry inside a required header submenu and link it to `specsLoader.html?spec=matrix.md`.
+- Expose `Wiki` as an entry inside a required header submenu and link it to `wiki.html`.
 - Follow `technical-docs-guidelines.md` for HTML writing, editorial, and presentation rules.
 
 ## Diagram Requirements

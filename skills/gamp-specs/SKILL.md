@@ -44,7 +44,7 @@ The generated documentation must describe the product as it is intended to exist
 ### 2. Apply the Standard Structure
 
 - Use `references/docs-structure.md` as the required layout and naming rules.
-- Use `references/documentation-writing-guidelines.md` for reader assumptions, definition links and sections, concrete language, concept order, and comparison rules across every document.
+- Use `references/documentation-writing-guidelines.md` for reader assumptions, wiki definition links, concrete language, concept order, and comparison rules across every document.
 - Use `references/technical-docs-guidelines.md` when writing or revising the HTML pages.
 - Use `references/specs-guidelines.md` when writing or revising the DS specifications.
 - Define the DS spec set based on project scope.
@@ -53,7 +53,7 @@ The generated documentation must describe the product as it is intended to exist
 - Always create exactly one Main Behavior specification named `DS003-main-behavior.md` with the frontmatter title `DS003-main-behavior`. Reserve this filename identifier for Main Behavior and place it after the preceding foundational specifications.
 - Build the Main Behavior DS only from candidates accepted by `detect-main-behaviors`. Include the project purpose and only the principal paths, broad project-spanning behaviors, essential APIs or commands, active consequences of direction-changing decisions, and architectural skeleton identified by that analysis.
 - Keep feature catalogs, helpers, optional integrations, narrow configuration, and implementation detail out of the Main Behavior DS. Link to specialized DS files when a main behavior needs deeper contracts without duplicating them.
-- When a project uses WebSkel, read the `webskel-ui-engineering` guidance, require that skill in `AGENTS.md`, and carry its coding rules into `DS001-coding-style.md`. Give every WebSkel-specific term a verified inline definition or an exact link to its local or canonical definition entry.
+- When a project uses WebSkel, read the `webskel-ui-engineering` guidance, require that skill in `AGENTS.md`, and carry its coding rules into `DS001-coding-style.md`. Give every WebSkel-specific term a detailed, verified entry on `docs/wiki.html` and link its eligible occurrences to that entry.
 - In a skill-catalog repository, create one DS file for each skill that the repository implements or distributes as part of its product, plus any additional DS files needed for shared architectural topics such as model strategy. Exclude documentation skills that were merely used as internal authoring tools.
 - In a downstream project that only consumes imported skills, keep the DS set focused on the host project itself. Do not create DS files under `docs/specs/` whose subject is the imported skills.
 - Keep the DS sequence contiguous with no missing intermediate numbers. The foundational sequence is `DS000`, `DS001`, `DS002`, then `DS003-main-behavior.md`; subsequent files continue from `DS004`.
@@ -76,7 +76,10 @@ The generated documentation must describe the product as it is intended to exist
 - Update or create the required HTML pages and shared assets.
 - Follow `references/diagrams-guidelines.md` for diagram selection, captions, actor grouping, visual categories, Mermaid markup, and static asset placement.
 - Put each diagram's single centered, italic caption below the diagram. Do not place a separate diagram title above it, and do not frame the whole diagram in a border, background box, card, panel, or shadow.
-- When an HTML documentation page introduces new project-specific terms or concepts, add a `Definitions` section. Link every eligible occurrence of each defined term outside that section to its stable local definition anchor, or to the exact canonical definition anchor on another page when that page owns the definition; retain inline definitions when they support the narrative. Never add definition links to page titles or section headings. Do not require the section on pages that introduce no new terminology.
+- Create exactly one canonical terminology page at `docs/wiki.html`. Remove page-local `Definitions` sections and consolidate their supported content into this wiki instead of duplicating definitions across pages.
+- Give every project-specific term, acronym, named component, and architectural concept a stable anchor and a detailed, evidence-backed explanation on the wiki. Explain what the term means, why it exists, who or what uses it, how it behaves or participates in workflows, its important relationships, and its boundaries or limitations; do not use a short one-sentence gloss when the repository supports more detail.
+- Link every eligible occurrence of a defined term in documentation prose and DS content to its exact `wiki.html#definition-...` anchor. Retain useful inline context when it helps the immediate narrative, but never treat inline text as a substitute for the canonical wiki entry. Keep page titles and section headings unlinked.
+- Put `Wiki` inside a required header submenu on every HTML documentation page. Do not expose it as a direct top-level header link.
 - Keep every prose block unwrapped in the HTML source and do not force early text wrapping with manual line breaks, narrow fixed widths, or newline-preserving styles. Let text use the full width of its box and wrap naturally only at the box boundary.
 - Make the main documentation panel use the full available page width. Do not constrain it with a centered `max-width`; use compact page and panel padding equivalent to `1rem` on desktop, reduced further on narrow screens.
 - Keep the narrative consistent with the project’s role and interfaces, especially any agent or system responsibilities described in `AGENTS.md`.
@@ -84,12 +87,13 @@ The generated documentation must describe the product as it is intended to exist
 - Follow `references/technical-docs-guidelines.md`.
 - In a skill-catalog repository, provide one HTML page per skill that the repository implements or distributes as part of the product. Do not create pages for documentation skills merely because they were used as internal authoring tools.
 - In a downstream project that only consumes imported skills, keep `/docs` focused on the host project. Do not create standalone skill pages there for the imported skills; keep any skill-local notes inside the local skill folders.
-- Use one primary navigation system containing direct top-level links and submenus only for cohesive groups of multiple secondary pages. Do not require every header item to have a submenu, and do not create empty submenus or a submenu for a single destination. Do not add a second parallel primary navigation system.
-- Put pages that belong at the primary navigation level directly in the header instead of hiding them inside a submenu. Make `Specifications` a direct top-level link to `specsLoader.html?spec=matrix.md`, with no parent submenu and no submenu of its own.
+- Use one primary navigation system in the header. Every top-level header control must be a submenu button, and every documentation destination must appear inside one of those submenus. Do not place direct navigation links beside the submenu buttons and do not add a second parallel primary navigation system.
+- Group all destinations into clearly named submenus according to their subject. A submenu may contain one destination when that subject has only one valid page; do not invent placeholder destinations merely to increase its size.
+- Put `Specifications` inside a required header submenu and link its submenu entry to `specsLoader.html?spec=matrix.md`. Put `Wiki` inside a required header submenu and link its submenu entry to `wiki.html`.
 - Make every open submenu close when the user clicks or taps outside its menu. Keep the submenu structure and interaction behavior uniform across all HTML pages.
 - Treat the project as a standalone system in the HTML documentation. Do not expose machine-specific absolute paths, home directories, usernames, or other workstation-local filesystem details unless the repository itself requires them as part of the documented contract.
 - Ensure the HTML documentation reflects the current source code and remains aligned with the DS specifications.
-- Provide an index page that explains how the system fits together, where the coding style is defined, and how tests are organized. Add one page per skill only when the repository itself is the skill catalog.
+- Provide an index page that explains how the system fits together, where the coding style is defined, how tests are organized, and that `wiki.html` is the canonical source for project terminology. Add one page per skill only when the repository itself is the skill catalog.
 
 ### 4. Create or Update `README.md`
 
@@ -105,10 +109,10 @@ The generated documentation must describe the product as it is intended to exist
 
 - Create `./AGENTS.md` if it does not exist; otherwise update it.
 - Do not create `./AGENT.md` or any other compatibility duplicate.
-- Write the paths to the HTML documentation entry points and the specifications directory in `AGENTS.md`.
+- Write the paths to the HTML documentation entry points, `docs/wiki.html`, and the specifications directory in `AGENTS.md`.
 - Use a clear section template in this order: `Scope`, `Mandatory Reading Order`, `Current Skill Catalog`, `Repository Rules`, `Runtime Defaults`, and `Key Paths`.
 - Instruct future agents to read `DS001-coding-style.md` for coding style, module structure, and test-organization rules.
-- Instruct future agents to read the HTML documentation and the relevant per-skill DS files before making documentation-related changes.
+- Instruct future agents to read the HTML documentation, the canonical terminology wiki, and the relevant per-skill DS files before making documentation-related changes.
 - State explicitly that the DS specifications are the source of truth.
 - State explicitly that when source code changes, the HTML documentation and the specifications must both be updated to reflect the change.
 - State explicitly that all documentation, specifications, and comments must be written in English.
@@ -134,6 +138,7 @@ The generated documentation must describe the product as it is intended to exist
 - Verify that `matrix.md` links each DS file through the relative path `specsLoader.html?spec=DS0xx-description.md` without a leading slash.
 - Verify that the specification matrix has exactly two columns: `Name`, containing the linked `DS0xx-description` filename stem, and `Description`, containing a short explanation. Do not generate `Title`, `Status`, `Owner`, or other columns.
 - Verify that the generated spec files exist at the paths referenced by the HTML documentation.
+- Verify that `docs/wiki.html` exists, every wiki link resolves to an existing stable anchor, and no ordinary documentation page retains a local `Definitions` section.
 - Verify that `docs/.nojekyll` exists so repository-scoped GitHub Pages deployments publish specification Markdown files unchanged.
 - Verify that DS numbering is contiguous by checking the current spec directory contents rather than trusting a template.
 - Verify that exactly one `DS003-main-behavior.md` exists, that the matrix reaches it, and that every behavior it contains appears in the accepted handoff from `detect-main-behaviors`.
@@ -151,8 +156,9 @@ The generated documentation must describe the product as it is intended to exist
 
 - Validate that links between `index.html`, other HTML pages, and specs loader work.
 - Validate that the HTML pages expose valid navigation paths to the specs set.
-- Confirm the HTML documentation uses one primary navigation system with stable direct links and only necessary submenu groups across the set. Confirm `Specifications` is a direct top-level link with no submenu.
-- Confirm an open submenu closes when the user clicks or taps outside it, every submenu groups multiple related secondary pages, and no empty, single-item, or fabricated submenu exists.
+- Confirm the HTML documentation uses one primary header navigation system in which every top-level control is a submenu button and every destination appears inside a submenu. Reject all direct top-level header links.
+- Confirm `Specifications` and `Wiki` are submenu entries that resolve respectively to `specsLoader.html?spec=matrix.md` and `wiki.html` on every HTML page.
+- Confirm an open submenu closes when the user clicks or taps outside it, each submenu groups destinations by a clear subject, no submenu is empty, and a one-item submenu exists only when its subject has one valid destination.
 - Confirm the HTML documentation does not mention workstation-specific absolute filesystem paths or other local-machine details that are not part of the project's real interface.
 - Validate that any HTML link pointing to specs, the specs matrix, or the specs loader resolves to an existing target.
 - Confirm referenced static assets are stored under `docs/assets/` rather than embedded into the HTML files.
@@ -170,7 +176,8 @@ The generated documentation must describe the product as it is intended to exist
 - Confirm the HTML documentation and specs are synchronized with the implementation, with specs kept authoritative if wording diverges.
 - Confirm downstream-consumer documentation rules are explicit: imported skills stay documented inside `skills/`, not in the host project's `/docs` DS set.
 - Confirm rationale, alternatives, limitations, and contract boundaries are written as declarative statements in `Core Content` and that no DS depends on a separate decision-log file.
-- Read `README.md`, `AGENTS.md`, the HTML pages, and the DS files in their intended order. Confirm each HTML page that introduces new project-specific terminology has a complete `Definitions` section and that every eligible occurrence of each defined term outside that section links to a valid local or canonical definition anchor. Confirm page titles and section headings contain no definition links. Do not flag the section as missing when the page introduces no new terminology.
+- Read `README.md`, `AGENTS.md`, the HTML pages, the canonical `docs/wiki.html`, and the DS files in their intended order. Confirm ordinary pages contain no local `Definitions` section, every project-specific term has one detailed wiki entry with a stable anchor, and every eligible occurrence links to that exact canonical anchor. Confirm page titles and section headings contain no definition links.
+- Confirm every wiki entry uses complete explanatory prose and covers the term's meaning, purpose, users or owners, behavior or workflow role, important relationships, and confirmed boundaries or limitations instead of stopping at a short gloss.
 - Confirm feature documentation states the role and practical use before internal behavior, configuration, or architecture.
 - Replace unexplained abstract nouns, literary phrases, and decorative comparisons with concrete statements about verified actors, actions, data, or results.
 - Confirm `README.md` contains an introduction, a high-level overview, and every applicable installation, configuration, startup, integration, and basic-usage procedure.

@@ -214,7 +214,7 @@
 
         const flushParagraph = () => {
           if (!paragraph.length) return;
-          htmlParts.push(`<p>${paragraph.map((line) => this.applyInline(line)).join('<br>')}</p>`);
+          htmlParts.push(`<p>${paragraph.map((line) => this.applyInline(line.trim())).join(' ')}</p>`);
           paragraph = [];
         };
 

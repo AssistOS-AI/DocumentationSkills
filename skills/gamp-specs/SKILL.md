@@ -192,6 +192,6 @@ The generated documentation must describe the product as it is intended to exist
 - `specs-guidelines.md` - writing rules for `docs/specs/*.md`.
 
 ### assets/
-- `fileSizesCheck.sh` - portable file-size and line-length checker to copy into initialized projects.
+- `fileSizesCheck.sh` - portable file-size and code-line-length checker that excludes intentionally unwrapped Markdown and HTML prose.
 - `.nojekyll` - GitHub Pages marker copied to `docs/.nojekyll` so Markdown specifications remain fetchable as static `.md` files.
 - `specsLoader.html` - canonical specs loader that must be copied into `docs/specsLoader.html`.

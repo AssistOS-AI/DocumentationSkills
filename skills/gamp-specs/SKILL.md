@@ -79,8 +79,8 @@ The generated documentation must describe the product as it is intended to exist
 ### 3. Rebuild HTML Documentation
 
 - Update or create the required HTML pages and shared assets.
-- Follow `references/diagrams-guidelines.md` for diagram selection, captions, actor grouping, visual categories, Mermaid markup, and static asset placement.
-- Put each diagram's single centered, italic caption below the diagram. Do not place a separate diagram title above it, and do not frame the whole diagram in a border, background box, card, panel, or shadow.
+- Follow `references/diagrams-guidelines.md` for diagram selection, title captions, actor grouping and consolidation, default vertical layout, centering, visual categories, Mermaid markup, and static asset placement.
+- Put each diagram's single centered, italic title caption below the diagram. Make it a concise noun phrase naming what the diagram represents, never an explanation or added commentary. Do not place a separate diagram title above it, and do not frame the whole diagram in a border, background box, card, panel, or shadow.
 - Create exactly one canonical terminology page at `docs/wiki.html`. Remove page-local `Definitions` sections and consolidate their supported content into this wiki instead of duplicating definitions across pages.
 - Give every project-specific term, acronym, named component, and architectural concept a stable anchor and a detailed, evidence-backed explanation on the wiki. Explain what the term means, why it exists, who or what uses it, how it behaves or participates in workflows, its important relationships, and its boundaries or limitations; do not use a short one-sentence gloss when the repository supports more detail.
 - Link every eligible occurrence of a defined term in documentation prose and DS content to its exact `wiki.html#definition-...` anchor. Retain useful inline context when it helps the immediate narrative, but never treat inline text as a substitute for the canonical wiki entry. Keep page titles and section headings unlinked.
@@ -170,7 +170,7 @@ The generated documentation must describe the product as it is intended to exist
 - Confirm referenced static assets are stored under `docs/assets/` rather than embedded into the HTML files.
 - Confirm the main documentation panel spans the available page width, has no fixed or centered maximum width, and uses compact responsive outer and inner padding.
 - Confirm every diagram complies with `references/diagrams-guidelines.md`.
-- Confirm every diagram caption is centered below the diagram, the diagram has no enclosing visual frame, and documentation and DS text is not manually wrapped before reaching its container boundary.
+- Confirm every diagram is centered and uses a vertical layout by default; straightforward unidirectional step chains are consolidated into meaningful composite boxes, with useful detail moved into prose below. Confirm every caption is a centered title below the diagram that only names what the diagram represents, the diagram has no enclosing visual frame, and documentation and DS text is not manually wrapped before reaching its container boundary.
 - Ensure every ordinary spec file follows the `DS0xx-description.md` convention, includes only the standard `Introduction`, `Core Content`, and `Conclusion` content structure, and fits into the required numbering sequence.
 - Confirm every DS file uses only `title: DSxxx-name` and `summary` frontmatter and omits separate `ID`, `Status`, and `Owner` metadata completely, including frontmatter, headings, metadata panels, badges, and body labels.
 - Confirm the Main Behavior DS covers supported user-impacting business behaviors, major hidden functional behaviors, and project-special behaviors; contains only defining project behaviors; stays aligned with the detector's evidence; and refers readers to specialized DS files for lower-level detail.

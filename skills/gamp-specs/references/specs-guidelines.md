@@ -32,10 +32,10 @@ Write DS files as contracts that coding agents can follow when they change the p
 - Use exactly two frontmatter fields in every ordinary DS file: `title` and `summary`.
 - Set `title` to the exact filename stem, including the DS number and name. For `DS003-main-behavior.md`, use `title: DS003-main-behavior`. Derive the identifier from the filename and never add a separate `id` field.
 - Remove `id`, `status`, `owner`, and every other unsupported DS frontmatter field. When normalizing an existing `DSxxx-*.md` file, also remove any `Status` or `Owner` heading, section, label, badge, metadata block, or standalone value from the body. Do not relocate or restate that metadata elsewhere.
-- Use `Introduction`, `Core Content`, and `Conclusion` as the standard content structure in every DS file.
+- Use `Introduction` and `Core Content` as the standard content structure in every DS file. Do not create a `Conclusion` section; preserve any substantive conclusion material as declarative content in `Core Content` when normalizing an existing DS.
 - Normalize existing DS material into declarative requirements, constraints, invariants, rationale, limitations, and explicitly unspecified boundaries in `Core Content`.
 - Do not implement behavior whose required contract remains unspecified. State that implementation boundary declaratively until authoritative evidence updates the specification.
-- Treat `matrix.md` as a generated exception: it does not need the ordinary three-section structure. Give its table exactly two columns: `Name` and `Description`.
+- Treat `matrix.md` as a generated exception: it does not need the ordinary DS content structure. Give its table exactly two columns: `Name` and `Description`.
 - In `Name`, link the exact DS filename stem, such as `DS003-main-behavior`, to that specification through the specs loader. In `Description`, use the DS `summary` value or a concise description derived from its opening prose.
 - Do not add `Title`, `Status`, `Owner`, or any other matrix columns.
 - Add one DS file for each active skill in the repository.
@@ -53,7 +53,7 @@ Write DS files as contracts that coding agents can follow when they change the p
 
 ## DS003 Special Structure
 
-- Keep `Introduction`, `Core Content`, and `Conclusion` as the only top-level content sections in `DS003-main-behavior.md`.
+- Keep `Introduction` and `Core Content` as the only top-level content sections in `DS003-main-behavior.md`.
 - Inside `Core Content`, create one `###` chapter for each accepted Main Behavior component. Use the detector's ordered component names as the chapter headings and keep each chapter's scope distinct.
 - When two or more components exist, place a `### Main Behavior Components` summary at the beginning of `Core Content` with exactly this table shape:
 

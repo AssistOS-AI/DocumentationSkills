@@ -63,7 +63,7 @@ Follow `diagrams-guidelines.md` for diagram selection, centered italic captions 
 - In a downstream project that only consumes imported skills, keep `docs/specs/` focused on the host project. Do not add DS files whose subject is the imported skills themselves.
 - DS files must carry exactly the `title` and `summary` frontmatter fields. `title` must equal the exact filename stem, such as `DS003-main-behavior` for `DS003-main-behavior.md`.
 - Derive the DS identifier from the filename. Remove separate `id`, `status`, `owner`, and all other unsupported frontmatter fields, plus all `Status` or `Owner` sections, labels, badges, metadata blocks, and standalone values from every existing `DSxxx-*.md` file. Do not add replacements elsewhere in the specification set.
-- Each DS file must include `Introduction`, `Core Content`, and `Conclusion`.
+- Each DS file must include `Introduction` and `Core Content` and must not include a `Conclusion` section. When normalizing an existing DS, preserve substantive conclusion material as declarative content in `Core Content` and remove the redundant heading.
 - DS files must express requirements, rationale, limitations, alternatives, and contract boundaries as declarative statements in `Core Content`.
 - When normalizing an existing DS, move all substantive material into declarative statements under `Core Content`. Keep behavior that depends on an unspecified contract unimplemented until the specification states one supported path.
 - `DS001-coding-style.md` must describe coding style, source layout, and modular test organization.

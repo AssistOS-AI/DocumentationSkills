@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocumentationSkills Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / review-specs</p>
+      <p class="kicker">Skill reference</p>
+      <h1>Review Specs</h1>
+      <p>Performs a read-only structural, syntactic, semantic, navigation, and terminology audit of repository documentation.</p>
+      <h2>Operational contract</h2>
+      <p>The review starts from onboarding and primary pages, checks the documentation hierarchy and references, evaluates DS contracts, identifies unsupported or unclear claims, and returns evidence-ranked remediation guidance without changing files.</p>
+      <h2>Local artifacts</h2>
+      <ul><li><code>SKILL.md</code> and <code>DS.md</code> define the read-only review boundary.</li><li>references/<code>syntax-and-flow-check.md</code> covers structure, links, markup, diagrams, and navigation.</li><li>references/<code>semantics-check.md</code> covers terminology, clarity, evidence, and coherence.</li><li>examples/ contains contrasting documentation examples and an analysis example.</li><li><code>skill.json</code> declares the review handoff.</li></ul>
+      <h2>Dependencies and outputs</h2>
+      <p><strong>Declared dependencies:</strong> None declared.</p>
+      <p>The descriptor and catalog metadata define the outputs for this skill. Consumers must preserve the complete folder when copying it so referenced files and examples remain available.</p>
+      <h2>Maintenance invariant</h2>
+      <p class="note">The reviewer must preserve compliant content and report only evidenced defects; a later authoring workflow owns all modifications.</p>
+      <p>See <a href="specsLoader.html?spec=DS006-review-specs.md">DS006</a> for the authoritative skill contract.</p></article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

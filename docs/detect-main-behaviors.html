@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocumentationSkills Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / detect-main-behaviors</p>
+      <p class="kicker">Skill reference</p>
+      <h1>Detect Main Behaviors</h1>
+      <p>Analyzes a project to identify the small evidence-backed set of behaviors that define its primary purpose.</p>
+      <h2>Operational contract</h2>
+      <p>The skill traces public entry points, essential workflows, hidden mechanisms with material consequences, and project-specific invariants. It returns a structured handoff for a Main Behavior specification without editing the inspected project.</p>
+      <h2>Local artifacts</h2>
+      <ul><li><code>SKILL.md</code> defines inclusion, exclusion, evidence, confidence, and handoff rules.</li><li><code>DS.md</code> summarizes the analysis boundary.</li><li><code>skill.json</code> declares the analysis output and aliases.</li><li>examples/<code>main-behavior-example.md</code> demonstrates the required concrete language and handoff structure.</li></ul>
+      <h2>Dependencies and outputs</h2>
+      <p><strong>Declared dependencies:</strong> None declared.</p>
+      <p>The descriptor and catalog metadata define the outputs for this skill. Consumers must preserve the complete folder when copying it so referenced files and examples remain available.</p>
+      <h2>Maintenance invariant</h2>
+      <p class="note">Complexity alone does not qualify a behavior. Every accepted behavior must have a user, functional, architectural, or project-defining consequence supported by repository evidence.</p>
+      <p>See <a href="specsLoader.html?spec=DS004-detect-main-behaviors.md">DS004</a> for the authoritative skill contract.</p></article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

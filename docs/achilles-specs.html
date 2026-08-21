@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocumentationSkills Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / achilles-specs</p>
+      <p class="kicker">Skill reference</p>
+      <h1>Achilles Specs</h1>
+      <p>Adds AchillesAgentLib dependency resolution, runtime configuration, model-tier, and LLMAgent conventions to a project bootstrap.</p>
+      <h2>Operational contract</h2>
+      <p>The skill extends a GAMP bootstrap by authorizing AchillesAgentLib, placing portable dependency and runtime configuration examples inside the skill folder, requiring manual runtime overrides, and routing LLM work through LLMAgent with task metadata.</p>
+      <h2>Local artifacts</h2>
+      <ul><li><code>SKILL.md</code> and <code>DS.md</code> define the integration contract.</li><li><code>skill.json</code> declares the gamp-specs dependency and portable outputs.</li><li>examples/<code>depsLoader.mjs</code> resolves AchillesAgentLib from an override, a parent checkout, or node_modules.</li><li>examples/<code>runtimeConfig.mjs</code> builds runtime defaults, task tags, model tiers, and manual overrides.</li></ul>
+      <h2>Dependencies and outputs</h2>
+      <p><strong>Declared dependencies:</strong> <code>gamp-specs</code></p>
+      <p>The descriptor and catalog metadata define the outputs for this skill. Consumers must preserve the complete folder when copying it so referenced files and examples remain available.</p>
+      <h2>Maintenance invariant</h2>
+      <p class="note">Achilles-specific coding rules belong in the consuming project’s DS001-coding-style.md, while the examples remain inside this portable skill folder.</p>
+      <p>See <a href="specsLoader.html?spec=DS002-achilles-specs.md">DS002</a> for the authoritative skill contract.</p></article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

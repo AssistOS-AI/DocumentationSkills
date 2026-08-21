@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocumentationSkills Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / gamp-specs</p>
+      <p class="kicker">Skill reference</p>
+      <h1>GAMP Specs</h1>
+      <p>Creates and synchronizes repository onboarding, agent guidance, HTML documentation, and design specifications.</p>
+      <h2>Operational contract</h2>
+      <p>The skill discovers implementation and guidance, incorporates a main-behavior analysis, builds a contiguous DS set, creates navigable HTML documentation, synchronizes the skill catalog, and verifies documentation links and static-site behavior.</p>
+      <h2>Local artifacts</h2>
+      <ul><li><code>SKILL.md</code> and <code>DS.md</code> define the documentation and specification contract.</li><li>references/ contains structure, writing, diagram, and DS guidance.</li><li>scripts/ contains matrix generation, link verification, and static-site verification.</li><li>assets/ contains the canonical specs loader, file-size checker, and GitHub Pages marker.</li><li>examples/<code>skillCatalog.mjs</code> reads and validates catalog descriptors.</li></ul>
+      <h2>Dependencies and outputs</h2>
+      <p><strong>Declared dependencies:</strong> <code>detect-main-behaviors</code></p>
+      <p>The descriptor and catalog metadata define the outputs for this skill. Consumers must preserve the complete folder when copying it so referenced files and examples remain available.</p>
+      <h2>Maintenance invariant</h2>
+      <p class="note">DS specifications remain the authoritative contract, DS numbering remains contiguous, and substantive behavior changes update both explanatory HTML and specifications.</p>
+      <p>See <a href="specsLoader.html?spec=DS005-gamp-specs.md">DS005</a> for the authoritative skill contract.</p></article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

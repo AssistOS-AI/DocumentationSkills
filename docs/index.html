@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocumentationSkills Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="kicker">Repository overview</p>
+      <h1>DocumentationSkills Documentation</h1>
+      <p>DocumentationSkills is a reusable catalog of self-contained instruction bundles and supporting utilities for maintaining technical documentation as an implementation-backed contract. Consumers copy the skill folders they need and retain each skill’s local references, examples, scripts, and assets.</p>
+      <p class="note">The design specifications are the source of truth for repository structure and skill contracts. Start with <a href="specsLoader.html?spec=matrix.md">the specification matrix</a> and use <a href="specsLoader.html?spec=DS001-coding-style.md">DS001-coding-style.md</a> for source layout and test organization.</p>
+      <h2>Catalog structure</h2>
+      <p>The repository root owns catalog guidance and documentation. Each directory under <code>skills/</code> owns its operational descriptor and any supporting references, examples, scripts, or assets. A consuming project copies the complete selected folder so that skill-local assumptions remain visible and auditable.</p>
+      <h2>Skill catalog</h2>
+      <div class="table-wrap"><table><thead><tr><th>Skill</th><th>Responsibility</th><th>Details</th></tr></thead><tbody><tr><td><code>achilles-specs</code></td><td>Adds AchillesAgentLib dependency resolution, runtime configuration, model-tier, and LLMAgent conventions to a project bootstrap.</td><td><a href="achilles-specs.html">Technical page</a></td></tr>
+<tr><td><code>article-build</code></td><td>Incrementally rebuilds research articles from article-owned plans, chapters, bibliography evidence, and SVG assets.</td><td><a href="article-build.html">Technical page</a></td></tr>
+<tr><td><code>detect-main-behaviors</code></td><td>Analyzes a project to identify the small evidence-backed set of behaviors that define its primary purpose.</td><td><a href="detect-main-behaviors.html">Technical page</a></td></tr>
+<tr><td><code>gamp-specs</code></td><td>Creates and synchronizes repository onboarding, agent guidance, HTML documentation, and design specifications.</td><td><a href="gamp-specs.html">Technical page</a></td></tr>
+<tr><td><code>review-specs</code></td><td>Performs a read-only structural, syntactic, semantic, navigation, and terminology audit of repository documentation.</td><td><a href="review-specs.html">Technical page</a></td></tr></tbody></table></div>
+      <h2>Runtime and validation</h2>
+      <p>Node.js is used by executable examples and documentation utilities. Most skills are instruction bundles; article-build and gamp-specs also carry executable modules or verification scripts.</p>
+      <p>Executable modules and scripts should be checked with focused Node.js syntax or fixture-based tests in the consuming project. DocumentationSkills does not define a repository-wide test runner.</p>
+      <h2>Documentation maintenance</h2>
+      <p><code>AGENTS.md</code> defines the mandatory reading order. The HTML pages explain operational behavior, while files under <code>docs/specs/</code> define durable constraints. When a descriptor, script, example, dependency, or output changes, update the corresponding HTML page and DS file in the same revision, regenerate <code>docs/specs/matrix.md</code>, and verify local links.</p></article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

@@ -101,7 +101,9 @@ If a checker cannot run because a dependency or local server is unavailable, sta
 
 ## 5. Navigation and documentation map
 
-The home page must explain the project at a high level and provide a primary menu to the main pages. Secondary pages should normally be linked from the main page that introduces them. The home page should not become an exhaustive list of every small detail page when a hierarchical path is clearer.
+The home page must explain the project at a high level and provide a primary menu to the main pages. It must also contain a `Documentation Map` after the project overview. The map is a responsive, column-oriented semantic table whose presentation remains visually open rather than drawing a rigid spreadsheet grid. Every column header is a real compact button-styled link to one main documentation page or subject area, and each non-empty body cell beneath it is one link to an immediate subpage of that main page. The map has no generic header labels and no purpose or reading-order metadata columns. Columns with fewer children use visually empty, non-interactive cells. Secondary pages should normally also be linked from the main page that introduces them. The home page should not become an exhaustive list of every small detail page when a hierarchical path is clearer.
+
+Determine hierarchy from the real page architecture, not from broad thematic similarity. In a skill catalog, every per-skill HTML page is a main-page column and its link text must be `<canonical-skill-name> skill`. The specification matrix or entry page is one main-page column; its individual DS or specification files must not be repeated in the map. When no other eligible subpages exist, the table must contain only its header row and no empty body.
 
 Check:
 
@@ -110,7 +112,14 @@ Check:
 - parent-to-child links for secondary pages;
 - no orphan pages or dead-end required flows;
 - a coherent specification entry point and matrix;
-- a documentation map or reading guide, when present, that matches actual links;
+- a required Documentation Map table that includes every main page exactly once as a `<th scope="col">` link and every eligible immediate subpage exactly once beneath its parent;
+- shortcut links that resolve to real pages, preserve link semantics, expose visible keyboard focus, and wrap safely on narrow screens;
+- one shortcut per non-empty body cell, with only empty non-interactive cells used to align columns that have fewer children;
+- no generic header labels, placeholder labels, purpose columns, or reading-order columns;
+- per-skill documentation presented as main-page columns with `<canonical-skill-name> skill` labels in skill catalogs, with individual specification files omitted;
+- no borders or separate background boxes that rigidly delineate every semantic table cell;
+- concise purpose and reading-flow prose below the table that uses actual page names and introduces concepts before dependent material;
+- agreement between the map, header submenu grouping, breadcrumbs, parent-to-child links, and specification entry point;
 - no duplicated primary navigation systems competing with one another;
 - `Wiki` and `Specifications` entries inside header submenus on every HTML page;
 - no direct top-level header links and no top-level header button without a submenu;
@@ -119,6 +128,8 @@ Check:
 Example finding:
 
 > `docs/index.html`, “Documentation map”: the text lists “API”, “Architecture”, and “Operations”, but only “Architecture” is linked. Add valid links or remove the claim from the map. `gamp-specs` should repair the map and then re-run link verification.
+
+Treat a missing map, a card grid used instead of the required table, a rigid border around every semantic table cell, a generic header row, a purpose or order metadata column, a main page that is not a linked column header, invented hierarchy, a skill page missing the required `<canonical-skill-name> skill` label, an individual DS or specification-file shortcut, an unnecessary empty table body, an eligible immediate subpage outside its parent's column, an omitted or duplicated destination, multiple shortcuts in one body cell, a placeholder label, a non-navigating button, a broken shortcut, or a reading order that contradicts page dependencies as an `error`. Empty non-interactive cells are valid only when needed to align columns with different numbers of eligible children and must remain visually empty. The map is an onboarding shortcut surface and must not be reported as a competing primary navigation system when it remains inside the home-page content and agrees with the header hierarchy.
 
 ## 6. Finding format
 

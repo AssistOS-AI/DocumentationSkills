@@ -61,6 +61,18 @@ Write for human readers. Explain what exists, why it exists, and how it behaves 
 - Reserve callout boxes for operationally important information.
 - Do not use callouts for decorative emphasis.
 
+## Documentation Map
+
+- Place a `Documentation Map` on the home page after the project overview, where a new reader has enough context to understand the page names.
+- Use a column-oriented table rather than a card grid or a conventional data table. Each column header is a main documentation page or subject area and contains its button-styled `<a>` shortcut. Do not add a separate generic header row with labels such as `Order`, `Main page`, `Purpose`, or `Subpages`.
+- Place one immediate subpage shortcut in each non-empty cell below its main-page header. Columns with fewer subpages use empty, non-interactive cells for alignment; never show placeholder text or invent a destination.
+- Base hierarchy on actual page ownership rather than visual convenience. In a skill catalog, every skill documentation page is a main-page column labeled `<canonical-skill-name> skill`. Keep the specification entry page as one main-page column and omit its individual DS or specification files. If the map has no eligible subpages, render only the header row and omit an empty body.
+- Present every page shortcut as an `<a>` element with a restrained button treatment. Preserve visible link semantics, keyboard focus, descriptive text, responsive wrapping, and semantic `<th scope="col">` association. Give main-page header shortcuts and child-page shortcuts a clear but restrained visual distinction.
+- Do not make the map look like a spreadsheet. Keep borders and individual cell backgrounds off the semantic `<th>` and `<td>` elements, leave alignment cells visually empty, and establish grouping through whitespace, column alignment, a quiet shared surface, and lightly elevated shortcut links.
+- Keep the map concise and hierarchical. Show primary pages and eligible immediate children; leave deeper pages to their parent page so the home page remains scannable, and keep every individual DS or specification file out of the map.
+- Add short prose below the table that explains each main area's practical purpose and states the recommended sequence with actual page names. Explain when the reader should move from overview material to behavior, usage, operations, reference material, and specifications; keep this prose out of table metadata columns.
+- Do not use the map as a replacement for the header, breadcrumbs, or parent-to-child links. Its purpose is onboarding and fast orientation.
+
 ## Visual And Responsive Rules
 
 - Let the main documentation panel occupy the full available desktop width so the surrounding frame does not consume excessive horizontal space.

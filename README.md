@@ -13,8 +13,8 @@ Choose the skill whose description matches the task, read its complete `SKILL.md
 | [`achilles-specs`](docs/achilles-specs.html) | Adds AchillesAgentLib dependency resolution, runtime configuration, model-tier, and LLMAgent conventions to a project bootstrap. |
 | [`article-build`](docs/article-build.html) | Incrementally rebuilds research articles from article-owned plans, chapters, bibliography evidence, and SVG assets. |
 | [`detect-main-behaviors`](docs/detect-main-behaviors.html) | Analyzes a project to identify the small evidence-backed set of behaviors that define its primary purpose. |
-| [`gamp-specs`](docs/gamp-specs.html) | Creates and synchronizes repository onboarding, agent guidance, HTML documentation, and design specifications. |
-| [`review-specs`](docs/review-specs.html) | Performs a read-only structural, syntactic, semantic, navigation, and terminology audit of repository documentation. |
+| [`gamp-specs`](docs/gamp-specs.html) | Creates and synchronizes repository onboarding, agent guidance, HTML documentation with a required Documentation Map and reading flow, and design specifications. |
+| [`review-specs`](docs/review-specs.html) | Performs a read-only structural, syntactic, semantic, navigation, Documentation Map, reading-flow, and terminology audit of repository documentation. |
 
 ## Repository layout
 

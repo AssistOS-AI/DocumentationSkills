@@ -1,7 +1,7 @@
 {
   "title": "GAMP Specs",
   "family": "anthropic",
-  "summary": "Creates final-product README, AGENTS guidance, HTML documentation, and design specifications, including a component-structured DS003 for user-impacting, major hidden, and project-special behavior.",
+  "summary": "Creates final-product README, AGENTS guidance, HTML documentation with a required Documentation Map and reading flow, and design specifications, including a component-structured DS003 for defining behavior.",
   "aliases": [
     "gamp-structure",
     "docs-builder",

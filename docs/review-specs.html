@@ -16,16 +16,17 @@
       <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / review-specs</p>
       <p class="kicker">Skill reference</p>
       <h1>Review Specs</h1>
-      <p>Performs a read-only structural, syntactic, semantic, navigation, and terminology audit of repository documentation.</p>
+      <p>Performs a read-only structural, syntactic, semantic, navigation, Documentation Map, reading-flow, and terminology audit of repository documentation.</p>
       <h2>Operational contract</h2>
       <p>The review starts from onboarding and primary pages, checks the documentation hierarchy and references, evaluates DS contracts, identifies unsupported or unclear claims, and returns evidence-ranked remediation guidance without changing files.</p>
+      <p>The structural audit requires a column-oriented Documentation Map on the home page. It checks that every real main page is a linked column header and rejects hierarchy invented from thematic similarity. For a skill catalog, every skill page must be a main-page link labeled with its canonical name followed by <code>skill</code>; the specification entry appears once, individual specification files are omitted, and an empty table body is prohibited. It also rejects rigid borders around semantic cells and verifies that the reading flow agrees with the real hierarchy.</p>
       <h2>Local artifacts</h2>
       <ul><li><code>SKILL.md</code> and <code>DS.md</code> define the read-only review boundary.</li><li>references/<code>syntax-and-flow-check.md</code> covers structure, links, markup, diagrams, and navigation.</li><li>references/<code>semantics-check.md</code> covers terminology, clarity, evidence, and coherence.</li><li>examples/ contains contrasting documentation examples and an analysis example.</li><li><code>skill.json</code> declares the review handoff.</li></ul>
       <h2>Dependencies and outputs</h2>
       <p><strong>Declared dependencies:</strong> None declared.</p>
       <p>The descriptor and catalog metadata define the outputs for this skill. Consumers must preserve the complete folder when copying it so referenced files and examples remain available.</p>
       <h2>Maintenance invariant</h2>
-      <p class="note">The reviewer must preserve compliant content and report only evidenced defects; a later authoring workflow owns all modifications.</p>
+      <p class="note">The reviewer must preserve compliant content, treat a missing or inconsistent Documentation Map as an error, and report only evidenced defects; a later authoring workflow owns all modifications.</p>
       <p>See <a href="specsLoader.html?spec=DS006-review-specs.md">DS006</a> for the authoritative skill contract.</p></article></main>
   <div data-include="partials/footer.html"></div>
   <script src="partials-loader.js"></script>

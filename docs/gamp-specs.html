@@ -16,16 +16,17 @@
       <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / gamp-specs</p>
       <p class="kicker">Skill reference</p>
       <h1>GAMP Specs</h1>
-      <p>Creates and synchronizes repository onboarding, agent guidance, HTML documentation, and design specifications.</p>
+      <p>Creates and synchronizes repository onboarding, agent guidance, HTML documentation with a required Documentation Map and reading flow, and design specifications.</p>
       <h2>Operational contract</h2>
       <p>The skill discovers implementation and guidance, incorporates a main-behavior analysis, builds a contiguous DS set, creates navigable HTML documentation, synchronizes the skill catalog, and verifies documentation links and static-site behavior.</p>
+      <p>Every generated home page includes a Documentation Map after the project overview. The map uses one column per real main page and does not invent parent-child relationships from broad topics. In a skill catalog, every skill page is a main-page link labeled with its canonical name followed by <code>skill</code>; the specification entry page is included once and individual specification files are omitted. It remains a semantic table without looking like a spreadsheet: open spacing and a quiet shared surface replace boxed cell borders.</p>
       <h2>Local artifacts</h2>
       <ul><li><code>SKILL.md</code> and <code>DS.md</code> define the documentation and specification contract.</li><li>references/ contains structure, writing, diagram, and DS guidance.</li><li>scripts/ contains matrix generation, link verification, and static-site verification.</li><li>assets/ contains the canonical specs loader, file-size checker, and GitHub Pages marker.</li><li>examples/<code>skillCatalog.mjs</code> reads and validates catalog descriptors.</li></ul>
       <h2>Dependencies and outputs</h2>
       <p><strong>Declared dependencies:</strong> <code>detect-main-behaviors</code></p>
       <p>The descriptor and catalog metadata define the outputs for this skill. Consumers must preserve the complete folder when copying it so referenced files and examples remain available.</p>
       <h2>Maintenance invariant</h2>
-      <p class="note">DS specifications remain the authoritative contract, DS numbering remains contiguous, and substantive behavior changes update both explanatory HTML and specifications.</p>
+      <p class="note">DS specifications remain the authoritative contract, DS numbering remains contiguous, substantive behavior changes update both explanatory HTML and specifications, and the Documentation Map remains synchronized with the actual page hierarchy.</p>
       <p>See <a href="specsLoader.html?spec=DS005-gamp-specs.md">DS005</a> for the authoritative skill contract.</p></article></main>
   <div data-include="partials/footer.html"></div>
   <script src="partials-loader.js"></script>

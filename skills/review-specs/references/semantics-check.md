@@ -28,6 +28,8 @@ Do not flag a skill that the target repository itself implements, distributes, o
 
 Start at the home page, follow the primary navigation, open secondary pages from their parent pages, and then read the specifications reached through the documented matrix or loader. Read each page from its first sentence to its conclusion. Do not judge isolated paragraphs without checking the transitions around them.
 
+Use the required Documentation Map on the home page as the explicit onboarding shortcut surface. Confirm that each linked column header names one genuine main page and that every linked cell below it, when any exist, is genuinely an immediate subpage of that page. In a skill catalog, confirm that each skill page remains a main page labeled `<canonical-skill-name> skill`, while individual specification files remain behind the single specification entry page. Read the prose below the map to verify that it explains why each main area matters and gives a sequence that introduces concepts before dependent workflows. Follow every shortcut and compare the hierarchy and stated sequence with the prose transitions, header grouping, breadcrumbs, and parent-child links. Report a map that is structurally complete but semantically misleading, such as placing an independent skill page beneath another skill or recommending configuration before the page that defines the configured component.
+
 For every principal page, ask:
 
 - **Why:** Why does this project, subsystem, or page exist? What user problem does it address?

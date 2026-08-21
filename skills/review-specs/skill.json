@@ -1,7 +1,7 @@
 {
   "title": "Review Specs",
   "family": "anthropic",
-  "summary": "Performs a read-only syntax, navigation, structure, and semantic audit of README, AGENTS, and docs, returning actionable findings for gamp-specs.",
+  "summary": "Performs a read-only syntax, navigation, Documentation Map, reading-flow, structure, and semantic audit of README, AGENTS, and docs, returning actionable findings for gamp-specs.",
   "aliases": [
     "review-specs",
     "spec-review"

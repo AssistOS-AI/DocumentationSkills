@@ -47,6 +47,18 @@ This reference defines the files and navigation required for a consistent projec
 - Expose `Wiki` as an entry inside a required header submenu and link it to `wiki.html`.
 - Follow `technical-docs-guidelines.md` for HTML writing, editorial, and presentation rules.
 
+## Documentation Map
+
+- `docs/index.html` must contain a visible `Documentation Map` section after the project overview and before detailed technical chapters.
+- The map must be a responsive, column-oriented HTML table. Create one column for every main documentation page or subject area. Its `<th scope="col">` must contain the real shortcut link to that main page; do not create generic headers such as `Order`, `Main page`, `Purpose`, or `Subpages`.
+- Put each main page's immediate child links in separate body cells beneath that page's column header. Every non-empty body cell must contain exactly one real link styled as a compact shortcut button. When a column has fewer children than another, leave its remaining cells empty and non-interactive rather than displaying a placeholder.
+- Classify pages from the real documentation hierarchy. Do not turn independent pages into children merely because they share a broad subject. In a skill catalog, every per-skill HTML page is a main page and its shortcut text is `<canonical-skill-name> skill`. The specification matrix or entry page is also a main page, but individual DS and specification files must remain reachable through it and must not be listed in the Documentation Map. Omit `<tbody>` when no eligible subpages exist.
+- Main pages and immediate subpages must retain meaningful text, keyboard focus visibility, and normal link behavior without requiring JavaScript. Visually distinguish main-page header shortcuts from child-page shortcuts without weakening table semantics.
+- Keep the HTML table semantic but make its presentation visually open. Do not draw borders or separate background boxes around every `<th>` and `<td>`; rely on consistent column alignment, generous spacing, a restrained map-level background, and subtle shortcut surfaces. Empty alignment cells must have no visible box.
+- Include every primary page and every eligible immediate child page exactly once. Keep deeper leaf pages reachable from their parent pages instead of flattening the entire documentation tree into the home page; DS and specification files remain excluded.
+- Follow the table with short prose that explains the practical purpose of the main pages and uses their actual names to tell a new reader where to start, what to read next, and when to consult reference pages and specifications. Do not add purpose or reading-order metadata columns to the map.
+- The map supplements the header navigation and parent-child page links. It must not become a second primary navigation system or contradict header submenu grouping, breadcrumbs, the specification matrix, or page hierarchy.
+
 ## Diagram Requirements
 
 Follow `diagrams-guidelines.md` for diagram selection, centered italic captions below unframed diagrams, actor hierarchy, density, visual differentiation, Mermaid setup and markup, and static asset placement.

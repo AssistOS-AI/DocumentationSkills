@@ -34,6 +34,7 @@ The generated documentation must describe the product as it is intended to exist
 
 - Read `AGENTS.md`, `README.md`, and any existing `docs/` content.
 - Read the source code in the same manner you normally do when asked to analyze a project: scan the tree, inspect entry points, follow key dependencies, and review the current skill folders.
+- Discover coding-style skills as well as documentation and runtime skills. When `node-coding-style` is available, read it for the default executable style and dependency policy, subject to explicit user and project instructions. Its availability is optional; do not introduce a required dependency on it.
 - Verify every substantive technical claim against the implementation before documenting it.
 - Extract required narrative, constraints, and terminology from those sources.
 - Remove existing authoring-process references to documentation-generation or documentation-review skills unless the referenced skill is itself an implemented product subject. Preserve product behavior while removing tool provenance.
@@ -49,6 +50,9 @@ The generated documentation must describe the product as it is intended to exist
 - Use `references/specs-guidelines.md` when writing or revising the DS specifications.
 - Define the DS spec set based on project scope.
 - Always begin with `DS000-vision.md` and `DS001-coding-style.md`.
+- When `node-coding-style` applies, record its effective rules in `DS001-coding-style.md`: Node.js `.mjs` modules, async/await, built-ins by default, and justified dependency exceptions. Preserve explicit language or framework choices for their applicable scope.
+- Carry its dependency rules into project guidance: eliminate or avoid dependencies, prefer small standalone components pinned under project-local or skill-local `external/`, and maintain `dependencies.md` at the owning project or skill root with justification, alternatives, authorization, license obligations, source/update URLs, and removal opportunities. Preserve permissive-license preferences and the separate treatment of LGPL as an exceptional limited-copyleft choice.
+- Follow `node-coding-style` when Python skill implementations are found: ask once about conversion unless an explicit requirement or prior decision already settles it, preserve behavior, and do not convert without authorization. Document authorized heavy environment dependencies and require actionable startup checks before application or affected script work; optional dependencies are checked only for the selected feature.
 - Create `DS002` for the next foundational project contract required by the repository, consolidating related material when necessary so the file has a substantive scope.
 - Always create exactly one Main Behavior specification named `DS003-main-behavior.md` with the frontmatter title `DS003-main-behavior`. Reserve this filename identifier for Main Behavior and place it after the preceding foundational specifications.
 - Build the Main Behavior DS only from candidates accepted by `detect-main-behaviors`. Include the project purpose, user-impacting business behaviors, major hidden behaviors that materially affect essential functionality, project-special behaviors, principal paths, broad project-spanning behaviors, essential APIs or commands, active consequences of direction-changing decisions, and architectural skeleton identified by that analysis.
@@ -125,6 +129,7 @@ The generated documentation must describe the product as it is intended to exist
 - Write the paths to the HTML documentation entry points, `docs/wiki.html`, and the specifications directory in `AGENTS.md`.
 - Use a clear section template in this order: `Scope`, `Mandatory Reading Order`, `Current Skill Catalog`, `Repository Rules`, `Runtime Defaults`, and `Key Paths`.
 - Instruct future agents to read `DS001-coding-style.md` for coding style, module structure, and test-organization rules.
+- If the available `node-coding-style` supplies the default, persist the effective coding and dependency rules in `Runtime Defaults` and point to `DS001-coding-style.md` and the applicable `dependencies.md`. In consumer projects, document the host's rules without creating imported-skill pages or specifications; keep each imported skill's own dependency record inside its folder.
 - Instruct future agents to read the HTML documentation, the canonical terminology wiki, and the relevant per-skill DS files before making documentation-related changes.
 - State explicitly that the DS specifications are the source of truth.
 - State explicitly that when source code changes, the HTML documentation and the specifications must both be updated to reflect the change.
@@ -157,6 +162,7 @@ The generated documentation must describe the product as it is intended to exist
 - Verify that exactly one `DS003-main-behavior.md` exists, that the matrix reaches it, and that every behavior it contains appears in the accepted handoff from `detect-main-behaviors`.
 - Verify that `DS003-main-behavior.md` has one `###` component chapter per accepted behavior in detector order. When it has multiple components, verify that `Core Content` begins with a summary table containing exactly `Name` and `Explanation`, with one row per component; when it has one component, verify that the table is absent.
 - Regenerate `docs/specs/matrix.md` from the DS files instead of editing it manually.
+- When `node-coding-style` applies, verify that explicit overrides survive, dependency records match the accepted implementation, required prerequisite checks report missing or incompatible dependencies before side effects, and copied skill folders retain their own external code and records. Do not claim these checks passed without running the applicable checks.
 - Run the documentation link verifier after documentation work so shared navigation, specs-loader links, and partial includes stay valid.
 - When the HTML documentation uses relative asset paths, `fetch()`-loaded partials, or other browser-resolved resources, run `node scripts/verify_static_site.js <docs-dir>` against the generated `docs/` folder. Add `--path` checks for project-specific resources when needed.
 - Verify that each affected DS file states important rationale, tradeoffs, limitations, and contract boundaries declaratively in `Core Content`.

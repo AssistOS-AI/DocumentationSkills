@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocumentationSkills Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / unslop</p>
+      <p class="kicker">Skill reference</p>
+      <h1>Unslop</h1>
+      <p>Edits prose to remove formulaic AI writing patterns while preserving meaning and matching the intended tone.</p>
+      <h2>Editing contract</h2>
+      <p>The descriptor directs the agent to scan the source, revise detected patterns, add an appropriate human voice, and review the result. It covers inflated claims, vague attribution, repetitive vocabulary, punctuation habits, chatbot phrases, filler, jargon, dense sentences, and unnecessary passive constructions. Its examples guide wording changes without supplying evidence for new claims.</p>
+      <h2>Portable artifacts</h2>
+      <p><code>SKILL.md</code> contains the editing rules, <code>DS.md</code> describes their boundary, and <code>skill.json</code> exposes the catalog entry and prose output. The skill contains no executable helper or declared dependency. Its existing <code>disable-model-invocation: true</code> frontmatter is preserved; the consuming environment interprets that flag.</p>
+      <p>See <a href="specsLoader.html?spec=DS008-unslop.md">DS008</a> for the authoritative catalog contract.</p>
+  </article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

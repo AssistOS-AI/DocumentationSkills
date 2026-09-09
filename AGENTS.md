@@ -18,7 +18,9 @@ This repository distributes the DocumentationSkills portable skill catalog. The 
 - `article-build`
 - `detect-main-behaviors`
 - `gamp-specs`
+- `node-coding-style`
 - `review-specs`
+- `unslop`
 
 ## Repository Rules
 
@@ -34,8 +36,11 @@ This repository distributes the DocumentationSkills portable skill catalog. The 
 
 ## Runtime Defaults
 
-- Default executable language: Node.js using ECMAScript modules and async/await.
+- Apply `skills/node-coding-style/SKILL.md` when no explicit user or project instruction selects another style.
+- Default executable language: Node.js using `.mjs` ECMAScript modules and async/await, with built-ins and local code.
 - Default dependency policy: no external dependencies without explicit user approval.
+- Eliminate or avoid dependencies; document justified exceptions in the project or owning skill's `dependencies.md`. Prefer pinned standalone source under its local `external/`, with licenses, upstream/update URLs, and removal opportunities recorded.
+- Ask before converting existing Python skills unless a prior decision or explicit Python requirement settles the matter. Heavy environment installations require authorization, and affected entry points must fail clearly when required prerequisites are missing or incompatible.
 - Skill output should remain plain text unless the owning descriptor defines a serialized text format.
 
 ## Key Paths

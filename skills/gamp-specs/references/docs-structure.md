@@ -20,6 +20,8 @@ This reference defines the files and navigation required for a consistent projec
 
 `AGENTS.md` is the single root guidance file. Its standard section layout is: `Scope`, `Mandatory Reading Order`, `Current Skill Catalog`, `Repository Rules`, `Runtime Defaults`, and `Key Paths`.
 
+When an available `node-coding-style` skill supplies the default, preserve explicit user or project overrides and record the effective Node.js `.mjs` and dependency rules in `DS001-coding-style.md` and `AGENTS.md`. Maintain the host's `dependencies.md` at its root; each skill owns its own dependency record and accepted source under its local `external/`. These records include acceptance rationale, alternatives, authorization, licenses, source and update URLs, startup checks, and removal opportunities. Coding-style skill availability does not require imported-skill HTML pages or DS files in the host documentation.
+
 ## README Requirements
 
 - Write `README.md` for a reader who has not used the project before.

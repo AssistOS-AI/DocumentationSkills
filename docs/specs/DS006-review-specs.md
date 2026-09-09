@@ -1,8 +1,5 @@
 ---
-id: DS006
-title: Review Specs
-status: implemented
-owner: repository
+title: DS006-review-specs
 summary: Performs a read-only structural, syntactic, semantic, navigation, and terminology audit of repository documentation.
 ---
 

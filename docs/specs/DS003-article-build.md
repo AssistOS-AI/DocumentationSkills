@@ -1,8 +1,5 @@
 ---
-id: DS003
-title: Article Build
-status: implemented
-owner: repository
+title: DS003-article-build
 summary: Incrementally rebuilds research articles from article-owned plans, chapters, bibliography evidence, and SVG assets.
 ---
 

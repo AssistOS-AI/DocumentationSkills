@@ -1,8 +1,5 @@
 ---
-id: DS004
-title: Detect Main Behaviors
-status: implemented
-owner: repository
+title: DS004-detect-main-behaviors
 summary: Analyzes a project to identify the small evidence-backed set of behaviors that define its primary purpose.
 ---
 

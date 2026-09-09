@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocumentationSkills Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / node-coding-style</p>
+      <p class="kicker">Skill reference</p>
+      <h1>Node Coding Style</h1>
+      <p>Supplies a default coding style for projects and portable skills when it is available and no explicit user or project instruction selects another approach. Generated executable code uses Node.js ECMAScript modules in .mjs files, async/await, built-ins, and local resources. Explicit language or framework choices remain authoritative within their scope.</p>
+      <h2>Default behavior</h2>
+      <p>The agent reads project guidance and the relevant code before applying the default. It records the effective rules when project guidance is initialized or updated as part of the task. Existing public interfaces remain intact, and unrelated legacy files are not automatically renamed or rewritten. The consuming agent must discover and follow the descriptor; copying a folder alone does not configure every agent runner.</p>
+      <h2>Dependency exceptions</h2>
+      <p>The skill prefers eliminating dependencies or using a small implementation based on Node.js built-ins. When no suitable equivalent meets the requirement, Python, an external library, or a CLI tool may be justified. Small standalone components with few or no transitive requirements are preferred. Accepted source is pinned and preferably retained under the project's or owning skill's <code>external/</code> folder with its licenses, notices, assets, and local changes.</p>
+      <p>The project or skill keeps <code>dependencies.md</code> even when no external dependency exists. Each accepted direct or transitive dependency records its purpose, version, location, required or optional scope, acceptance reason, rejected alternatives, authorization, source and update URLs, exact license obligations, local changes, startup check, installation steps, and removal opportunity. Vendored code and already installed tools remain dependencies. MIT and Apache-2.0 are preferred; LGPL is an exceptional limited-copyleft choice whose actual obligations must be documented.</p>
+      <h2>Python and environment prerequisites</h2>
+      <p>Discovery of executable Python skills triggers one question about conversion unless the project or session already settles that decision. An accepted conversion preserves interfaces and outputs and removes obsolete Python requirements only after validating behavior and checking remaining consumers.</p>
+      <p>An unavoidable heavy dependency may be installed in the environment with user authorization. Required dependencies are checked before application or affected skill-script work. Missing or incompatible prerequisites produce actionable stderr errors and a nonzero exit before side effects. Optional dependencies are checked when their feature is selected. Startup never installs dependencies.</p>
+      <h2>Local artifacts and integration</h2>
+      <ul>
+        <li><code>SKILL.md</code> defines the operational rules; <code>DS.md</code> summarizes the portable contract.</li>
+        <li><code>skill.json</code> identifies the skill as <code>node-coding-style</code> and declares its outputs and local entry points.</li>
+        <li><code>dependencies.md</code> declares that this instruction-only skill has no runtime or third-party dependencies.</li>
+        <li><code>assets/dependencies.md</code> supplies the dependency record template for consuming projects and skills.</li>
+      </ul>
+      <p>The complete folder is the installation unit. <a href="gamp-specs.html">GAMP Specs</a> incorporates this default when available without requiring the style skill as a dependency. Consumer documentation describes the host project's effective rules; skill-specific material remains inside the copied skill folder.</p>
+      <p>See <a href="specsLoader.html?spec=DS007-node-coding-style.md">DS007</a> for the authoritative catalog contract and <a href="specsLoader.html?spec=DS001-coding-style.md">DS001</a> for this repository's coding rules.</p>
+  </article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

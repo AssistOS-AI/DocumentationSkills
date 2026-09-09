@@ -1,9 +1,6 @@
 ---
-id: DS005
-title: GAMP Specs
-status: implemented
-owner: repository
-summary: Creates and synchronizes repository onboarding, agent guidance, HTML documentation, and design specifications.
+title: DS005-gamp-specs
+summary: Synchronizes onboarding, agent guidance, HTML documentation, and specifications, including an available default coding-style policy.
 ---
 
 # GAMP Specs
@@ -21,6 +18,8 @@ Unless a target project has an explicitly documented small-scope exception, ever
 The repository must retain the artifacts documented on the corresponding HTML skill page and must keep descriptor text, catalog metadata, examples, references, scripts, and outputs synchronized. DS specifications remain the authoritative contract, DS numbering remains contiguous, substantive behavior changes update both explanatory HTML and specifications, and the Documentation Map remains synchronized with the actual page hierarchy.
 
 Declared dependencies are `detect-main-behaviors`. A consuming project must resolve declared dependencies explicitly and must not infer undeclared runtime coupling.
+
+If `node-coding-style` is available, GAMP must incorporate its default Node.js `.mjs` and dependency rules into DS001 and agent guidance while preserving explicit user and project overrides. This optional integration must carry dependency elimination, project-local or skill-local `dependencies.md` and `external/`, acceptance rationale, licenses, source/update URLs, Python conversion questions, authorized heavy environment dependencies, and startup checks. It must not introduce a hard dependency on the style skill or create imported-skill documentation in a consumer's host `docs/` tree.
 
 ## Decisions & Questions
 

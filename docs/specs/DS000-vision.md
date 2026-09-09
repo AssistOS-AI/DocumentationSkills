@@ -1,9 +1,6 @@
 ---
-id: DS000
-title: DocumentationSkills Vision
-status: implemented
-owner: repository
-summary: Portable skills for repository documentation, specifications, technical review, and research-article production.
+title: DS000-vision
+summary: Portable skills for repository documentation, coding style, dependency management, technical review, research articles, and prose editing.
 ---
 
 # DocumentationSkills Vision

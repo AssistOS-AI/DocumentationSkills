@@ -1,8 +1,5 @@
 ---
-id: DS002
-title: Achilles Specs
-status: implemented
-owner: repository
+title: DS002-achilles-specs
 summary: Adds AchillesAgentLib dependency resolution, runtime configuration, model-tier, and LLMAgent conventions to a project bootstrap.
 ---
 

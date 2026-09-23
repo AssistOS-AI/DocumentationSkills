@@ -1,0 +1,10 @@
+{
+  "title": "Summarize agent impact",
+  "family": "anthropic",
+  "summary": "Explains the impact of an agent's important decisions and completed work in plain language.",
+  "aliases": ["summarize-agent-impact"],
+  "dependsOn": [],
+  "outputs": ["User-facing summary between identical <<summarize-agent-impact>> markers"],
+  "entrypoints": ["SKILL.md", "DS.md"],
+  "selfContained": true
+}

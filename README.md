@@ -1,6 +1,6 @@
 # DocumentationSkills
 
-DocumentationSkills is a reusable catalog of self-contained instruction bundles and supporting utilities for maintaining technical documentation as an implementation-backed contract. Consumers copy the skill folders they need and retain each skill’s local references, examples, scripts, and assets.
+DocumentationSkills is a reusable catalog of self-contained instruction bundles for documenting software, reviewing technical writing, and explaining consequential coding work. Consumers copy the skill folders they need and retain each skill’s local references, examples, scripts, and assets.
 
 ## Using the catalog
 
@@ -18,6 +18,7 @@ When `node-coding-style` is available, use it as the default for coding tasks un
 | [`gamp-specs`](docs/gamp-specs.html) | Creates and synchronizes repository onboarding, agent guidance, HTML documentation with a required Documentation Map and reading flow, and design specifications. |
 | [`node-coding-style`](docs/node-coding-style.html) | Supplies default Node.js `.mjs` coding rules, dependency records and portability requirements, Python conversion prompts, and prerequisite checks. |
 | [`review-specs`](docs/review-specs.html) | Performs a read-only structural, syntactic, semantic, navigation, Documentation Map, reading-flow, and terminology audit of repository documentation. |
+| [`summarize-agent-impact`](docs/summarize-agent-impact.html) | Explains the impact of an agent's important decisions or completed work in plain language. |
 | [`unslop`](docs/unslop.html) | Edits prose to remove formulaic AI writing patterns while preserving meaning and the intended tone. |
 
 ## Repository layout

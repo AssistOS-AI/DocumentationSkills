@@ -1,13 +1,13 @@
 ---
 title: DS000-vision
-summary: Portable skills for repository documentation, coding style, dependency management, technical review, research articles, and prose editing.
+summary: Portable skills for repository documentation, coding style, dependency management, technical review, research articles, prose editing, and clear execution summaries.
 ---
 
 # DocumentationSkills Vision
 
 ## Introduction
 
-DocumentationSkills is a portable skill catalog. It gives consuming agents and projects explicit operational guidance without requiring repository-level runtime coupling.
+DocumentationSkills is a portable skill catalog for software documentation and clear communication of coding work. It gives consuming agents and projects explicit operational guidance without requiring repository-level runtime coupling.
 
 ## Core Content
 

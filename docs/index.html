@@ -15,7 +15,7 @@
   <main class="page"><article class="page__panel content">
       <p class="kicker">Repository overview</p>
       <h1>DocumentationSkills Documentation</h1>
-      <p>DocumentationSkills is a reusable catalog of self-contained instruction bundles and supporting utilities for maintaining technical documentation as an implementation-backed contract. Consumers copy the skill folders they need and retain each skill’s local references, examples, scripts, and assets.</p>
+      <p>DocumentationSkills is a reusable catalog of self-contained instruction bundles for documenting software, reviewing technical writing, and explaining consequential coding work. Consumers copy the skill folders they need and retain each skill’s local references, examples, scripts, and assets.</p>
       <p class="note">The design specifications are the source of truth for repository structure and skill contracts. Start with <a href="specsLoader.html?spec=matrix.md">the specification matrix</a> and use <a href="specsLoader.html?spec=DS001-coding-style.md">DS001-coding-style.md</a> for source layout and test organization.</p>
       <h2>Catalog structure</h2>
       <p>The repository root owns catalog guidance and documentation. Each directory under <code>skills/</code> owns its operational descriptor and any supporting references, examples, scripts, or assets. A consuming project copies the complete selected folder so that skill-local assumptions remain visible and auditable.</p>
@@ -26,6 +26,7 @@
 <tr><td><code>gamp-specs</code></td><td>Creates and synchronizes repository onboarding, agent guidance, HTML documentation with a required Documentation Map and reading flow, and design specifications.</td><td><a href="gamp-specs.html">Technical page</a></td></tr>
 <tr><td><code>node-coding-style</code></td><td>Supplies default Node.js .mjs coding rules, dependency records and portability requirements, Python conversion prompts, and prerequisite checks.</td><td><a href="node-coding-style.html">Technical page</a></td></tr>
 <tr><td><code>review-specs</code></td><td>Performs a read-only structural, syntactic, semantic, navigation, Documentation Map, reading-flow, and terminology audit of repository documentation.</td><td><a href="review-specs.html">Technical page</a></td></tr>
+<tr><td><code>summarize-agent-impact</code></td><td>Explains the impact of an agent's important decisions or completed work in plain language.</td><td><a href="summarize-agent-impact.html">Technical page</a></td></tr>
 <tr><td><code>unslop</code></td><td>Edits prose to remove formulaic AI writing patterns while preserving meaning and the intended tone.</td><td><a href="unslop.html">Technical page</a></td></tr></tbody></table></div>
       <h2>Runtime and validation</h2>
       <p>Node.js is used by executable examples and documentation utilities. Most skills are instruction bundles; article-build and gamp-specs also carry executable modules or verification scripts.</p>

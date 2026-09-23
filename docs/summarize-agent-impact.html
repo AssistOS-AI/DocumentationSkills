@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Summarize agent impact - DocumentationSkills</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / summarize-agent-impact</p>
+      <p class="kicker">Skill reference</p>
+      <h1>Summarize agent impact</h1>
+      <p>Explains an agent's important decision or completed project outcome in terms a reader can understand without knowing the implementation.</p>
+      <h2>When to use it</h2>
+      <p>Use it after a decision that changes the work's direction or after a material change to a feature, user behavior, or operation. Combine related actions into one summary. Routine commands, minor edits, and repeated progress notes do not need one.</p>
+      <h2>Output</h2>
+      <p>The agent adds a short paragraph in the user's language between two identical <code>&lt;&lt;summarize-agent-impact&gt;&gt;</code> text markers. The second marker has no slash. The paragraph explains what was decided or changed and why it matters. It states material limits and distinguishes a decision from completed implementation. Code details and test logs stay outside the block.</p>
+      <p>See <a href="specsLoader.html?spec=DS009-summarize-agent-impact.md">DS009</a> for the authoritative catalog contract.</p>
+  </article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

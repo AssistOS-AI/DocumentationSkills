@@ -2,7 +2,7 @@
 
 ## Scope
 
-This repository distributes the DocumentationSkills portable skill catalog. The canonical documentation entry points are `docs/index.html` and `docs/specsLoader.html?spec=matrix.md`. The DS files under `docs/specs/` are the source of truth.
+This repository distributes the DocumentationSkills portable catalog for software documentation and clear communication of coding work. The canonical documentation entry points are `docs/index.html` and `docs/specsLoader.html?spec=matrix.md`. The DS files under `docs/specs/` are the source of truth.
 
 ## Mandatory Reading Order
 
@@ -20,6 +20,7 @@ This repository distributes the DocumentationSkills portable skill catalog. The 
 - `gamp-specs`
 - `node-coding-style`
 - `review-specs`
+- `summarize-agent-impact`
 - `unslop`
 
 ## Repository Rules

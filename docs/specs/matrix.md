@@ -2,7 +2,7 @@
 
 | Name | Description |
 | --- | --- |
-| [DS000-vision](specsLoader.html?spec=DS000-vision.md) | Portable skills for repository documentation, coding style, dependency management, technical review, research articles, prose editing, and clear execution summaries. |
+| [DS000-vision](specsLoader.html?spec=DS000-vision.md) | Portable skills for repository documentation, coding style, dependency management, technical review, research articles, prose editing, web interface design, and clear execution summaries. |
 | [DS001-coding-style](specsLoader.html?spec=DS001-coding-style.md) | Defines default Node.js .mjs code, dependency exceptions, portable source layout, documentation synchronization, and validation rules. |
 | [DS002-achilles-specs](specsLoader.html?spec=DS002-achilles-specs.md) | Adds AchillesAgentLib dependency resolution, runtime configuration, model-tier, and LLMAgent conventions to a project bootstrap. |
 | [DS003-article-build](specsLoader.html?spec=DS003-article-build.md) | Incrementally rebuilds research articles from article-owned plans, chapters, bibliography evidence, and SVG assets. |
@@ -12,3 +12,4 @@
 | [DS007-node-coding-style](specsLoader.html?spec=DS007-node-coding-style.md) | Default Node.js .mjs coding rules, dependency exception records, portable external source, Python conversion decisions, and startup prerequisites. |
 | [DS008-unslop](specsLoader.html?spec=DS008-unslop.md) | Prose editing that removes formulaic AI writing patterns while preserving meaning and the intended tone. |
 | [DS009-summarize-agent-impact](specsLoader.html?spec=DS009-summarize-agent-impact.md) | Plain-language summaries of an agent's important decisions and completed work. |
+| [DS010-web-design](specsLoader.html?spec=DS010-web-design.md) | Desktop-first HTML and CSS interface rules for navigation, popups, forms, spacing, layering, responsiveness, and dark mode. |

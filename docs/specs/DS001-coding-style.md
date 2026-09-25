@@ -21,12 +21,6 @@ Skill-specific implementation, references, examples, tests, templates, and asset
 
 Files should remain focused and reviewable. Run `./fileSizesCheck.sh` after substantial changes and split files when size or line length obscures responsibilities. Documentation changes must regenerate `docs/specs/matrix.md`, verify local HTML and asset links, and test browser-resolved resources over HTTP when partials or relative assets are involved.
 
-## Decisions & Questions
-
-### Question #1: Where do portable examples belong?
-
-Response: Examples belong inside the relevant skill folder so the complete operational contract survives when that folder is copied into another repository.
-
 ## Conclusion
 
 Repository changes must preserve modular skill folders, explicit contracts, deterministic validation, and synchronized documentation.

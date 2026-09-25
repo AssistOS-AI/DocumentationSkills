@@ -21,12 +21,6 @@ Declared dependencies are `detect-main-behaviors`. A consuming project must reso
 
 If `node-coding-style` is available, GAMP must incorporate its default Node.js `.mjs` and dependency rules into DS001 and agent guidance while preserving explicit user and project overrides. This optional integration must carry dependency elimination, project-local or skill-local `dependencies.md` and `external/`, acceptance rationale, licenses, source/update URLs, Python conversion questions, authorized heavy environment dependencies, and startup checks. It must not introduce a hard dependency on the style skill or create imported-skill documentation in a consumer's host `docs/` tree.
 
-## Decisions & Questions
-
-### Question #1: What defines the maintenance boundary for this skill?
-
-Response: The complete `gamp-specs` directory is the portable unit, and its descriptor is the operational entry point. Supporting artifacts remain local so their relationship to the contract is inspectable.
-
 ## Conclusion
 
 Changes to `gamp-specs` must preserve its declared boundary and update this specification and its HTML documentation together.

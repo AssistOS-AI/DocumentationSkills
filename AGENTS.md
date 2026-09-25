@@ -22,6 +22,7 @@ This repository distributes the DocumentationSkills portable catalog for softwar
 - `review-specs`
 - `summarize-agent-impact`
 - `unslop`
+- `web-design`
 
 ## Repository Rules
 
@@ -32,7 +33,7 @@ This repository distributes the DocumentationSkills portable catalog for softwar
 - Keep imported-skill documentation inside copied skill folders in downstream projects; the host project’s `docs/` tree must describe the host project.
 - Keep `AGENTS.md`, `README.md`, `docs/index.html`, per-skill pages, and `docs/specs/matrix.md` synchronized with the current skill folders.
 - Update this catalog whenever a skill folder is added, removed, or renamed.
-- Keep DS numbering contiguous and use numbered question subchapters inside `Decisions & Questions`.
+- Keep DS numbering contiguous.
 - Update the GAMP skill when new skill families, coding-style rules, or project bootstrap rules are introduced.
 
 ## Runtime Defaults

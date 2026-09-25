@@ -13,9 +13,3 @@ Dependencies are eliminated or avoided by default. A requirement with no suitabl
 Discovery of executable Python skills triggers one conversion question unless the project or session already records the decision. Conversion requires authorization and preserves public behavior. Unavoidable heavy dependencies may be installed in the environment only with installation authorization. Required dependencies are checked before application or affected skill-script work, with actionable stderr diagnostics and nonzero exit on missing or incompatible prerequisites. Optional dependencies are checked only for their selected feature.
 
 The complete folder is portable and has no executable or third-party dependencies. `assets/dependencies.md` supplies the record structure for consumers; `dependencies.md` describes this skill itself.
-
-## Decisions & Questions
-
-### Question #1: When does the default apply?
-
-Response: The default applies when the skill is available and no explicit user or project rule chooses another style. Explicit instructions govern their applicable scope.

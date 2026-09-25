@@ -19,12 +19,6 @@ The repository must retain the artifacts documented on the corresponding HTML sk
 
 Declared dependencies are not required by the catalog metadata. A consuming project must resolve declared dependencies explicitly and must not infer undeclared runtime coupling.
 
-## Decisions & Questions
-
-### Question #1: What defines the maintenance boundary for this skill?
-
-Response: The complete `review-specs` directory is the portable unit, and its descriptor is the operational entry point. Supporting artifacts remain local so their relationship to the contract is inspectable.
-
 ## Conclusion
 
 Changes to `review-specs` must preserve its declared boundary and update this specification and its HTML documentation together.

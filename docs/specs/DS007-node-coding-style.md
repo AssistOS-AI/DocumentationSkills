@@ -21,14 +21,4 @@ When executable Python skill logic is discovered, the agent must ask once whethe
 
 Unavoidable heavy dependencies may require an authorized global/environment installation. Mandatory availability and version/capability checks must run before application or affected skill-script work. A missing or incompatible prerequisite must cause an actionable stderr error and nonzero exit before side effects. Optional dependencies must be checked only when their feature is selected. Startup must not install dependencies or modify operating-system boot configuration.
 
-`SKILL.md` owns the operational instructions, `DS.md` the portable design summary, `skill.json` the catalog metadata, `dependencies.md` the skill's empty dependency inventory, and `assets/dependencies.md` the consumer record template. All must survive copying the folder. GAMP must incorporate this default when available without adding a hard dependency on the skill.
-
-## Decisions & Questions
-
-### Question #1: Which coding instructions take precedence?
-
-Response: Explicit user and project requirements override the default in their applicable scope. Existing Python implementations trigger a conversion question, not an automatic rewrite.
-
-### Question #2: Where do dependency records belong?
-
-Response: The project owns its root `dependencies.md`. A portable skill keeps its own complete dependency record inside its folder so the record survives copying the skill.
+`SKILL.md` owns the operational instructions, `DS.md` the portable design summary, `dependencies.md` the skill's empty dependency inventory, and `assets/dependencies.md` the consumer record template. All must survive copying the folder. GAMP must incorporate this default when available without adding a hard dependency on the skill.

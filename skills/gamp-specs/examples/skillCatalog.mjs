@@ -4,7 +4,7 @@ import { fileURLToPath } from 'node:url';
 
 const moduleDir = dirname(fileURLToPath(import.meta.url));
 const defaultRepoRoot = resolve(moduleDir, '../../..');
-const requiredSkillFiles = ['SKILL.md', 'DS.md', 'skill.json'];
+const requiredSkillFiles = ['SKILL.md', 'DS.md'];
 
 function parseFrontmatter(markdown) {
   if (!markdown.startsWith('---\n')) {
@@ -29,12 +29,10 @@ function parseFrontmatter(markdown) {
 
 async function readSkillDefinition(repoRoot, skillId) {
   const skillDir = resolve(repoRoot, 'skills', skillId);
-  const [descriptor, designSpec, rawMetadata] = await Promise.all([
+  const [descriptor, designSpec] = await Promise.all([
     readFile(resolve(skillDir, 'SKILL.md'), 'utf8'),
-    readFile(resolve(skillDir, 'DS.md'), 'utf8'),
-    readFile(resolve(skillDir, 'skill.json'), 'utf8')
+    readFile(resolve(skillDir, 'DS.md'), 'utf8')
   ]);
-  const metadata = JSON.parse(rawMetadata);
   const frontmatter = parseFrontmatter(descriptor);
 
   return {
@@ -44,14 +42,12 @@ async function readSkillDefinition(repoRoot, skillId) {
     designSpecPath: `skills/${skillId}/DS.md`,
     descriptor,
     designSpec,
-    title: metadata.title,
-    family: metadata.family,
-    summary: frontmatter.description ?? metadata.summary,
-    aliases: [...new Set([skillId, ...(metadata.aliases ?? []), frontmatter.name].filter(Boolean))],
-    dependsOn: metadata.dependsOn ?? [],
-    outputs: metadata.outputs ?? [],
-    entrypoints: metadata.entrypoints ?? [],
-    selfContained: metadata.selfContained !== false
+    title: frontmatter.name ?? skillId,
+    summary: frontmatter.description ?? '',
+    aliases: [...new Set([skillId, frontmatter.name].filter(Boolean))],
+    dependsOn: [],
+    entrypoints: [`skills/${skillId}/SKILL.md`, `skills/${skillId}/DS.md`],
+    selfContained: true
   };
 }
 
@@ -89,17 +85,12 @@ function validateSkillCatalog(skillCatalog) {
       issues.push(`${skill.id} must remain self-contained.`);
     }
 
-    for (const requiredFile of requiredSkillFiles) {
-      const pathKey =
-        requiredFile === 'SKILL.md'
-          ? skill.descriptorPath
-          : requiredFile === 'DS.md'
-            ? skill.designSpecPath
-            : `skills/${skill.id}/skill.json`;
+    if (!skill.descriptorPath) {
+      issues.push(`${skill.id} is missing SKILL.md.`);
+    }
 
-      if (!pathKey) {
-        issues.push(`${skill.id} is missing ${requiredFile}.`);
-      }
+    if (!skill.designSpecPath) {
+      issues.push(`${skill.id} is missing DS.md.`);
     }
   }
 

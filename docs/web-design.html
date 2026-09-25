@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DocumentationSkills Documentation</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / web-design</p>
+      <p class="kicker">Skill reference</p>
+      <h1>Web Design</h1>
+      <p>Desktop-first HTML and CSS interface rules for navigation, popups, forms, spacing, layering, responsiveness, and dark mode.</p>
+      <h2>Interface contract</h2>
+      <p>The descriptor forbids nested popups and directs the agent to separate pages or tabs. A popup that collects many fields uses a large surface between 80% and 100% of the viewport, textareas never resize, and input width follows the expected content instead of filling the page. Page padding stays moderate, around 40px, and the visible box layers stay within two or three before the design is re-checked.</p>
+      <h2>Responsive and theming</h2>
+      <p>The rules are desktop-first. When the user also requests a mobile version, the responsive layout is designed and verified at small widths. When dark mode is requested, both the light and dark themes are implemented and kept synchronized. <code>SKILL.md</code> ends with a self-check that repeats these constraints after implementation.</p>
+      <h2>Portable artifacts</h2>
+      <p><code>SKILL.md</code> contains the design rules and <code>DS.md</code> describes their boundary. The skill contains no executable helper or declared dependency.</p>
+      <p>See <a href="specsLoader.html?spec=DS010-web-design.md">DS010</a> for the authoritative catalog contract.</p>
+  </article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

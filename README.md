@@ -20,6 +20,7 @@ When `node-coding-style` is available, use it as the default for coding tasks un
 | [`review-specs`](docs/review-specs.html) | Performs a read-only structural, syntactic, semantic, navigation, Documentation Map, reading-flow, and terminology audit of repository documentation. |
 | [`summarize-agent-impact`](docs/summarize-agent-impact.html) | Explains the impact of an agent's important decisions or completed work in plain language. |
 | [`unslop`](docs/unslop.html) | Edits prose to remove formulaic AI writing patterns while preserving meaning and the intended tone. |
+| [`web-design`](docs/web-design.html) | Supplies desktop-first HTML and CSS rules for navigation, popups, forms, spacing, layering, responsiveness, and dark mode. |
 
 ## Repository layout
 

@@ -11,5 +11,5 @@
 | [DS006-review-specs](specsLoader.html?spec=DS006-review-specs.md) | Performs a read-only structural, syntactic, semantic, navigation, and terminology audit of repository documentation. |
 | [DS007-node-coding-style](specsLoader.html?spec=DS007-node-coding-style.md) | Default Node.js .mjs coding rules, dependency exception records, portable external source, Python conversion decisions, and startup prerequisites. |
 | [DS008-unslop](specsLoader.html?spec=DS008-unslop.md) | Prose editing that removes formulaic AI writing patterns while preserving meaning and the intended tone. |
-| [DS009-summarize-agent-impact](specsLoader.html?spec=DS009-summarize-agent-impact.md) | Plain-language summaries of an agent's important decisions and completed work. |
+| [DS009-human-report](specsLoader.html?spec=DS009-human-report.md) | Plain-language final responses to every user prompt, enclosed in human-report markers. |
 | [DS010-web-design](specsLoader.html?spec=DS010-web-design.md) | Desktop-first HTML and CSS interface rules for navigation, popups, forms, spacing, layering, responsiveness, and dark mode. |

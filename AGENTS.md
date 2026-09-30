@@ -20,7 +20,7 @@ This repository distributes the DocumentationSkills portable catalog for softwar
 - `gamp-specs`
 - `node-coding-style`
 - `review-specs`
-- `summarize-agent-impact`
+- `human-report`
 - `unslop`
 - `web-design`
 

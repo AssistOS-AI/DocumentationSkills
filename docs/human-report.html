@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Human report - DocumentationSkills</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script type="module">
+    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+</head>
+<body>
+  <div data-include="partials/header.html"></div>
+  <main class="page"><article class="page__panel content">
+      <p class="breadcrumb"><a href="index.html">DocumentationSkills</a> / human-report</p>
+      <p class="kicker">Skill reference</p>
+      <h1>Human report</h1>
+      <p>Defines the final response to every user prompt in clear language.</p>
+      <h2>When to use it</h2>
+      <p>Use it for every final response, including questions, minor edits, blocked work, and continuations. Combine related actions into one report. Intermediate progress updates and tool calls do not each require a report.</p>
+      <h2>Output</h2>
+      <p>The agent encloses the entire final response in the user's language between two identical <code>&lt;&lt;human-report&gt;&gt;</code> text markers. The second marker has no slash. The paragraph explains what was decided or changed and why it matters. It states material limits and distinguishes a decision from completed implementation. Necessary details stay inside the markers. Required workflow JSON or routing headings retain their exact structure inside the report; human-facing fields follow the plain-language rules.</p>
+      <p>See <a href="specsLoader.html?spec=DS009-human-report.md">DS009</a> for the authoritative catalog contract.</p>
+  </article></main>
+  <div data-include="partials/footer.html"></div>
+  <script src="partials-loader.js"></script>
+</body>
+</html>

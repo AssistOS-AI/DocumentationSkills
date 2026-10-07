@@ -1,13 +1,15 @@
 ---
 name: human-report
-description: Write the final response to every user prompt in clear, plain language, enclosed in identical human-report markers. Applies to questions, routine changes, substantial work, and continuations.
+description: Write a clear report for every user prompt between identical human-report markers. For explicit workflow output contracts, put the technical payload after the report in the same final response.
 ---
 
 # Human report
 
 Apply this skill after every user prompt. Questions, minor edits, blocked tasks, and resumed conversations all require a report. Progress updates and tool calls do not each require one.
 
-Put the entire final response between two identical literal `<<human-report>>` markers, each on its own line. The second marker has no slash. Do not wrap the report in a code fence or put final-response text outside the markers. Combine related actions into one report.
+Write one final response with exactly one report between two identical literal `<<human-report>>` markers, each on its own line. The second marker has no slash. Do not wrap the report in a code fence. Combine related actions into one report. Use the markers only to delimit the actual report; do not reproduce them in progress messages, formatting explanations or draft examples.
+
+For ordinary chat and tasks without an explicit machine-readable output contract, the report is the entire final response. Do not append a second answer outside the markers.
 
 <<human-report>>
 Plain-language response to the user's request.
@@ -17,7 +19,7 @@ Answer the actual request. When reporting work, explain what was decided or comp
 
 Write in the user's language. Assume the reader does not know the project's internals. Prefer a short paragraph of two to four sentences, adjusting length to answer the request fully. Explain necessary technical terms in ordinary words. Omit implementation details, file lists, command logs, and detailed test results unless the user needs them to understand or use the answer. Any necessary details stay inside the report.
 
-When a workflow requires JSON or routing headings, preserve that exact payload structure inside the markers. Apply the plain-language rules to human-facing fields such as `message`. Do not add prose that would invalidate the payload.
+When the caller explicitly requires workflow routing, child delegation or graph-generation output, use two consecutive parts in the same final response. First write the plain-language report between the markers. Then put the required technical Markdown or JSON payload after the closing marker, outside the report. Keep control fields such as nextEdgeId and workflow definitions outside the report. Do not add explanations around the payload or duplicate the report in an optional message field. Use that field only for additional context the workflow needs. The runtime chooses the output contract; do not infer one from the robot name or invent control fields for an ordinary chat.
 
 Example:
 

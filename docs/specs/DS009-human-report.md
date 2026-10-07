@@ -1,6 +1,6 @@
 ---
 title: DS009-human-report
-summary: Plain-language final responses to every user prompt, enclosed in human-report markers.
+summary: Plain-language reports for every user prompt, with explicit workflow payloads outside the report in the same final response.
 ---
 
 # Human report
@@ -13,8 +13,10 @@ This specification defines when an agent uses `human-report` and what its output
 
 Every user prompt requires a final report, including questions, routine changes, blocked work, and continuations. Intermediate progress and tool calls do not each require one. Related actions share one report.
 
-The entire final response appears between two identical literal `<<human-report>>` markers on separate lines. The second marker has no slash. The report answers the request in the user's language, describes completed work or decisions and their consequences, and states material limits. It distinguishes decisions from implementation, explains necessary technical terms, and avoids unsupported claims. Necessary details remain inside the markers.
+One final response contains exactly one report between two identical literal `<<human-report>>` markers on separate lines. The second marker has no slash. The markers must not be repeated in progress messages, formatting explanations or draft examples. The report answers the request in the user's language, describes completed work or decisions and their consequences, and states material limits. It distinguishes decisions from implementation, explains necessary technical terms, and avoids unsupported claims. Necessary human-facing details remain inside the markers.
 
-Required workflow JSON or routing headings retain their exact structure inside the markers. Human-facing fields follow the plain-language rules without adding prose that would invalidate the payload.
+For ordinary chat and tasks without an explicit machine-readable output contract, the report is the entire final response. When the caller explicitly requires workflow routing, child delegation or graph generation, the plain-language report comes first and the technical Markdown or JSON payload follows the closing marker in the same final response. Control fields stay outside the report. There is no separate intermediate report or second final answer. An optional message field must not duplicate the report. The caller chooses the contract; the robot does not infer it from its name.
+
+Consumers may store the complete final response for debugging, extract the report for display, and parse the technical payload separately. Separating these views must not erase the original output or discard human findings needed by later tasks.
 
 The distributed skill consists of `SKILL.md` and `DS.md`. It is self-contained and has no executable helper or external dependency.

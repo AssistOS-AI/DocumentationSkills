@@ -20,7 +20,8 @@
       <h2>When to use it</h2>
       <p>Use it for every final response, including questions, minor edits, blocked work, and continuations. Combine related actions into one report. Intermediate progress updates and tool calls do not each require a report.</p>
       <h2>Output</h2>
-      <p>The agent encloses the entire final response in the user's language between two identical <code>&lt;&lt;human-report&gt;&gt;</code> text markers. The second marker has no slash. The paragraph explains what was decided or changed and why it matters. It states material limits and distinguishes a decision from completed implementation. Necessary details stay inside the markers. Required workflow JSON or routing headings retain their exact structure inside the report; human-facing fields follow the plain-language rules.</p>
+      <p>The final response contains exactly one report in the user's language between two identical <code>&lt;&lt;human-report&gt;&gt;</code> markers. The second marker has no slash. The report explains what was decided or changed and why it matters. It states material limits and distinguishes decisions from completed implementation. The markers are not repeated in progress messages or draft examples.</p>
+      <p>In ordinary chat, the report is the entire final response. When the caller explicitly requires workflow routing, child delegation or graph generation, the report comes first and the technical Markdown or JSON payload follows the closing marker in the same final response. Control fields stay outside the report, and an optional message field does not duplicate it. Consumers can display only the report while retaining the complete output in debug logs.</p>
       <p>See <a href="specsLoader.html?spec=DS009-human-report.md">DS009</a> for the authoritative catalog contract.</p>
   </article></main>
   <div data-include="partials/footer.html"></div>

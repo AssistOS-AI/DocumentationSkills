@@ -12,6 +12,8 @@ This repository distributes the DocumentationSkills portable catalog for softwar
 4. Read `docs/specsLoader.html?spec=matrix.md` and the relevant per-skill DS file.
 5. Read the complete target skill folder before editing it.
 
+`docs/wiki.html` defines catalog terminology. `docs/specs/DS003-main-behavior.md` records the catalog's main behaviors; the article-build contract is `docs/specs/DS011-article-build.md`.
+
 ## Current Skill Catalog
 
 - `achilles-specs`
@@ -34,6 +36,7 @@ This repository distributes the DocumentationSkills portable catalog for softwar
 - Keep `AGENTS.md`, `README.md`, `docs/index.html`, per-skill pages, and `docs/specs/matrix.md` synchronized with the current skill folders.
 - Update this catalog whenever a skill folder is added, removed, or renamed.
 - Keep DS numbering contiguous.
+- Ordinary DS files have exactly `title` and `summary` frontmatter and use `Introduction` and `Core Content`; retain substantive rationale in Core Content without a separate Conclusion.
 - Update the GAMP skill when new skill families, coding-style rules, or project bootstrap rules are introduced.
 
 ## Runtime Defaults

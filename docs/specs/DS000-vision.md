@@ -15,6 +15,5 @@ The repository must keep every distributed skill self-contained inside `skills/<
 
 The design specifications under `docs/specs/` are the source of truth for catalog structure and durable behavior. HTML documentation must remain synchronized with those contracts and with the actual skill folders.
 
-## Conclusion
 
 DocumentationSkills must remain a coherent, implementation-backed catalog whose skill folders can be understood and moved independently.

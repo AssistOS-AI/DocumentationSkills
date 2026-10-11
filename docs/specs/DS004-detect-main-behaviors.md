@@ -17,6 +17,5 @@ The repository must retain the artifacts documented on the corresponding HTML sk
 
 Declared dependencies are not required by the catalog metadata. A consuming project must resolve declared dependencies explicitly and must not infer undeclared runtime coupling.
 
-## Conclusion
 
 Changes to `detect-main-behaviors` must preserve its declared boundary and update this specification and its HTML documentation together.
